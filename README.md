@@ -6,7 +6,7 @@ Clone the bridge, run it locally, and integrate it into your own development wor
 
 ## Why use this bridge instead of the native app-server directly?
 
-Use the bridge when your host already supports local stdio MCP tools and you want to delegate bounded coding tasks to Codex without implementing a native app-server client. For example, if your Grok integration accepts MCP servers but has no native Codex app-server adapter, this bridge supplies that interface. Check the capabilities of your particular Grok client; this is not a claim about every Grok product or a certification of that client.
+Use the bridge when your host already supports local stdio MCP tools and you want to delegate bounded coding tasks to Codex without implementing a native app-server client. For example, an editor, assistant or workflow runner that accepts MCP servers but has no native Codex app-server adapter can use this interface. Check the capabilities of your particular host; MCP support alone does not certify its integration with this bridge.
 
 The native app-server has its own JSON-RPC protocol, thread/turn lifecycle, event notifications, history and interruption methods. Sharing JSON-RPC does not make it an MCP tool server. See the [native app-server documentation](https://learn.chatgpt.com/docs/app-server).
 
@@ -191,6 +191,18 @@ The profile binds executable, paths, model and sandbox. Permissions returned by 
 
 Direct sockets and deterministic aliases are admitted. Alias admission checks a captured **path**, not the connected peer: a substitution restored before the post-connect check is undetectable. Identity comparison followed by unlink is **not atomic**; a replacement in that window can be removed. Same-user inode reuse and noncooperating processes remain outside the assurance boundary. See the [complete contract](docs/contract.md).
 
+## Validate your integration
+
+Tests ship in this repository and apply to any developer tool that can launch a local **stdio MCP** server. They do not require a particular assistant, editor or model to operate the host.
+
+| Stage | Included check | Success target |
+| --- | --- | --- |
+| Check the prepared checkout | [MCP fixture smoke](tests/installed_wheel_smoke.py), using the [launch command above](#launch-from-any-directory) | Exit 0 and `source checkout smoke passed: stdio, replay, status, pages, cancel, cleanup` |
+| Check bridge regressions | [Offline suite](#offline-tests) | Zero failures; current baseline is **487 passed, 1 explicitly deselected installed-runtime test** |
+| Check your actual host integration | [Host acceptance procedure and report template](docs/integration-testing.md#2-test-your-actual-mcp-host) | Observe every applicable target through your configured host, including confirmed cancellation and verified result bytes; record untested checks explicitly |
+
+The first two stages use deterministic fixtures and need no provider authentication or model usage. The host procedure defines a separate, opt-in two-task live check in a disposable workspace, plus non-model control checks. Passing the standalone smoke does **not** qualify your host's registration, tool decoding, timeouts or lifecycle. A host that supports only remote HTTP MCP cannot launch this local stdio bridge without an additional integration layer, which this repository does not provide.
+
 ## Offline tests
 
 ```sh
@@ -208,6 +220,8 @@ PYTHONPATH="$BRIDGE/src" "$BRIDGE/.venv/bin/python" \
 ```
 
 Tests launch deterministic local fixtures, including owned sockets at unique hashed alias paths in the runtime's fixed per-user temporary rendezvous directory; they never attach to a shared daemon. They exercise accepted substitution/cleanup residuals intentionally. Use a disposable developer test environment and only remove temporary roots you created. The installed-runtime control is separately marked and requires `BRIDGE_TEST_CODEX_0156`; it is excluded above. No test result here establishes live-provider qualification. [Recorded results](docs/validation.md) distinguish passes, inherited failures and exclusions.
+
+See [integration testing](docs/integration-testing.md) for fresh-checkout commands, expected output, host acceptance targets and how to classify failures or incomplete checks. The inherited full-test-file lint baseline has 52 diagnostics; the focused lint command above is expected to pass.
 
 ## Provenance and licensing
 
