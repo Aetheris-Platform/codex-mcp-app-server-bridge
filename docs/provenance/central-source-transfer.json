@@ -1,0 +1,137 @@
+{
+  "source_commit": "844f56c77d2f73d9b6f4e78bca69fd94ccce49d5",
+  "entries": [
+    {
+      "source_path": "devtools/codex_app_server_adapter/README.md",
+      "source_sha256": "3dd26e91767ad54f3386af8b89187bb6e07d09926581db30eefbd1e38d37e7c7",
+      "destination_path": "README.md",
+      "destination_sha256": "b37cbe37ce3720aca3298b22b65ae50fb237bf7ac6a3ee0c8078edcc70b1e672"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/__init__.py",
+      "source_sha256": "d041f213dd31eff848be7cbfb269a042dcb33ae30b7344c3b6eb04a03da0a233",
+      "destination_path": "src/codex_app_server_adapter/__init__.py",
+      "destination_sha256": "d041f213dd31eff848be7cbfb269a042dcb33ae30b7344c3b6eb04a03da0a233"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/__main__.py",
+      "source_sha256": "8ce03c27a8bab017d33c8c1811e0b973ffdf3c228a3b3c7f02153bdf23a1bf99",
+      "destination_path": "src/codex_app_server_adapter/__main__.py",
+      "destination_sha256": "8d7ce422f335739e186919948995bd0502ea923ff7aca8de44324d8b65bb9cf9"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/coverage.md",
+      "source_sha256": "73104902493f149e7c18874bd9753ac76247e8e93a6718a90e007026d04a0643",
+      "destination_path": "coverage.md",
+      "destination_sha256": "73104902493f149e7c18874bd9753ac76247e8e93a6718a90e007026d04a0643"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/errors.py",
+      "source_sha256": "cc67df337d932a936f63e1c57c620d3d5ef18a880a61ad5495bf49330dd32260",
+      "destination_path": "src/codex_app_server_adapter/errors.py",
+      "destination_sha256": "cc67df337d932a936f63e1c57c620d3d5ef18a880a61ad5495bf49330dd32260"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/guardian.py",
+      "source_sha256": "784ac93f16e807840bc89282ae93e6c60f9e26b797dcd7477977d640e632066c",
+      "destination_path": "src/codex_app_server_adapter/guardian.py",
+      "destination_sha256": "784ac93f16e807840bc89282ae93e6c60f9e26b797dcd7477977d640e632066c"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/mcp_server.py",
+      "source_sha256": "d63124ad40acb98e1374f86e5e5c4eb806ad6200bdbe3a030c1e2ee50e2bedcc",
+      "destination_path": "src/codex_app_server_adapter/mcp_server.py",
+      "destination_sha256": "d63124ad40acb98e1374f86e5e5c4eb806ad6200bdbe3a030c1e2ee50e2bedcc"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/models.py",
+      "source_sha256": "57244488e92e1c7c704e788496f4c042690e9820da50799eb3c3ffabc61a3ae9",
+      "destination_path": "src/codex_app_server_adapter/models.py",
+      "destination_sha256": "57244488e92e1c7c704e788496f4c042690e9820da50799eb3c3ffabc61a3ae9"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/profile.py",
+      "source_sha256": "6dda5182ac638e81d3ea35be73abad86a0831cba8270bf0e70b3a2ea4db5e114",
+      "destination_path": "src/codex_app_server_adapter/profile.py",
+      "destination_sha256": "aff04b69dce9a257af5182ee2531e7868f2d9052c666bd75abcde74992109e67"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/protocol.py",
+      "source_sha256": "262811ee595f033c640852204b6bcf7837f06d89aafd06e8bbf9ff90530e3eeb",
+      "destination_path": "src/codex_app_server_adapter/protocol.py",
+      "destination_sha256": "262811ee595f033c640852204b6bcf7837f06d89aafd06e8bbf9ff90530e3eeb"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/pyproject.toml",
+      "source_sha256": "64d63946ab0cfe86b41f0b54265b32e8eadbce3c3940e2780e1090b4cf61fff8",
+      "destination_path": "pyproject.toml",
+      "destination_sha256": "faaa8fef79a6943415acb95f7a2167c347b6df9d6b966db246aee6d292a1b349"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/runtime.py",
+      "source_sha256": "7e4423d3ee39b2b91bc38aa40102c0866f8e9ffbc5f1fbdc6b8403ad8fbe85e0",
+      "destination_path": "src/codex_app_server_adapter/runtime.py",
+      "destination_sha256": "aa89dc117a7ec1051497bd8de1afc21870522ed0f99d260eb14ed5f582fe358a"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/service.py",
+      "source_sha256": "53fcde17fbbbc9d414063c207f4d6ddc9ee8455effca9b6e03f0f3f7632ce849",
+      "destination_path": "src/codex_app_server_adapter/service.py",
+      "destination_sha256": "66f6e143da11eaf632ef1f95250f54ced32bb0dd1f10899a9357e60ef4fc4e3d"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/store.py",
+      "source_sha256": "c9e77f91f9a015d207f09c7a45d02d373954fc01dd0145eaf4da034ab1685465",
+      "destination_path": "src/codex_app_server_adapter/store.py",
+      "destination_sha256": "c9e77f91f9a015d207f09c7a45d02d373954fc01dd0145eaf4da034ab1685465"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/uv.lock",
+      "source_sha256": "3eb7bb14d2df0b52001a901f2544b0d24f5ed0047557836638d05977d659a090",
+      "destination_path": "uv.lock",
+      "destination_sha256": "790d9cd24d23aa3cce35998e3f3329b68ca58087d829a907b0037c5ead187802"
+    },
+    {
+      "source_path": "devtools/codex_app_server_adapter/validation.py",
+      "source_sha256": "b8ec0286df26d02adcfd84776566af667740a6fcbb444c8ec4290262d0a30bc0",
+      "destination_path": "src/codex_app_server_adapter/validation.py",
+      "destination_sha256": "b8ec0286df26d02adcfd84776566af667740a6fcbb444c8ec4290262d0a30bc0"
+    },
+    {
+      "source_path": "tests/governance/test_codex_app_server_adapter.py",
+      "source_sha256": "a66065d36055de866145c0f783abb76df74608416a0f07f18e90ad22cf3b3aab",
+      "destination_path": "tests/test_codex_app_server_adapter.py",
+      "destination_sha256": "3b2acdff852333e4da99ea60eee8af84b2cfa25c6c5c3b5263c13e6955513c21"
+    },
+    {
+      "source_path": "tests/governance/test_codex_app_server_adapter_guardian.py",
+      "source_sha256": "66c991978d9aa4cf07b165f6a4c4012a738cb2863e42f724be93e665617a2b19",
+      "destination_path": "tests/test_codex_app_server_adapter_guardian.py",
+      "destination_sha256": "46d1f7ae701cc972ddb4072ab83ac5db3aab1d77d86dede0bc914ca100be36f2"
+    },
+    {
+      "source_path": "tests/governance/test_codex_app_server_adapter_matrix.py",
+      "source_sha256": "19cd8e9b3a410047bb7d2910cf5479dbdb25ec79de3c4d60c90b556716a1234a",
+      "destination_path": "tests/test_codex_app_server_adapter_matrix.py",
+      "destination_sha256": "7e69149aa749be49af660945ee7f1c14b1002d321a3129d00730a27de0ceeec6"
+    },
+    {
+      "source_path": "tests/governance/test_codex_app_server_adapter_native.py",
+      "source_sha256": "725ab4709a4b215d70942d1dcc4790960b88120f8d7a6cbd7f01cb533fcac455",
+      "destination_path": "tests/test_codex_app_server_adapter_native.py",
+      "destination_sha256": "a2c4b9242c37c2da592183ec3eda706438c2a8a5e61cccb5be8ac4bc8a978bb8"
+    },
+    {
+      "source_path": "tests/governance/test_codex_app_server_adapter_provider.py",
+      "source_sha256": "4dc923a7c8e02e70a575f2df4b391f295d7a8ee3139a36bcf9b195d63b794263",
+      "destination_path": "tests/test_codex_app_server_adapter_provider.py",
+      "destination_sha256": "4dc923a7c8e02e70a575f2df4b391f295d7a8ee3139a36bcf9b195d63b794263"
+    },
+    {
+      "source_path": "tests/governance/fixtures/codex_app_server_adapter/native_server.py",
+      "source_sha256": "bc2ca6778c1f23e07edc68a6d694b44b40d114aece1d72cf6a1db66c7c06180d",
+      "destination_path": "tests/fixtures/codex_app_server_adapter/native_server.py",
+      "destination_sha256": "bc2ca6778c1f23e07edc68a6d694b44b40d114aece1d72cf6a1db66c7c06180d"
+    }
+  ]
+}

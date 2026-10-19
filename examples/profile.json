@@ -1,0 +1,10 @@
+{
+  "runtime_path": "/absolute/private/bin/codex",
+  "runtime_version": "EXACT OUTPUT OF codex --version",
+  "runtime_sha256": "REPLACE_WITH_64_HEX_SHA256_OF_EXECUTABLE",
+  "socket_path": "/absolute/private/run/app.sock",
+  "allowed_worktree_roots": ["/absolute/workspaces"],
+  "allowed_models": ["EXPLICIT_MODEL_ID"],
+  "allowed_sandboxes": ["read-only"],
+  "data_root": "/absolute/private/state"
+}
