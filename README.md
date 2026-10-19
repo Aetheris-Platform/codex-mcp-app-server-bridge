@@ -26,7 +26,7 @@ Use the native app-server directly when you are building a full Codex client and
 
 ## Integrate into your workflow
 
-1. **Get a local copy:** clone this repository and select a reviewed commit.
+1. **Get a local copy and select a platform:** clone this repository, select a reviewed commit, and run `python3 tools/integrate.py` (`py -3 tools/integrate.py` on Windows). Choose macOS, Linux, native Windows 11 or WSL2; follow the matching [platform guide](docs/platforms.md).
 2. **Prepare it locally:** install the locked dependencies in the checkout's environment and create a private profile for your Codex executable, model, workspaces and task store.
 3. **Connect your client:** configure your MCP-compatible developer tool to launch that checkout's Python module over stdio. The client starts the bridge, which owns its local Codex app-server child.
 4. **Use it in your workflow:** call `codex_start`, retain the task ID, then use `codex_status`, `codex_result` and `codex_cancel` as needed.
@@ -39,21 +39,22 @@ This is an independent project, not an official OpenAI product. Compatibility de
 
 ## Supported environment
 
-- macOS with a local filesystem supporting Unix sockets, POSIX process groups and `flock`. The extraction was tested on macOS arm64 with Python 3.14.6. Linux and Windows are **not qualified or claimed supported**.
-- Python 3.12+ is the declared requirement; this extraction tested only 3.14.6. The inherited dependency lock is macOS-only.
+- Select **macOS, Linux, native Windows 11, or Windows 11 with WSL2**. Unix uses private sockets, process groups and `flock`; native Windows uses private stdio pipes, ACLs, file locks and Job Objects. See the [platform status matrix](docs/platforms.md#status-and-boundaries): Windows/WSL2 are implemented candidates awaiting owner-machine acceptance, not yet qualified.
+- Python 3.12+ is the declared requirement; local qualification uses 3.14.6. The dependency lock now includes macOS, Linux and Windows; other Python versions still need their own qualification.
 - `uv` 0.12.18 was used for locked setup. Dependencies are `mcp==2.2.0`, `websockets==17.1`, and the exact transitive artifacts in `uv.lock`.
-- An operator-selected Codex executable with local Unix WebSocket [app-server support](https://learn.chatgpt.com/docs/app-server), independently configured authentication, and an explicitly selected accessible model. The executable must have a stable absolute path without symlink components; a moving launcher is unsuitable.
+- An operator-selected Codex executable with the selected platform's local [app-server support](https://learn.chatgpt.com/docs/app-server), independently configured authentication, and an explicitly selected accessible model. The executable must have a stable absolute path without symlink components; a moving launcher is unsuitable.
 
-Historical source records cover direct sockets in CLI 0.154.0, deterministic aliases in 0.156.0, and one macOS arm64 0.159.2 / `gpt-6.1-sol` completed turn under the former client identity. Following the offline extraction, a bounded live test of the standalone identity passed with CLI **0.159.2**, **`gpt-6.1-sol` / low**, and one programmatic stdio MCP client: task completion, duplicate prevention, paginated results, confirmed provider-turn cancellation, persistence and cleanup. This does not qualify every client/model or live deadline expiry. See the [live results and precise limits](docs/live-validation.md) and [extraction provenance](docs/extraction.md).
+Historical source records cover direct sockets in CLI 0.154.0, deterministic aliases in 0.156.0, and one macOS arm64 0.159.2 / `gpt-6.1-sol` completed turn under the former client identity. Following the offline extraction, a bounded live test of the standalone identity passed with CLI **0.159.2**, **`gpt-6.1-sol` / low**, and one programmatic stdio MCP client: task completion, duplicate prevention, paginated results, confirmed provider-turn cancellation, persistence and cleanup. This does not qualify every client/model or live deadline expiry. See the [live results and precise limits](docs/live-validation.md) and [extraction provenance](docs/extraction.md). Those live receipts predate the platform changes; see [current platform validation](docs/platform-validation.md) for the new candidate and pending Windows/WSL2 gates.
 
 ## Get and prepare your local checkout
 
-Clone this repository with access to its private remote, choose a reviewed commit, and create a separate environment. No wheel release is needed.
+Clone this repository with access to its private remote, choose a reviewed commit and platform, and create a separate environment. The commands below are for Unix; use the [native Windows PowerShell route](docs/platforms.md#windows) on Windows. No wheel release is needed.
 
 ```sh
 git clone https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge.git
 cd codex-mcp-app-server-bridge
 BRIDGE="$PWD"
+python3 tools/integrate.py
 UV_CACHE_DIR="$BRIDGE/.local/uv-cache" uv sync --locked --no-dev --no-install-project --no-python-downloads
 ```
 
@@ -72,9 +73,9 @@ An optional installed command is declared as `codex-mcp-app-server-bridge --prof
 
 ## Private operator profile
 
-**Setup does not create a live profile.** `/absolute/private/profile.json` is an example path, not a file shipped by this project. Do not run the live launch command until you have created a real profile with your chosen runtime, model, workspace and private storage paths.
+**Setup does not create a live profile.** Native Windows uses [profile.windows.json](examples/profile.windows.json), `socket_path: null`, Windows paths and private ACLs as described in the [Windows guide](docs/platforms.md#windows). `/absolute/private/profile.json` is an example path, not a file shipped by this project. Do not run the live launch command until you have created a real profile with your chosen runtime, model, workspace and private storage paths.
 
-Copy [the sanitized example](examples/profile.json), replace every placeholder, and keep the real profile outside version control with mode `0600`. Create its socket parent and data root with mode `0700` under your own account. All path components must be real, non-symlink directories. On macOS use canonical `/private/tmp`, not `/tmp`, for a temporary profile socket. Keep socket paths short enough for the OS Unix-socket limit.
+On Unix, copy [the sanitized example](examples/profile.json), replace every placeholder, and keep the real profile outside version control with mode `0600`. Create its socket parent and data root with mode `0700` under your own account. All path components must be real, non-symlink directories. On macOS use canonical `/private/tmp`, not `/tmp`, for a temporary profile socket. Keep socket paths short enough for the OS Unix-socket limit.
 
 ```json
 {
@@ -98,7 +99,7 @@ One data root has one cooperative adapter owner, even if two profiles have diffe
 To check the prepared checkout immediately without a live profile or provider call, run:
 
 ```sh
-cd /private/tmp
+cd "$(python3 -c 'import os; print(os.path.realpath("/tmp"))')"
 (umask 077
 PYTHONPATH="$BRIDGE/src" "$BRIDGE/.venv/bin/python" \
   "$BRIDGE/tests/installed_wheel_smoke.py" --source-root "$BRIDGE/src" \
@@ -112,7 +113,7 @@ For a live launch, replace **both example paths** below with your checkout and a
 
 ```sh
 BRIDGE=/absolute/path/codex-mcp-app-server-bridge
-cd /private/tmp
+cd "$(python3 -c 'import os; print(os.path.realpath("/tmp"))')"
 PYTHONPATH="$BRIDGE/src" "$BRIDGE/.venv/bin/python" \
   -m codex_app_server_adapter --profile /absolute/private/profile.json
 ```
@@ -198,22 +199,24 @@ Tests ship in this repository and apply to any developer tool that can launch a 
 | Stage | Included check | Success target |
 | --- | --- | --- |
 | Check the prepared checkout | [MCP fixture smoke](tests/installed_wheel_smoke.py), using the [launch command above](#launch-from-any-directory) | Exit 0 and `source checkout smoke passed: stdio, replay, status, pages, cancel, cleanup` |
-| Check bridge regressions | [Offline suite](#offline-tests) | Zero failures; current baseline is **487 passed, 1 explicitly deselected installed-runtime test** |
+| Check bridge regressions | [Offline suite](#offline-tests) | Zero failures; use the selected platform's [counts and exclusions](docs/platforms.md#included-test-routes) |
 | Check your actual host integration | [Host acceptance procedure and report template](docs/integration-testing.md#2-test-your-actual-mcp-host) | Observe every applicable target through your configured host, including confirmed cancellation and verified result bytes; record untested checks explicitly |
 
 The first two stages use deterministic fixtures and need no provider authentication or model usage. The host procedure defines a separate, opt-in two-task live check in a disposable workspace, plus non-model control checks. Passing the standalone smoke does **not** qualify your host's registration, tool decoding, timeouts or lifecycle. A host that supports only remote HTTP MCP cannot launch this local stdio bridge without an additional integration layer, which this repository does not provide.
 
 ## Offline tests
 
+After selecting a platform and installing dev dependencies, run `.venv/bin/python tools/test_platform.py` (native Windows: `.venv\Scripts\python.exe tools/test_platform.py`). It uses the saved selection and retains logs/JUnit. The lower-level commands below are Unix-only.
+
 ```sh
 cd "$BRIDGE"
 UV_CACHE_DIR="$BRIDGE/.local/uv-cache" uv sync --locked --extra dev --no-install-project --no-python-downloads
 umask 077
-BRIDGE_TEST_ROOT=$(mktemp -d /private/tmp/cb.XXXXXX)
+BRIDGE_TEST_ROOT=$(mktemp -d "$(python3 -c 'import os; print(os.path.realpath("/tmp"))')/cb.XXXXXX")
 CODEX_HOME="$BRIDGE_TEST_ROOT/codex-home" PYTHONDONTWRITEBYTECODE=1 \
   "$BRIDGE/.venv/bin/python" -m pytest -q -m 'not installed_runtime' --basetemp "$BRIDGE_TEST_ROOT/tests"
 "$BRIDGE/.venv/bin/ruff" check src tests/test_standalone_extraction.py tests/installed_wheel_smoke.py
-cd /private/tmp
+cd "$(python3 -c 'import os; print(os.path.realpath("/tmp"))')"
 PYTHONPATH="$BRIDGE/src" "$BRIDGE/.venv/bin/python" \
   "$BRIDGE/tests/installed_wheel_smoke.py" --source-root "$BRIDGE/src" \
   --fixture "$BRIDGE/tests/fixtures/codex_app_server_adapter/native_server.py"

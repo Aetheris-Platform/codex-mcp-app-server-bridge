@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-import fcntl
 import os
 import stat
 from typing import TYPE_CHECKING
 
 from .errors import ValidationError
+from .platform_files import is_link, lock_file, make_private_directory, require_private_windows
 from .profile import _has_symlink_component, _require_private
 
 if TYPE_CHECKING:
@@ -20,15 +20,17 @@ class DataRootOwnership:
     def __init__(self, root: Path) -> None:
         if not root.is_absolute() or _has_symlink_component(root):
             raise ValidationError("data_root must be an absolute non-symlink path")
-        root.mkdir(mode=0o700, parents=True, exist_ok=True)
+        make_private_directory(root, parents=True)
         if not root.is_dir():
             raise ValidationError("data_root must be a real directory")
         _require_private(root, "data root")
         self.root = root.resolve(strict=True)
         self._fd: int | None = None
         path = self.root / ".adapter-owner.lock"
+        if is_link(path):
+            raise ValidationError("data-root ownership lock may not be a link")
         try:
-            fd = os.open(path, os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW | os.O_CLOEXEC, 0o600)
+            fd = os.open(path, os.O_RDWR | os.O_CREAT | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_CLOEXEC", 0), 0o600)
         except OSError as exc:
             raise ValidationError("cannot open private data-root ownership lock") from exc
         try:
@@ -36,13 +38,14 @@ class DataRootOwnership:
             info = os.fstat(fd)
             if (
                 not stat.S_ISREG(info.st_mode)
-                or info.st_uid != os.getuid()
-                or info.st_mode & 0o077
+                or (os.name != "nt" and (info.st_uid != os.getuid() or info.st_mode & 0o077))
                 or info.st_nlink != 1
             ):
                 raise ValidationError("data-root ownership lock must be a private regular file")
+            if os.name == "nt":
+                require_private_windows(path, "data-root ownership lock")
             try:
-                fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                lock_file(fd, nonblocking=True)
             except BlockingIOError as exc:
                 raise ValidationError("profile data root is already owned by another adapter") from exc
             except OSError as exc:

@@ -1,0 +1,10 @@
+{
+  "runtime_path": "C:\\Users\\YOUR_USER\\codex-pinned\\codex.exe",
+  "runtime_version": "REPLACE_WITH_EXACT_CODEX_VERSION_OUTPUT",
+  "runtime_sha256": "REPLACE_WITH_64_CHARACTER_EXECUTABLE_SHA256",
+  "socket_path": null,
+  "allowed_worktree_roots": ["C:\\Users\\YOUR_USER\\workspaces"],
+  "allowed_models": ["REPLACE_WITH_YOUR_CHOSEN_MODEL"],
+  "allowed_sandboxes": ["read-only", "workspace-write"],
+  "data_root": "C:\\Users\\YOUR_USER\\bridge-private\\data"
+}

@@ -1172,7 +1172,7 @@ def test_non_socket_at_the_alias_path_is_rejected(tmp_path: Path, kind: str) -> 
 def test_alias_rejects_an_unsafe_rendezvous_directory(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str, failure: str
 ) -> None:
-    root = Path(tempfile.mkdtemp(prefix="cb-alias-", dir="/private/tmp"))
+    root = Path(tempfile.mkdtemp(prefix="cb-alias-", dir=Path("/tmp").resolve()))
     shared = root / "s"
     bound = socket.socket(socket.AF_UNIX)
     try:

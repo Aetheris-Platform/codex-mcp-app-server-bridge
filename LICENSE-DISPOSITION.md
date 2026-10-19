@@ -36,3 +36,13 @@ and approve the third-party notice set for the exact distributed artifacts.
 Actual installed locked dependency license/NOTICE texts and hashes are retained
 in `docs/third-party/`; metadata observations are not legal clearance.
 No public release, package publication or consumer activation is authorized.
+
+## Platform follow-up
+
+Native Windows now declares `pywin32==312` directly (also required by the locked
+MCP dependency on Windows). The cross-platform lock additionally selects
+Windows-only `colorama==0.4.6`. The historical installed-notice inventory above
+was gathered on macOS and does not establish retention of these Windows wheel
+notices. The Windows test handoff requires recording installed package metadata
+and retaining their actual license/NOTICE files and hashes. Owner review of the
+expanded artifact/notice set remains part of the existing public-release gate.

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import os
 import sys
 from contextlib import asynccontextmanager
 from typing import TYPE_CHECKING, cast
@@ -122,12 +123,18 @@ async def _strict_stdio_server() -> AsyncIterator[
 ]:
     """Provide SDK low-level streams while rejecting duplicate JSON object keys."""
 
-    stdin_reader = asyncio.StreamReader(limit=_MAX_STDIO_LINE_BYTES)
-    stdin_protocol = asyncio.StreamReaderProtocol(stdin_reader)
-    stdin_transport, _ = await asyncio.get_running_loop().connect_read_pipe(
-        lambda: stdin_protocol, sys.stdin.buffer
-    )
-    stdout = anyio.wrap_file(sys.stdout)
+    stdin_transport = None
+    if os.name == "nt":
+        # MCP hosts may supply synchronous anonymous Windows handles, which
+        # Proactor connect_read_pipe cannot turn into overlapped handles.
+        stdin_reader = _WindowsInput()
+    else:
+        stdin_reader = asyncio.StreamReader(limit=_MAX_STDIO_LINE_BYTES)
+        stdin_protocol = asyncio.StreamReaderProtocol(stdin_reader)
+        stdin_transport, _ = await asyncio.get_running_loop().connect_read_pipe(
+            lambda: stdin_protocol, sys.stdin.buffer
+        )
+    stdout = anyio.wrap_file(sys.stdout.buffer)
     read_send, read_stream = create_context_streams[SessionMessage | Exception](0)
     write_stream, write_receive = create_context_streams[SessionMessage](0)
 
@@ -170,8 +177,8 @@ async def _strict_stdio_server() -> AsyncIterator[
         async with write_receive:
             async for session_message in write_receive:
                 await stdout.write(
-                    session_message.message.model_dump_json(by_alias=True, exclude_unset=True)
-                    + "\n"
+                    (session_message.message.model_dump_json(by_alias=True, exclude_unset=True)
+                    + "\n").encode("utf-8")
                 )
                 await stdout.flush()
 
@@ -182,11 +189,17 @@ async def _strict_stdio_server() -> AsyncIterator[
             yield read_stream, write_stream
         finally:
             task_group.cancel_scope.cancel()
-            stdin_transport.close()
+            if stdin_transport is not None:
+                stdin_transport.close()
+
+
+class _WindowsInput:
+    async def read(self, size: int) -> bytes:
+        return await anyio.to_thread.run_sync(sys.stdin.buffer.read1, size, abandon_on_cancel=True)
 
 
 async def _read_bounded_line(
-    reader: asyncio.StreamReader, buffered: bytearray
+    reader: asyncio.StreamReader | _WindowsInput, buffered: bytearray
 ) -> tuple[bytes | None, bool]:
     """Read one newline-delimited frame while retaining coalesced follow-up bytes."""
 

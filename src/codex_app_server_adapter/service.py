@@ -1161,7 +1161,7 @@ def _path_identity(path: Path) -> dict[str, object]:
     current = path
     while True:
         info = os.lstat(current)
-        if stat.S_ISLNK(info.st_mode):
+        if stat.S_ISLNK(info.st_mode) or (os.name == "nt" and info.st_file_attributes & stat.FILE_ATTRIBUTE_REPARSE_POINT):
             raise OSError("bound path component is a symlink")
         info = os.stat(current)
         components.append(

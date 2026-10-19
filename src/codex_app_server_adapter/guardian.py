@@ -135,7 +135,13 @@ def _validate_read_pipe(fd: int) -> None:
         flags = fcntl.fcntl(fd, fcntl.F_GETFL)
     except (OSError, ValueError) as exc:
         raise ValueError("guardian read descriptor is invalid") from exc
-    if not stat.S_ISFIFO(info.st_mode) or info.st_nlink != 0:
+    anonymous = info.st_nlink == 0
+    if sys.platform == "linux":
+        # Linux anonymous pipes have nlink=1, just like a named FIFO. The
+        # kernel's procfs descriptor target distinguishes them without opening
+        # or trusting a filesystem FIFO supplied by the caller.
+        anonymous = info.st_nlink == 1 and os.readlink(f"/proc/self/fd/{fd}") == f"pipe:[{info.st_ino}]"
+    if not stat.S_ISFIFO(info.st_mode) or not anonymous:
         raise ValueError("guardian read descriptor is not an anonymous pipe")
     if flags & os.O_ACCMODE != os.O_RDONLY:
         raise ValueError("guardian read descriptor is not readable")

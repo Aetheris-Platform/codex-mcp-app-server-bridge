@@ -11,6 +11,7 @@ requires-python = ">=3.12"
 dependencies = [
     "mcp==2.2.0",
     "websockets==17.1",
+    "pywin32==312; sys_platform == 'win32'",
 ]
 
 [project.optional-dependencies]
@@ -26,7 +27,7 @@ where = ["src"]
 codex_app_server_adapter = ["guardian.py"]
 
 [tool.uv]
-environments = ["sys_platform == 'darwin'"]
+environments = ["sys_platform == 'darwin'", "sys_platform == 'linux'", "sys_platform == 'win32'"]
 
 [tool.ruff]
 target-version = "py312"

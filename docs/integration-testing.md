@@ -6,6 +6,8 @@ There are two different conclusions: **the checkout passes its tests**, and **yo
 
 ## 1. Run the included checkout checks
 
+First run the [platform selector and test route](platforms.md). The low-level commands in this section are Unix commands. Native Windows uses `.venv\Scripts\python.exe tools/test_platform.py --platform windows`; WSL2 runs the Linux tests inside its distribution with `--platform wsl`.
+
 After completing [locked setup](../README.md#get-and-prepare-your-local-checkout), start from the bridge checkout root:
 
 ```sh
@@ -20,7 +22,7 @@ This uses the real module entry point and actual MCP messages against a determin
 (
   set -e
   umask 077
-  cd /private/tmp
+  cd "$(python3 -c 'import os; print(os.path.realpath("/tmp"))')"
   PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$BRIDGE/src" \
     "$BRIDGE/.venv/bin/python" \
     "$BRIDGE/tests/installed_wheel_smoke.py" \
@@ -58,7 +60,7 @@ Run the suite in a fresh short temporary root. Retain that root and its XML whil
   set -e
   umask 077
   cd "$BRIDGE"
-  BRIDGE_TEST_ROOT=$(mktemp -d /private/tmp/cb.XXXXXX)
+  BRIDGE_TEST_ROOT=$(mktemp -d "$(python3 -c 'import os; print(os.path.realpath("/tmp"))')/cb.XXXXXX")
   printf 'Test receipts: %s\n' "$BRIDGE_TEST_ROOT"
   CODEX_HOME="$BRIDGE_TEST_ROOT/codex-home" PYTHONDONTWRITEBYTECODE=1 \
     "$BRIDGE/.venv/bin/python" -m pytest -q -m 'not installed_runtime' \
@@ -69,7 +71,7 @@ Run the suite in a fresh short temporary root. Retain that root and its XML whil
 
 **Pass:** exit 0, zero test failures/errors, and no unexplained skips. At the reviewed extraction baseline, the exact result is **487 passed, 1 deselected**. The deselected test is the explicitly opt-in installed Codex 0.156.0 alias check; it is not a hidden failure or a live-provider pass. Counts can change with later commits: record your tested commit and actual counts. Investigate a lower count rather than accepting it solely because the exit code is zero.
 
-The suite covers validation negatives, task lifecycle, deadlines, cancellation, persistence, restart reconciliation, exclusive ownership, independent roots, losing-startup noninterference, shutdown, process death, guardian behavior, sockets and protocol compatibility. These are fixture observations, not real-provider guarantees. Unix socket/process facilities are required; this is not a Linux/Windows qualification procedure.
+The suite covers validation negatives, task lifecycle, deadlines, cancellation, persistence, restart reconciliation, exclusive ownership, independent roots, losing-startup noninterference, shutdown, process death, guardian behavior, sockets and protocol compatibility. These are fixture observations, not real-provider guarantees. Unix socket/process facilities are required for this suite. Native Windows has a separate kernel/MCP route; passing Docker does not qualify WSL2 forwarding or native Windows. See the [platform test targets](platforms.md#included-test-routes).
 
 ### Static and transfer checks
 

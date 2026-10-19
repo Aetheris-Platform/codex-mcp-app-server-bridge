@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import cast
 
 from .errors import ValidationError
+from .platform_files import is_link, require_private_windows
 from .validation import loads_object
 
 
@@ -20,7 +21,7 @@ class OperatorProfile:
     runtime_path: Path
     runtime_version: str
     runtime_sha256: str
-    socket_path: Path
+    socket_path: Path | None
     allowed_worktree_roots: tuple[Path, ...]
     allowed_models: tuple[str, ...]
     allowed_sandboxes: tuple[str, ...]
@@ -64,17 +65,25 @@ class OperatorProfile:
                 or root.is_symlink()
             ):
                 raise ValidationError("allowed worktree roots must be real directories")
-        socket_parent = self.socket_path.parent
-        if (
-            not self.socket_path.is_absolute()
-            or _has_symlink_component(socket_parent)
-            or not socket_parent.is_dir()
-            or socket_parent.is_symlink()
-        ):
-            raise ValidationError("socket parent must be an existing directory")
-        _require_private(socket_parent, "socket parent")
-        if self.socket_path.exists() and not stat.S_ISSOCK(self.socket_path.stat().st_mode):
-            raise ValidationError("socket path is not a Unix socket")
+        if os.name == "nt":
+            if self.socket_path is not None:
+                raise ValidationError("native Windows uses private stdio; socket_path must be null")
+            if runtime.suffix.lower() != ".exe":
+                raise ValidationError("native Windows runtime_path must be an executable .exe")
+        else:
+            if self.socket_path is None:
+                raise ValidationError("Unix profiles require socket_path")
+            socket_parent = self.socket_path.parent
+            if (
+                not self.socket_path.is_absolute()
+                or _has_symlink_component(socket_parent)
+                or not socket_parent.is_dir()
+                or socket_parent.is_symlink()
+            ):
+                raise ValidationError("socket parent must be an existing directory")
+            _require_private(socket_parent, "socket parent")
+            if self.socket_path.exists() and not stat.S_ISSOCK(self.socket_path.stat().st_mode):
+                raise ValidationError("socket path is not a Unix socket")
         if not self.data_root.is_absolute() or _has_symlink_component(self.data_root):
             raise ValidationError("data_root must be an absolute non-symlink path")
         if self.data_root.exists():
@@ -108,7 +117,7 @@ class OperatorProfile:
             "runtime_path": str(self.runtime_path),
             "runtime_version": self.runtime_version,
             "runtime_sha256": self.runtime_sha256.lower(),
-            "socket_path": str(self.socket_path),
+            "socket_path": str(self.socket_path) if self.socket_path is not None else None,
             "allowed_worktree_roots": [str(path) for path in self.allowed_worktree_roots],
             "allowed_models": list(self.allowed_models),
             "allowed_sandboxes": list(self.allowed_sandboxes),
@@ -145,10 +154,12 @@ class OperatorProfile:
         }
         if set(value) != expected:
             raise ValidationError("profile fields are incomplete or unexpected")
+        if value["socket_path"] is not None and not isinstance(value["socket_path"], str):
+            raise ValidationError("profile socket_path must be a string or null")
         roots = value["allowed_worktree_roots"]
         models = value["allowed_models"]
         sandboxes = value["allowed_sandboxes"]
-        if not all(isinstance(item, str) for item in (value["runtime_path"], value["runtime_version"], value["runtime_sha256"], value["socket_path"], value["data_root"])):
+        if not all(isinstance(item, str) for item in (value["runtime_path"], value["runtime_version"], value["runtime_sha256"], value["data_root"])):
             raise ValidationError("profile scalar field has the wrong type")
         if not isinstance(roots, list) or not all(isinstance(item, str) for item in roots):
             raise ValidationError("profile roots have the wrong type")
@@ -160,7 +171,7 @@ class OperatorProfile:
             runtime_path=Path(cast("str", value["runtime_path"])),
             runtime_version=cast("str", value["runtime_version"]),
             runtime_sha256=cast("str", value["runtime_sha256"]),
-            socket_path=Path(cast("str", value["socket_path"])),
+            socket_path=Path(value["socket_path"]) if isinstance(value["socket_path"], str) else None,
             allowed_worktree_roots=tuple(Path(item) for item in roots),
             allowed_models=tuple(models),
             allowed_sandboxes=tuple(sandboxes),
@@ -171,6 +182,9 @@ class OperatorProfile:
 
 
 def _require_private(path: Path, label: str) -> None:
+    if os.name == "nt":
+        require_private_windows(path, label)
+        return
     mode = path.stat().st_mode
     if path.stat().st_uid != os.getuid() or mode & 0o077:
         raise ValidationError(f"{label} must be owned by the current user with mode 0700")
@@ -182,6 +196,6 @@ def _has_symlink_component(path: Path) -> bool:
     current = Path(path.anchor)
     for component in path.parts[1:]:
         current /= component
-        if current.is_symlink():
+        if is_link(current):
             return True
     return False

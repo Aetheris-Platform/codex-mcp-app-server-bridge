@@ -15,6 +15,8 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from uuid import uuid4
 
+SHORT_TEMP_ROOT = Path("/tmp").resolve()  # noqa: S108 - private mkdtemp children
+
 
 async def _rpc(
     process: asyncio.subprocess.Process, request_id: int, method: str, params: dict
@@ -40,16 +42,24 @@ async def _tool(
 
 def _assert_source_guardian(source_root: Path, socket: Path) -> None:
     guardian = source_root / "codex_app_server_adapter" / "guardian.py"
-    commands = subprocess.check_output(  # noqa: S603 - read-only process inventory
-        ["/bin/ps", "-axww", "-o", "command="], text=True
-    ).splitlines()
+    if sys.platform == "linux":
+        commands = []
+        for path in Path("/proc").glob("[0-9]*/cmdline"):
+            try:
+                commands.append(path.read_bytes().replace(b"\0", b" ").decode("utf-8", errors="replace"))
+            except (FileNotFoundError, PermissionError, ProcessLookupError):
+                continue
+    else:
+        commands = subprocess.check_output(  # noqa: S603 - read-only process inventory
+            ["/bin/ps", "-axww", "-o", "command="], text=True
+        ).splitlines()
     assert any(str(guardian) in line and f"--socket {socket}" in line for line in commands)
 
 
 async def _case(
     launch: tuple[str, ...], fixture: Path, *, hold: bool, source_root: Path | None
 ) -> None:
-    with tempfile.TemporaryDirectory(prefix="cb-installed-", dir="/private/tmp") as temp:
+    with tempfile.TemporaryDirectory(prefix="cb-installed-", dir=SHORT_TEMP_ROOT) as temp:
         root = Path(temp)
         runtime = root / "native-fixture"
         source = fixture.read_text(encoding="utf-8")  # noqa: ASYNC240 - disposable fixture setup
@@ -246,7 +256,7 @@ def main() -> None:
         launch = ("/usr/bin/sandbox-exec", "-f", str(args.sandbox_profile.resolve(strict=True)), *launch)
 
     assert all(callable(item) for item in (ValidationError, parse_start, OperatorProfile, _validate_record))
-    assert Path.cwd().is_relative_to(Path("/private/tmp"))
+    assert Path.cwd().is_relative_to(SHORT_TEMP_ROOT)
     asyncio.run(_case(launch, args.fixture, hold=False, source_root=source_root))
     asyncio.run(_case(launch, args.fixture, hold=True, source_root=source_root))
     route_name = "source checkout" if source_root is not None else "installed wheel"

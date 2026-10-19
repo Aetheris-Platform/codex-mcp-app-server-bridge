@@ -480,9 +480,9 @@ def test_unsafe_root_or_unavailable_lock_refused(
     elif kind == "wrong-owner":
         monkeypatch.setattr(ownership.os, "getuid", lambda: root.stat().st_uid + 1)
     else:
-        def unavailable(*args: object) -> None:
+        def unavailable(*args: object, **kwargs: object) -> None:
             raise OSError("locking unavailable")
-        monkeypatch.setattr(ownership.fcntl, "flock", unavailable)
+        monkeypatch.setattr(ownership, "lock_file", unavailable)
     with pytest.raises(ValidationError):
         DataRootOwnership(root)
     assert not (root / "tasks").exists()

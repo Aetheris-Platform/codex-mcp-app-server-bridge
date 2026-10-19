@@ -72,10 +72,34 @@ heuristic, controls ownership. A successor after process death may reconcile
 nonterminal records using the existing unknown/adapter_restarted behavior; this
 does not prove provider termination and does not authorize task resubmission.
 The existing socket-custody limitations remain. This is not a new daemon,
-distributed lock, Windows claim, peer authentication, or defense against malicious
+distributed lock, native Windows qualification claim, peer authentication, or defense against malicious
 same-user pathname replacement. Noncooperating old adapters must be stopped
 before cutover. No profile/task schema, native evidence profile, runtime policy
 or dependency change is made.
+
+Platform amendment (2026-10-19): the preceding paragraph describes the extracted
+POSIX implementation. The owner subsequently requested macOS, Linux, native
+Windows 11 and WSL2 integration. [Platform setup and acceptance](platforms.md)
+defines that extension and its evidence limits. Linux admits anonymous pipe
+descriptors using the kernel procfs target, because its anonymous pipes have
+link count 1. Named FIFOs remain rejected. Existing Unix socket/alias admission,
+guardian ownership and cleanup rules below remain unchanged.
+
+Native Windows profiles use `socket_path: null`; there is no socket listener,
+alias or TCP fallback. Private DACL validation replaces Unix uid/mode checks,
+reparse points are refused, and a persistent file with an exclusive nonblocking
+Windows kernel byte-range lock enforces the same data-root ownership order.
+Each native stdio connection has a child assigned atomically to its own private
+kill-on-close Job Object before execution. Child descendants inherit that job;
+the adapter's job handle is not inherited. Logical connection closure drains
+output and leaves the child owned until session shutdown, preserving the fact
+that disconnect does not confirm cancellation. Kernel handle closure on adapter
+death terminates jobs. Normal shutdown requests job termination and checks that
+all members exited. This uses more processes than Unix's shared socket backend;
+it does not add task continuation, routing fallback or an unattended service.
+Native Windows kernel behavior and Windows-to-WSL forwarding require separate
+Windows 11 receipts before qualification. The macOS live receipt is not evidence
+for these new routes or this changed candidate.
 
 The operator profile pins an executable by absolute path, SHA-256 and exact
 `--version` output. Runtime drift blocks dispatch. The adapter owns one

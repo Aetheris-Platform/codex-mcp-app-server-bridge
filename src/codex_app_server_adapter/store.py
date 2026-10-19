@@ -15,6 +15,13 @@ from typing import cast
 
 from .errors import NotFoundError, ValidationError
 from .models import AdapterTaskState, parse_start
+from .platform_files import (
+    is_link,
+    lock_file,
+    make_private_directory,
+    require_private_windows,
+    unlock_file,
+)
 from .validation import canonical_json, loads_object
 
 Record = dict[str, object]
@@ -29,11 +36,11 @@ class TaskStore:
         self.tasks = data_root / "tasks"
         self.artifacts = data_root / "artifacts"
         for path in (self.root, self.tasks, self.artifacts):
-            if path.is_symlink():
+            if is_link(path):
                 raise ValidationError("store directories may not be symlinks")
-        self.root.mkdir(parents=True, exist_ok=True, mode=0o700)
-        self.tasks.mkdir(mode=0o700, exist_ok=True)
-        self.artifacts.mkdir(mode=0o700, exist_ok=True)
+        make_private_directory(self.root, parents=True)
+        make_private_directory(self.tasks)
+        make_private_directory(self.artifacts)
         for path in (self.root, self.tasks, self.artifacts):
             _require_private_directory(path)
 
@@ -52,24 +59,22 @@ class TaskStore:
         task_id = _string(record.get("task_id"))
         request_lock = self.tasks / ".request-reservation.lock"
         with request_lock.open("a+") as handle:
-            import fcntl
-
-            fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+            lock_file(handle.fileno())
             try:
                 existing = self.find_request(request_id)
                 if existing is not None:
                     return existing
                 path = self._record_path(task_id)
-                if path.exists() or path.is_symlink():
+                if path.exists() or is_link(path):
                     raise ValidationError("task record already exists")
                 self._write(path, record)
                 return record
             finally:
-                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+                unlock_file(handle.fileno())
 
     def find_request(self, request_id: str) -> Record | None:
         for path in sorted(self.tasks.glob("*.json")):
-            if path.is_symlink():
+            if is_link(path):
                 raise ValidationError("task record may not be a symlink")
             repair = self._pending_event_commit(path)
             record = self._read(
@@ -83,7 +88,7 @@ class TaskStore:
 
     def load(self, task_id: str) -> Record:
         path = self._record_path(task_id)
-        if path.is_symlink():
+        if is_link(path):
             raise ValidationError("task record may not be a symlink")
         if not path.exists():
             raise NotFoundError("task not found")
@@ -99,7 +104,7 @@ class TaskStore:
     def mutate(self, task_id: str, mutator: RecordMutator) -> Record:
         path = self._record_path(task_id)
         with self._lock(task_id):
-            if path.is_symlink() or not path.exists():
+            if is_link(path) or not path.exists():
                 raise NotFoundError("task not found")
             record = self._read(path, expected_task_id=task_id)
             mutator(record)
@@ -128,17 +133,17 @@ class TaskStore:
 
         self.mutate(task_id, mark_pending)
         task_artifacts = self.artifacts / task_id
-        if task_artifacts.is_symlink():
+        if is_link(task_artifacts):
             raise ValidationError("task artifact directory may not be a symlink")
         task_artifacts.mkdir(mode=0o700, exist_ok=True)
         _require_private_directory(task_artifacts)
         event_dir = task_artifacts / "events"
-        if event_dir.is_symlink():
+        if is_link(event_dir):
             raise ValidationError("event directory may not be a symlink")
         event_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
         _require_private_directory(event_dir)
         event_path = event_dir / event_name
-        if event_path.exists() or event_path.is_symlink():
+        if event_path.exists() or is_link(event_path):
             raise ValidationError("event sequence already exists")
         event_path.write_bytes(raw)
 
@@ -165,7 +170,7 @@ class TaskStore:
             if result.get("sha256") == digest and result.get("size_bytes") == len(content):
                 return self.load(task_id)
             raise ValidationError("terminal result artifact is immutable")
-        if result_path.parent.is_symlink() or result_path.is_symlink():
+        if is_link(result_path.parent) or is_link(result_path):
             raise ValidationError("result artifact path may not be a symlink")
         result_path.parent.mkdir(mode=0o700, exist_ok=True)
         _require_private_directory(result_path.parent)
@@ -202,8 +207,8 @@ class TaskStore:
         ):
             raise ValidationError("result artifact reference is unsafe")
         path = self.root / relative_path
-        if path.is_symlink() or any(
-            (self.root / parent).is_symlink() for parent in relative_path.parents
+        if is_link(path) or any(
+            is_link(self.root / parent) for parent in relative_path.parents
         ):
             raise ValidationError("result artifact may not traverse symlinks")
         path = path.resolve()
@@ -233,7 +238,7 @@ class TaskStore:
             or not source.is_absolute()
             or _has_symlink_component(source)
             or not source.is_file()
-            or source.is_symlink()
+            or is_link(source)
         ):
             raise ValidationError("native journal source is outside the trusted session root")
         try:
@@ -243,12 +248,12 @@ class TaskStore:
         content = source.read_bytes()
         evidence_status = _native_journal_status(content, session_id, turn_id)
         task_dir = self.artifacts / task_id
-        if task_dir.is_symlink():
+        if is_link(task_dir):
             raise ValidationError("task artifact directory may not be a symlink")
         task_dir.mkdir(mode=0o700, exist_ok=True)
         _require_private_directory(task_dir)
         destination = task_dir / "native-session.jsonl"
-        if destination.exists() or destination.is_symlink():
+        if destination.exists() or is_link(destination):
             raise ValidationError("native journal artifact is immutable")
         fd, temporary = tempfile.mkstemp(prefix=".journal-", dir=task_dir)
         try:
@@ -287,15 +292,13 @@ class TaskStore:
 
     @contextmanager
     def _lock(self, task_id: str) -> Iterator[None]:
-        import fcntl
-
         lock_path = self.tasks / f".{task_id}.lock"
         handle = lock_path.open("a+")
         try:
-            fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+            lock_file(handle.fileno())
             yield
         finally:
-            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+            unlock_file(handle.fileno())
             handle.close()
 
     @staticmethod
@@ -355,19 +358,19 @@ class TaskStore:
         )
         if sequence == 0:
             if event_dir.exists():
-                if event_dir.is_symlink() or not event_dir.is_dir():
+                if is_link(event_dir) or not event_dir.is_dir():
                     raise ValidationError("event journal directory is missing or unsafe")
                 actual = {path.name for path in event_dir.iterdir()}
                 if actual and actual != {pending_name}:
                     raise ValidationError("event journal exists for an empty sequence")
             return
-        if event_dir.is_symlink() or not event_dir.is_dir():
+        if is_link(event_dir) or not event_dir.is_dir():
             raise ValidationError("event journal directory is missing or unsafe")
         expected = {f"{index:08d}.json" for index in range(1, sequence + 1)}
         paths = tuple(event_dir.iterdir())
         actual = {path.name for path in paths}
         allowed = expected | ({pending_name} if pending_name is not None else set())
-        if actual != allowed or any(path.is_symlink() for path in paths):
+        if actual != allowed or any(is_link(path) for path in paths):
             raise ValidationError("event journal sequence is incomplete or reordered")
         artifacts = _mapping(record.get("artifacts"))
         events = _mapping(artifacts.get("events"))
@@ -399,8 +402,8 @@ class TaskStore:
         ):
             raise ValidationError("native journal artifact reference is unsafe")
         path = self.root / relative_path
-        if path.is_symlink() or any(
-            (self.root / parent).is_symlink() for parent in relative_path.parents
+        if is_link(path) or any(
+            is_link(self.root / parent) for parent in relative_path.parents
         ):
             raise ValidationError("native journal artifact may not traverse symlinks")
         try:
@@ -538,7 +541,7 @@ def _repair_pending_event(record: Record, artifacts_root: Path) -> None:
     if not event_path.exists():
         record["pending_event"] = None
         return
-    if event_path.is_symlink() or not event_path.is_file():
+    if is_link(event_path) or not event_path.is_file():
         raise ValidationError("pending event artifact is unsafe")
     content = event_path.read_bytes()
     if sha256(content).hexdigest() != pending.get("sha256"):
@@ -561,8 +564,11 @@ def _repair_pending_event(record: Record, artifacts_root: Path) -> None:
 
 
 def _require_private_directory(path: Path) -> None:
-    if not path.is_dir() or path.is_symlink():
+    if not path.is_dir() or is_link(path):
         raise ValidationError("store path must be a real directory")
+    if os.name == "nt":
+        require_private_windows(path, "store directory")
+        return
     info = path.stat()
     if info.st_uid != os.getuid() or info.st_mode & 0o077:
         raise ValidationError("store directory must be owned by the current user with mode 0700")
@@ -572,7 +578,7 @@ def _has_symlink_component(path: Path) -> bool:
     current = Path(path.anchor)
     for component in path.parts[1:]:
         current /= component
-        if current.is_symlink():
+        if is_link(current):
             return True
     return False
 

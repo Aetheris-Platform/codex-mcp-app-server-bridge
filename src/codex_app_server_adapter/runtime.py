@@ -12,14 +12,17 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 from .errors import ProtocolError, ValidationError
-from .guardian import (
-    SOCKET_PRIVACY_FAILURE,
-    SOCKET_TYPE_FAILURE,
-    SocketIdentity,
-    _path_is_present,
-    _remove_owned_socket,
-    inspect_socket_path,
-)
+
+if os.name != "nt":
+    from .guardian import (
+        SOCKET_PRIVACY_FAILURE,
+        SOCKET_TYPE_FAILURE,
+        SocketIdentity,
+        _path_is_present,
+        _remove_owned_socket,
+        inspect_socket_path,
+    )
+
 from .ownership import DataRootOwnership
 from .protocol import JsonRpcClient, UnixWebSocketTransport
 from .service import AdapterService
@@ -292,3 +295,9 @@ def _remove_owned_endpoint(path: Path, identity: SocketIdentity) -> None:
                 path.unlink()
         return
     _remove_owned_socket(path, identity)
+
+
+# Keep the established Unix implementation and API intact. Windows cannot use
+# fcntl, Unix sockets or POSIX process groups; its explicit backend owns pipes/jobs.
+if os.name == "nt":
+    from .windows_runtime import OwnedAppServerClient, OwnedRuntime  # noqa: F811

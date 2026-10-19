@@ -79,7 +79,9 @@ def test_package_is_self_contained_and_has_neutral_entrypoint() -> None:
     assert project["scripts"] == {
         "codex-mcp-app-server-bridge": "codex_app_server_adapter.__main__:main",
     }
-    assert project["dependencies"] == ["mcp==2.2.0", "websockets==17.1"]
+    assert project["dependencies"] == [
+        "mcp==2.2.0", "websockets==17.1", "pywin32==312; sys_platform == 'win32'",
+    ]
     forbidden = {"workflow_core", "devtools", "aetheris", "aetherion"}
     for path in (root / "src").rglob("*.py"):
         source = path.read_text()
