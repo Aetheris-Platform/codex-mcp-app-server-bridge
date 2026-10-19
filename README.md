@@ -1,6 +1,17 @@
 # Codex MCP app-server bridge
 
-Connect an MCP-compatible developer tool to Codex without holding one tool call open for an entire coding task. Start work asynchronously, inspect progress, retrieve the complete result in pages, and request cancellation. Task identity and history persist in a private local store.
+Clone the bridge, run it locally, and integrate it into your own development workflow. It connects an MCP-compatible client to your local Codex app-server so your tools can start coding tasks asynchronously, inspect progress, retrieve complete results in pages, and request cancellation. Task identity and history persist in a private local store.
+
+**GitHub hosts the source code, not a running bridge service.** Developers pull the code onto their own machines, install its locked dependencies, create their own private configuration, and register the local executable with their MCP client. There is no GitHub-hosted endpoint to connect to and no GitHub Actions requirement for using the bridge. Codex model execution still requires the developer's configured provider access.
+
+## Integrate into your workflow
+
+1. **Get a local copy:** clone this repository and select a reviewed commit.
+2. **Prepare it locally:** install the locked dependencies in the checkout's environment and create a private profile for your Codex executable, model, workspaces and task store.
+3. **Connect your client:** configure your MCP-compatible developer tool to launch that checkout's Python module over stdio. The client starts the bridge, which owns its local Codex app-server child.
+4. **Use it in your workflow:** call `codex_start`, retain the task ID, then use `codex_status`, `codex_result` and `codex_cancel` as needed.
+
+The bridge checkout can live separately from the repositories you work on. Your client registration points to the bridge's absolute local path; each task's `cwd` selects a workspace allowed by your profile. Your workflow controls when tasks are submitted and what happens to their results.
 
 This is an independent project, not an official OpenAI product. Compatibility depends on the client's stdio MCP implementation and the pinned Codex runtime; universal client support is not claimed. This repository remains private pending an owner release decision.
 
@@ -13,7 +24,7 @@ This is an independent project, not an official OpenAI product. Compatibility de
 
 Historical source records cover direct sockets in CLI 0.154.0, deterministic aliases in 0.156.0, and one macOS arm64 0.159.2 / `gpt-6.1-sol` completed turn. They use the former client identity and do **not** qualify this standalone identity, every model, or live cancellation/deadlines. This extraction ran offline fixtures only. See [provenance and qualification](docs/extraction.md).
 
-## Install from a checkout
+## Get and prepare your local checkout
 
 Clone this repository with access to its private remote, choose a reviewed commit, and create a separate environment. No wheel release is needed.
 
@@ -84,7 +95,7 @@ PYTHONPATH="$BRIDGE/src" "$BRIDGE/.venv/bin/python" \
   -m codex_app_server_adapter --profile /absolute/private/profile.json
 ```
 
-The process speaks MCP JSON-RPC on stdin/stdout; normally an MCP client launches it. A generic registration shape is:
+For normal workflow integration, your MCP client launches this local process and speaks MCP JSON-RPC on stdin/stdout. Running it directly in a terminal starts the transport; it does not open an interactive coding prompt. Put the following registration in your client's local configuration, replacing the paths with your own:
 
 ```json
 {

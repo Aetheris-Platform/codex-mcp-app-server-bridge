@@ -37,3 +37,5 @@ Repository secret values, credentials, deploy keys, tokens and secret-bearing we
 Sanitized machine receipts: [settings evidence](provenance/github-settings.json). They intentionally exclude keys, hooks, secrets and credentials.
 
 Endpoint scope checked against [GitHub Actions permissions documentation](https://docs.github.com/en/rest/actions/permissions).
+
+Description follow-up: updated the destination About text to say developers clone and run the bridge locally, then integrate it into their own workflows. Read-back confirmed private visibility. GitHub is the source distribution location; it is not a hosted bridge endpoint. No code was pushed.

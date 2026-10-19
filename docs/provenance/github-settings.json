@@ -676,5 +676,10 @@
         "error": ""
       }
     }
+  },
+  "local_integration_description_followup": {
+    "description": "Clone and run locally to connect MCP-compatible developer tools to Codex. Integrate asynchronous coding tasks, progress, results and cancellation into your own workflows.",
+    "private": true,
+    "visibility": "private"
   }
 }
