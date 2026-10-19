@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "candidate": "bd68b8e2fb11f050733f9682feb5db3972ea7aa8",
+  "candidate_tree": "8378a51e313b46b925b13ca8e71b20b1d201e9c6",
+  "assessment": "PASS within stated scope",
+  "runtime_version": "codex-cli 0.159.2",
+  "runtime_sha256": "16593cc2f422d5f398a8e40f550ebbaf1245392528957be342c295920a300704",
+  "model": "gpt-6.1-sol",
+  "reasoning": "low",
+  "platform": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "macos": "27.0.1",
+    "python": "3.14.6"
+  },
+  "authentication": "fresh isolated ChatGPT login; file credential store; no credential copy",
+  "model_turns": 2,
+  "harness_retries": 0,
+  "task_deadline_seconds": 120,
+  "coding": {
+    "state": "completed",
+    "elapsed_seconds": 12.768606457975693,
+    "unit_tests_passed_by_provider": 3,
+    "unit_tests_passed_independently": 3,
+    "result": {
+      "pages": 11,
+      "bytes": 338,
+      "sha256": "f25629092e8e86faeb840eafe3d5429ab97d895e6cf7943287cea139bbf29297"
+    },
+    "duplicate_submission_same_task": true,
+    "native_journal_capture": "complete"
+  },
+  "cancellation": {
+    "acknowledgement": "cancel-requested",
+    "final_state": "cancelled",
+    "reason": "provider_interrupted",
+    "elapsed_seconds": 3.8939285420347005,
+    "command_execution_started": false,
+    "bridge_native_journal_capture": "unavailable",
+    "separate_isolated_journal_confirms": "turn_aborted"
+  },
+  "bounded_status": {
+    "requested_wait_seconds": 1,
+    "maximum_observed_call_seconds": 1.0089412920060568
+  },
+  "persistence": "terminal status, request replay, result bytes and digest survive restart without native runtime startup",
+  "cleanup": "normal EOF exit 0; owned guardian/app-server and socket absent after live session and read-only restart",
+  "native_audit": {
+    "task_events": [
+      {
+        "task_index": 1,
+        "thread_started_notifications": 1,
+        "turn_started_notifications": 1,
+        "turn_completed_notifications": 1
+      },
+      {
+        "task_index": 2,
+        "thread_started_notifications": 1,
+        "turn_started_notifications": 1,
+        "turn_completed_notifications": 1
+      }
+    ],
+    "journals": [
+      {
+        "sha256": "6da01e9d236fc11673ebf73e261e01bee132cf6af66a93caf9e02105b3b2db37",
+        "model": "gpt-6.1-sol",
+        "effort": "low",
+        "task_started": 1,
+        "task_complete": 1,
+        "turn_aborted": 0
+      },
+      {
+        "sha256": "89ab0850f1ac703be8ee2d082b785fe75fec9ab584cdb3932b412ac2187ff0e4",
+        "model": "gpt-6.1-sol",
+        "effort": "low",
+        "task_started": 1,
+        "task_complete": 0,
+        "turn_aborted": 1
+      }
+    ],
+    "total_native_turns": 2,
+    "no_additional_turn_after_replay_or_restart": true
+  },
+  "private_receipt_hashes": [
+    {
+      "file": "coding-result.json",
+      "sha256": "f25629092e8e86faeb840eafe3d5429ab97d895e6cf7943287cea139bbf29297"
+    },
+    {
+      "file": "imports.json",
+      "sha256": "ae0c8bacccd12c3342cfb0229fa6ded4e7ac4636914ab257a73299cab51e2626"
+    },
+    {
+      "file": "live-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "live-summary.json",
+      "sha256": "f5425a2637b3fe52308c4eb163c0de367109253b0aa1d251ff698564861e2f33"
+    },
+    {
+      "file": "mcp-transcript.jsonl",
+      "sha256": "aa1dfee14a22ec21b6118b97572e4966b10fcab9ddf0c3b65995e85f3be6d3bd"
+    },
+    {
+      "file": "preflight.json",
+      "sha256": "ff4998ce45a50c2260272ba8858057aa946fe34f0a983d379852fac596de77ef"
+    },
+    {
+      "file": "progress.jsonl",
+      "sha256": "b9dddd5cea61a1d039ad4cea03eb5c41b31ad3c523e1f025714a9d88c7fa117a"
+    },
+    {
+      "file": "restart-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "live_test.py",
+      "sha256": "237f1c0b5b0ef41da59ec735b5d7deb3c8d5b229245d272009f3783640c7b525"
+    }
+  ],
+  "limitations": [
+    "One macOS arm64 runtime/model/effort combination and one programmatic stdio MCP client only",
+    "Live deadline expiry was not exercised",
+    "Cancellation occurred before a shell command began; termination of an already-running tool command was not proven",
+    "No live process-death or crash-recovery test; those remain offline fixture evidence",
+    "No renewed wheel validation, other OS/runtime/model qualification, public redistribution clearance or consumer adoption"
+  ],
+  "independent_offline_reviews": [
+    {
+      "reviewer": "Claude Code",
+      "candidate": "bd68b8e2fb11f050733f9682feb5db3972ea7aa8",
+      "selected_passed": 487,
+      "selected_failed": 0,
+      "installed_runtime_deselected": 1,
+      "report_sha256": "af15cece83f39000fd7b9c60d1d2dff93731a1975dd38d9ab99c9f67e22e9c9c",
+      "junit_sha256": "d10f07d166a5eb785cf79e7dcae4b5c640b41d6abde9a3beb4d09d5eebfa1203"
+    },
+    {
+      "reviewer": "Grok",
+      "candidate": "bd68b8e2fb11f050733f9682feb5db3972ea7aa8",
+      "selected_passed": 487,
+      "selected_failed": 0,
+      "installed_runtime_deselected": 1,
+      "report_sha256": "09822583c102119b885c6359e4482135545aea05007bb2bb16919769d02f12b4",
+      "junit_sha256": "3fc7d80a0e7a82592b7617d0e8296e8232637db4bc6caa56a9e1682f192488e5"
+    }
+  ]
+}
