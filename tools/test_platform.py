@@ -48,7 +48,7 @@ def main() -> None:
     files = [str(root / "tests")]
     if selected == "windows":
         files = [str(root / "tests" / name) for name in (
-            "test_windows_platform.py", "test_platform_transport.py", "test_platform_setup.py")]
+            "test_windows_platform.py", "test_platform_transport.py", "test_platform_setup.py", "test_platform_store.py")]
     commands = {
         "pytest": [sys.executable, "-m", "pytest", *files, "-q", "-m", "not installed_runtime",
                    "--basetemp", str(receipts / "tests"), "-p", "no:cacheprovider",
@@ -56,7 +56,7 @@ def main() -> None:
         "lint": [sys.executable, "-m", "ruff", "check", "--no-cache", str(root / "src"), str(root / "tools"),
                  *[str(root / "tests" / name) for name in (
                      "test_standalone_extraction.py", "installed_wheel_smoke.py", "test_windows_platform.py",
-                     "windows_fixture.py", "test_platform_transport.py", "test_platform_setup.py")]],
+                     "windows_fixture.py", "test_platform_transport.py", "test_platform_setup.py", "test_platform_store.py")]],
         "transfer": [sys.executable, str(root / "tools/verify_transfer.py")],
     }
     if selected != "windows":
@@ -82,7 +82,7 @@ def main() -> None:
         suites = ET.parse(receipts / "tests.xml").getroot().findall(".//testsuite")  # noqa: S314 - owned pytest receipt
         counts = {key: sum(int(s.get(key, 0)) for s in suites) for key in ("tests", "failures", "errors", "skipped")}
         passed = counts["tests"] - counts["failures"] - counts["errors"] - counts["skipped"]
-        minimum, expected_skips = (11, 1) if selected == "windows" else (495, 4)
+        minimum, expected_skips = (14, 1) if selected == "windows" else (498, 4)
         counts_ok = passed >= minimum and counts["skipped"] == expected_skips
         report["counts"] = {**counts, "passed": passed}
         report["checks"]["test-counts"] = {"exit_code": 0 if counts_ok else 1}

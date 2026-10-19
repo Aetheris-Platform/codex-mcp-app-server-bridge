@@ -135,12 +135,12 @@ class TaskStore:
         task_artifacts = self.artifacts / task_id
         if is_link(task_artifacts):
             raise ValidationError("task artifact directory may not be a symlink")
-        task_artifacts.mkdir(mode=0o700, exist_ok=True)
+        make_private_directory(task_artifacts)
         _require_private_directory(task_artifacts)
         event_dir = task_artifacts / "events"
         if is_link(event_dir):
             raise ValidationError("event directory may not be a symlink")
-        event_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
+        make_private_directory(event_dir, parents=True)
         _require_private_directory(event_dir)
         event_path = event_dir / event_name
         if event_path.exists() or is_link(event_path):
@@ -172,7 +172,7 @@ class TaskStore:
             raise ValidationError("terminal result artifact is immutable")
         if is_link(result_path.parent) or is_link(result_path):
             raise ValidationError("result artifact path may not be a symlink")
-        result_path.parent.mkdir(mode=0o700, exist_ok=True)
+        make_private_directory(result_path.parent)
         _require_private_directory(result_path.parent)
         fd, temporary = tempfile.mkstemp(prefix=".result-", dir=result_path.parent)
         try:
@@ -188,7 +188,7 @@ class TaskStore:
 
         def update(record: Record) -> None:
             metadata = {
-                "path": str(result_path.relative_to(self.root)),
+                "path": result_path.relative_to(self.root).as_posix(),
                 "sha256": digest,
                 "size_bytes": len(content),
             }
@@ -250,7 +250,7 @@ class TaskStore:
         task_dir = self.artifacts / task_id
         if is_link(task_dir):
             raise ValidationError("task artifact directory may not be a symlink")
-        task_dir.mkdir(mode=0o700, exist_ok=True)
+        make_private_directory(task_dir)
         _require_private_directory(task_dir)
         destination = task_dir / "native-session.jsonl"
         if destination.exists() or is_link(destination):
@@ -267,7 +267,7 @@ class TaskStore:
             if os.path.exists(temporary):
                 os.unlink(temporary)
         metadata = {
-            "path": str(destination.relative_to(self.root)),
+            "path": destination.relative_to(self.root).as_posix(),
             "sha256": sha256(content).hexdigest(),
             "size_bytes": len(content),
             "session_id": session_id,
@@ -433,7 +433,7 @@ def _string(value: object) -> str:
 def _artifact_metadata(path: Path, root: Path) -> dict[str, object]:
     content = path.read_bytes()
     return {
-        "path": str(path.relative_to(root)),
+        "path": path.relative_to(root).as_posix(),
         "sha256": sha256(content).hexdigest(),
         "size_bytes": len(content),
     }

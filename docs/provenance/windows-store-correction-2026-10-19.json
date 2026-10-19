@@ -1,0 +1,145 @@
+{
+  "previous_windows_candidate": "950e79e5c604eadbb7b1856d587cba7d96f72f0b",
+  "supplied_receipts_verified": 180,
+  "supplied_receipt_manifest_sha256": "df88ba9fe68a6f8871490bda28f5d52063395c9993aaba182cf5cfadefbc7ecd",
+  "windows_counts": {
+    "passed": 10,
+    "failed": 1,
+    "skipped": 1
+  },
+  "windows_native_turns": 0,
+  "corrected_windows_qualification": "pending",
+  "wsl": "blocked: missing setup prerequisite",
+  "checks": {
+    "macos": {
+      "runner_exit": 0,
+      "platform": "macos",
+      "os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+      "scope": "offline fixtures only; no installed runtime or provider",
+      "checks": {
+        "pytest": {
+          "exit_code": 0,
+          "log": "pytest.log"
+        },
+        "lint": {
+          "exit_code": 0,
+          "log": "lint.log"
+        },
+        "transfer": {
+          "exit_code": 0,
+          "log": "transfer.log"
+        },
+        "mcp-smoke": {
+          "exit_code": 0,
+          "log": "mcp-smoke.log"
+        },
+        "test-counts": {
+          "exit_code": 0
+        }
+      },
+      "counts": {
+        "tests": 502,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 4,
+        "passed": 498
+      },
+      "receipt_sha256": {
+        "pytest.log": "ac4ceac7c4b5807b1db941b99da5e8f62fb252b2f798c7c3f6c48e5063c5c23e",
+        "summary.json": "c872d4b6f050979651ec5c6ce45b721b008aa76b5094e151dfb03e600235419f",
+        "lint.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+        "tests.xml": "a52a7d95c2665e255ba6f711c1833897423ee6d22da8e07c9e55094180aee349",
+        "mcp-smoke.log": "48f1859ca8d314fcd129dcd4e7241197c12a58ccae7b150952f8c4def76f8cf0",
+        "transfer.log": "b6cd39ebb4f17e1f3cf3794c743ef44b2ef78ee74c6b079e843410eb25fde6f1"
+      }
+    },
+    "linux-user-501": {
+      "runner_exit": 0,
+      "platform": "linux",
+      "os": "Linux-7.0.14-linuxkit-aarch64-with-glibc2.41",
+      "python": "3.14.6 (main, Jun 24 2026, 02:08:34) [GCC 14.2.0]",
+      "scope": "offline fixtures only; no installed runtime or provider",
+      "checks": {
+        "pytest": {
+          "exit_code": 0,
+          "log": "pytest.log"
+        },
+        "lint": {
+          "exit_code": 0,
+          "log": "lint.log"
+        },
+        "transfer": {
+          "exit_code": 0,
+          "log": "transfer.log"
+        },
+        "mcp-smoke": {
+          "exit_code": 0,
+          "log": "mcp-smoke.log"
+        },
+        "test-counts": {
+          "exit_code": 0
+        }
+      },
+      "counts": {
+        "tests": 502,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 4,
+        "passed": 498
+      },
+      "receipt_sha256": {
+        "pytest.log": "cfb1448a3c33226172d76e56670e3edf7939a8d176cc0c482c48d0f868cde30a",
+        "summary.json": "644530be5f20b6421ac47ad4825d0fb70b3354f761ebc9d02fb4eb79fb800872",
+        "lint.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+        "tests.xml": "b9f5ab2bb47f609b4229038de0002d8ada3b86e8cb7c837694ab2cdb135048d7",
+        "mcp-smoke.log": "48f1859ca8d314fcd129dcd4e7241197c12a58ccae7b150952f8c4def76f8cf0",
+        "transfer.log": "b6cd39ebb4f17e1f3cf3794c743ef44b2ef78ee74c6b079e843410eb25fde6f1"
+      }
+    }
+  },
+  "tested_files": {
+    "src/codex_app_server_adapter/ownership.py": "df182515eef5de10800a79cb99f10a4fcec2de6285e137b9ebafb10a056f84f6",
+    "src/codex_app_server_adapter/store.py": "94b5151f8e24049140a389f8c50c5793d7a7690f7e8a41e05cb7ee84158e1ae8",
+    "src/codex_app_server_adapter/service.py": "9a050ed62babe1f09f89569e2b720d005944c35bfe08c7d44076e2141848cc5b",
+    "src/codex_app_server_adapter/platform_files.py": "14dbdca1d5d29f461e373c83f42c35781ba9bd5e38a0c97e88763ad020c7ea8a",
+    "src/codex_app_server_adapter/models.py": "57244488e92e1c7c704e788496f4c042690e9820da50799eb3c3ffabc61a3ae9",
+    "src/codex_app_server_adapter/windows_runtime.py": "026d848381e2531eb82025cf9e9d0dda6b943828e91c4a0cb6132f2f0d2e5cd8",
+    "src/codex_app_server_adapter/protocol.py": "fabcc7e226c1c8869167928d5401066846acb937d951c9922349d959591e57fb",
+    "src/codex_app_server_adapter/profile.py": "89d04e4fbe85f33e9985aead543957703f6c1a4e18140e867905da5dde8cb915",
+    "src/codex_app_server_adapter/__init__.py": "d041f213dd31eff848be7cbfb269a042dcb33ae30b7344c3b6eb04a03da0a233",
+    "src/codex_app_server_adapter/runtime.py": "c03f8318497311757784f3e858c84748088db04f1c8a2b03e3625ab0a52db46b",
+    "src/codex_app_server_adapter/windows_process.py": "c074af9275da9dae2d8bca306e7c97210b1f5cd5df813924f710d6cca342086d",
+    "src/codex_app_server_adapter/guardian.py": "e419bbc534db11bfea3db53c64df1dfdb00ea1c063e1038be1b0a36e934c6c5f",
+    "src/codex_app_server_adapter/errors.py": "cc67df337d932a936f63e1c57c620d3d5ef18a880a61ad5495bf49330dd32260",
+    "src/codex_app_server_adapter/__main__.py": "8fab0e455d684669d74fde1fd9fdfd59b68b4fa1b214f92191ec8fe04e0d7429",
+    "src/codex_app_server_adapter/mcp_server.py": "9ce425d1021826e8350ebc1588f449f7a46fd12d953f8fad052bee8d26a6d540",
+    "src/codex_app_server_adapter/validation.py": "b8ec0286df26d02adcfd84776566af667740a6fcbb444c8ec4290262d0a30bc0",
+    "tests/test_codex_app_server_adapter_matrix.py": "178d7d8bd4de2f8e3a37165582e41c335185bf9c0313cf7e54a6f84259bbaca0",
+    "tests/test_codex_app_server_adapter_provider.py": "4dc923a7c8e02e70a575f2df4b391f295d7a8ee3139a36bcf9b195d63b794263",
+    "tests/windows_fixture.py": "63b5d428008eaf419e950d57fd0fcb60bf4677b7517e1323d4aea97b85dddd4c",
+    "tests/test_platform_setup.py": "3d8d89f0b378a2d7b0dc3b65f075c2915769369d7a7a7b915e130787a8d0568a",
+    "tests/test_codex_app_server_adapter.py": "7af3b13e31169262fcdfadb6146c36050094c702370bc96ad18cd829ed18c541",
+    "tests/test_platform_transport.py": "c8695807158ea409faeb003712d5c7d2c685e037d74274ddfbcf9583a58c65d2",
+    "tests/test_codex_app_server_adapter_native.py": "4ce2ba56b5d423167f7960eff9ffe394063bac8e847e8fd6eb550da951eb724b",
+    "tests/test_codex_app_server_adapter_ownership.py": "c66ff752f90441fb688d1bb95af14974ddbc6108465a169d8cc96e770148b449",
+    "tests/test_codex_app_server_adapter_guardian.py": "ec52186480f9596f3a00212c7e502690b7493294d2fec07b98f5c44bd974f050",
+    "tests/test_standalone_extraction.py": "b6b0a25eb5fa9b9422136d0d9dd8a1d07579062beaef02fce9ef8087d06da1f1",
+    "tests/test_windows_platform.py": "012e2862496c93064394bdd4f4b84a4c21292c41c8a0ee476f360a00bdfb2b27",
+    "tests/installed_wheel_smoke.py": "68da655b35173d2307686db0f7072199751ce54a068edbfc6db528c509b1a097",
+    "tests/test_platform_store.py": "b23c83fdca8efec2abd3771f6128ab8949c8542560018862bd9f8347e60a0c22",
+    "tests/fixtures/codex_app_server_adapter/stdio_server.py": "7e4c348ebb11f9b702dc90872591eb61ac4c5aacb9775ffac29bee1345917b06",
+    "tests/fixtures/codex_app_server_adapter/native_server.py": "430bd3a8d769d046ec055a9c7a698fb1af096768b17dd443488f765e4efd9a16",
+    "tools/platform_support.py": "11191af90f14fc80f14ef080de31955209533fb9ce5cfc956c3afa69b481389c",
+    "tools/verify_transfer.py": "e7c2df72d8539f627f77ba7711f52519400450d92c258d21478afd59cbb93b1e",
+    "tools/integrate.py": "6d3ba704be579b7e84496d467af15ae26147a9c6e6972099241c2cb80bb1ea37",
+    "tools/test_platform.py": "6da0a7bf40f1e46d4fb8bd7ab4b1d63d7f1e30ade495520dd16836c3f9dc2ddd"
+  },
+  "old_store_regression": {
+    "source_commit": "950e79e5c604eadbb7b1856d587cba7d96f72f0b",
+    "failed": 3,
+    "passed": 0,
+    "receipt_sha256": "a908c490f5dc3d5a0f204031b9472e5e33ce0811231138cb17cbf9d46f692212",
+    "scope": "New store tests with prior store.py; Windows relative-path string semantics on Unix, not Windows kernel qualification."
+  }
+}
