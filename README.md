@@ -4,6 +4,26 @@ Clone the bridge, run it locally, and integrate it into your own development wor
 
 **GitHub hosts the source code, not a running bridge service.** Developers pull the code onto their own machines, install its locked dependencies, create their own private configuration, and register the local executable with their MCP client. There is no GitHub-hosted endpoint to connect to and no GitHub Actions requirement for using the bridge. Codex model execution still requires the developer's configured provider access.
 
+## Why use this bridge instead of the native app-server directly?
+
+Use the bridge when your host already supports local stdio MCP tools and you want to delegate bounded coding tasks to Codex without implementing a native app-server client. For example, if your Grok integration accepts MCP servers but has no native Codex app-server adapter, this bridge supplies that interface. Check the capabilities of your particular Grok client; this is not a claim about every Grok product or a certification of that client.
+
+The native app-server has its own JSON-RPC protocol, thread/turn lifecycle, event notifications, history and interruption methods. Sharing JSON-RPC does not make it an MCP tool server. See the [native app-server documentation](https://learn.chatgpt.com/docs/app-server).
+
+| Integration need | What this bridge supplies |
+| --- | --- |
+| Call Codex from an MCP host | Four stdio MCP tools, translated into native app-server requests |
+| Submit work without holding one long tool call open | A durable task ID, bounded status calls and explicit task states |
+| Handle a lost start reply safely | Persisted request-ID replay/conflict checks, with uncertainty instead of automatic resubmission |
+| Retrieve output within tool-response limits | Canonical final-message bytes, base64 pages and a whole-result SHA-256 |
+| Apply a local operating policy | Pinned executable/version/digest, explicit workspace/model/sandbox allowlists, admitted deadlines and checked provider permissions |
+| Manage local runtime lifetime | Exclusive task-store ownership, an owned app-server child, guardian cleanup and restart reconciliation of retained records |
+| Interpret cancellation and retained evidence | Separate stop acknowledgement from confirmed interruption, and report native-journal completeness when available |
+
+These are packaged integration behaviors built on native Codex capabilities. The bridge does not make Codex smarter, eliminate model usage charges, or introduce native history/cancellation where none existed. It adds a Python environment and local state to maintain, and it deliberately exposes only a small part of the native API.
+
+Use the native app-server directly when you are building a full Codex client and need native event streaming, interactive approvals, thread continuation/forking, or other native methods outside these four tools. With this bridge, each new task creates a new native thread and turn; there is no follow-up-message or raw-event-stream tool, and no remote HTTP MCP endpoint. Choose based on the interface and lifecycle behavior your host needs, rather than treating the bridge as universally preferable.
+
 ## Integrate into your workflow
 
 1. **Get a local copy:** clone this repository and select a reviewed commit.
@@ -12,6 +32,8 @@ Clone the bridge, run it locally, and integrate it into your own development wor
 4. **Use it in your workflow:** call `codex_start`, retain the task ID, then use `codex_status`, `codex_result` and `codex_cancel` as needed.
 
 The bridge checkout can live separately from the repositories you work on. Your client registration points to the bridge's absolute local path; each task's `cwd` selects a workspace allowed by your profile. Your workflow controls when tasks are submitted and what happens to their results.
+
+The [developer integration contract](docs/integration-contract.md) specifies host/operator responsibilities, request and response fields, MCP result decoding, replay, polling, pagination, cancellation, errors and compatibility boundaries. The [operational contract](docs/contract.md) provides the deeper process-ownership and socket rules.
 
 This is an independent project, not an official OpenAI product. Compatibility depends on the client's stdio MCP implementation and the pinned Codex runtime; universal client support is not claimed. This repository remains private pending an owner release decision.
 

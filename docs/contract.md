@@ -1,5 +1,7 @@
 # Standalone bridge contract
 
+For application developers integrating an MCP host, start with the [developer integration contract](integration-contract.md). This document supplies the underlying operational guarantees and accepted residuals.
+
 Extracted from the pinned Central contract; operational requirements below remain unchanged. The standalone native client/thread identity is `codex-mcp-app-server-bridge`. Historical native verifier identities are not impersonated; downstream adoption is outside this repository.
 
 The bridge provides local transport, task persistence and native-journal capture. It grants no workflow, review, merge or release authority. Operators own private profiles, endpoints and activation.
