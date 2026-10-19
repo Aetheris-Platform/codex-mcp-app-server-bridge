@@ -1,0 +1,118 @@
+{
+  "source_candidate": "69be6729a2e10df0f80d77d0deb2edff20687a5c",
+  "receipt_manifest_sha256": "da764c9895ea1620442fcd4391a2a781823e0e781024846d884570fae6cc8ead",
+  "packages": {
+    "pywin32": {
+      "version": "312",
+      "notices": [
+        {
+          "distribution_relative_filename": "adodbapi/license.txt",
+          "sha256": "5ea2f23c7f00c3006bacf267183e816d8d4b6dc95ea57a4ddb0ff81de6d8719e",
+          "bytes": 26925,
+          "retained_path": "docs/third-party/windows/pywin32/00-license.txt"
+        },
+        {
+          "distribution_relative_filename": "pythonwin/License.txt",
+          "sha256": "a74d826efb242db087b850348e20abbfd591b51e2081f2048735290913872924",
+          "bytes": 1541,
+          "retained_path": "docs/third-party/windows/pywin32/01-License.txt"
+        },
+        {
+          "distribution_relative_filename": "pythonwin/Scintilla-License.txt",
+          "sha256": "57ec79bbeab4fd1cf7460a7ad450d2ab01471810459aeae9e75e4c66b472095f",
+          "bytes": 873,
+          "retained_path": "docs/third-party/windows/pywin32/02-Scintilla-License.txt"
+        },
+        {
+          "distribution_relative_filename": "pythonwin/pywin/idle/LICENSE.txt",
+          "sha256": "a0fa1e7b8a4230055685e796548ac084a6c0eea395294574093bba72efd9191b",
+          "bytes": 12540,
+          "retained_path": "docs/third-party/windows/pywin32/03-LICENSE.txt"
+        },
+        {
+          "distribution_relative_filename": "pywin32-312.dist-info/licenses/adodbapi/license.txt",
+          "sha256": "5ea2f23c7f00c3006bacf267183e816d8d4b6dc95ea57a4ddb0ff81de6d8719e",
+          "bytes": 26925,
+          "retained_path": "docs/third-party/windows/pywin32/04-license.txt"
+        },
+        {
+          "distribution_relative_filename": "pywin32-312.dist-info/licenses/com/License.txt",
+          "sha256": "fad39c18fc3825fa278db1c86fd52cf88d7c525b3c2fbf7817fa383cbae4d423",
+          "bytes": 1570,
+          "retained_path": "docs/third-party/windows/pywin32/05-License.txt"
+        },
+        {
+          "distribution_relative_filename": "pywin32-312.dist-info/licenses/com/win32comext/mapi/src/MAPIStubLibrary/LICENSE",
+          "sha256": "1c4cf44d2fb8bf2d10214d6da80cc9e05502824cc4460f35be4c7bcb4cde53da",
+          "bytes": 1087,
+          "retained_path": "docs/third-party/windows/pywin32/06-LICENSE"
+        },
+        {
+          "distribution_relative_filename": "pywin32-312.dist-info/licenses/pythonwin/License.txt",
+          "sha256": "a74d826efb242db087b850348e20abbfd591b51e2081f2048735290913872924",
+          "bytes": 1541,
+          "retained_path": "docs/third-party/windows/pywin32/07-License.txt"
+        },
+        {
+          "distribution_relative_filename": "pywin32-312.dist-info/licenses/pythonwin/Scintilla/License.txt",
+          "sha256": "57ec79bbeab4fd1cf7460a7ad450d2ab01471810459aeae9e75e4c66b472095f",
+          "bytes": 873,
+          "retained_path": "docs/third-party/windows/pywin32/08-License.txt"
+        },
+        {
+          "distribution_relative_filename": "pywin32-312.dist-info/licenses/pythonwin/pywin/idle/LICENSE.txt",
+          "sha256": "a0fa1e7b8a4230055685e796548ac084a6c0eea395294574093bba72efd9191b",
+          "bytes": 12540,
+          "retained_path": "docs/third-party/windows/pywin32/09-LICENSE.txt"
+        },
+        {
+          "distribution_relative_filename": "pywin32-312.dist-info/licenses/win32/License.txt",
+          "sha256": "a74d826efb242db087b850348e20abbfd591b51e2081f2048735290913872924",
+          "bytes": 1541,
+          "retained_path": "docs/third-party/windows/pywin32/10-License.txt"
+        },
+        {
+          "distribution_relative_filename": "win32/License.txt",
+          "sha256": "a74d826efb242db087b850348e20abbfd591b51e2081f2048735290913872924",
+          "bytes": 1541,
+          "retained_path": "docs/third-party/windows/pywin32/11-License.txt"
+        },
+        {
+          "distribution_relative_filename": "win32com/License.txt",
+          "sha256": "fad39c18fc3825fa278db1c86fd52cf88d7c525b3c2fbf7817fa383cbae4d423",
+          "bytes": 1570,
+          "retained_path": "docs/third-party/windows/pywin32/12-License.txt"
+        },
+        {
+          "distribution_relative_filename": "win32comext/License.txt",
+          "sha256": "fad39c18fc3825fa278db1c86fd52cf88d7c525b3c2fbf7817fa383cbae4d423",
+          "bytes": 1570,
+          "retained_path": "docs/third-party/windows/pywin32/13-License.txt"
+        },
+        {
+          "distribution_relative_filename": "win32comext/mapi/MAPIStubLibrary-License.txt",
+          "sha256": "1c4cf44d2fb8bf2d10214d6da80cc9e05502824cc4460f35be4c7bcb4cde53da",
+          "bytes": 1087,
+          "retained_path": "docs/third-party/windows/pywin32/14-MAPIStubLibrary-License.txt"
+        },
+        {
+          "distribution_relative_filename": "win32comext/mapi/NOTICE.md",
+          "sha256": "dedf997c8f5568a0e0aff57d009f501226ea30c401323d67912b6a8f8735a825",
+          "bytes": 476,
+          "retained_path": "docs/third-party/windows/pywin32/15-NOTICE.md"
+        }
+      ]
+    },
+    "colorama": {
+      "version": "0.4.6",
+      "notices": [
+        {
+          "distribution_relative_filename": "colorama-0.4.6.dist-info/licenses/LICENSE.txt",
+          "sha256": "cac35c02686e5d04a5a7140bfb3b36e73aed496656e891102e428886d7930318",
+          "bytes": 1491,
+          "retained_path": "docs/third-party/windows/colorama/00-LICENSE.txt"
+        }
+      ]
+    }
+  }
+}

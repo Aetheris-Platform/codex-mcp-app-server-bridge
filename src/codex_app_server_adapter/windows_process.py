@@ -48,6 +48,19 @@ class _ProcessInfo(ctypes.Structure):
                 ("dwProcessId", wt.DWORD), ("dwThreadId", wt.DWORD)]
 
 
+def _create_private_job() -> int:
+    # pywin32 312's CreateJobObject wrapper rejects None for the name. Use
+    # the native NULL-name API to retain an unnamed, non-inheritable job.
+    kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+    create = kernel.CreateJobObjectW
+    create.argtypes = [ctypes.c_void_p, wt.LPCWSTR]
+    create.restype = wt.HANDLE
+    handle = create(None, None)
+    if not handle:
+        raise ctypes.WinError(ctypes.get_last_error())
+    return handle  # Owned raw handle; JobProcess.close calls CloseHandle once.
+
+
 def _spawn_in_job(command: list[str], job: object, stdin: object, stdout: object,
                   stderr: object) -> tuple[int, int]:
     kernel = ctypes.WinDLL("kernel32", use_last_error=True)
@@ -101,7 +114,7 @@ class JobProcess:
     """One native child; the job is private and its handle is never inherited."""
 
     def __init__(self, command: list[str]) -> None:
-        self.job = win32job.CreateJobObject(None, None)
+        self.job: int | None = _create_private_job()
         self.process: int | None = None
         self.stdin = None
         self.stdout = None
@@ -156,7 +169,7 @@ class JobProcess:
                     time.sleep(0.02)
         finally:
             if self.job is not None:
-                self.job.Close()
+                win32api.CloseHandle(self.job)
                 self.job = None
             if self.process is not None:
                 win32api.CloseHandle(self.process)

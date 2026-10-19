@@ -82,7 +82,7 @@ def main() -> None:
         suites = ET.parse(receipts / "tests.xml").getroot().findall(".//testsuite")  # noqa: S314 - owned pytest receipt
         counts = {key: sum(int(s.get(key, 0)) for s in suites) for key in ("tests", "failures", "errors", "skipped")}
         passed = counts["tests"] - counts["failures"] - counts["errors"] - counts["skipped"]
-        minimum, expected_skips = (10, 1) if selected == "windows" else (494, 4)
+        minimum, expected_skips = (11, 1) if selected == "windows" else (495, 4)
         counts_ok = passed >= minimum and counts["skipped"] == expected_skips
         report["counts"] = {**counts, "passed": passed}
         report["checks"]["test-counts"] = {"exit_code": 0 if counts_ok else 1}

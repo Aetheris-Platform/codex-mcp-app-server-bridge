@@ -43,6 +43,7 @@ Native Windows now declares `pywin32==312` directly (also required by the locked
 MCP dependency on Windows). The cross-platform lock additionally selects
 Windows-only `colorama==0.4.6`. The historical installed-notice inventory above
 was gathered on macOS and does not establish retention of these Windows wheel
-notices. The Windows test handoff requires recording installed package metadata
-and retaining their actual license/NOTICE files and hashes. Owner review of the
+notices. The owner-run Windows test retained 16 pywin32 notice texts and one colorama
+license text. Their original bytes, distribution-relative filenames and hashes
+are now retained in `docs/third-party/windows/inventory.json`. Owner review of the
 expanded artifact/notice set remains part of the existing public-release gate.

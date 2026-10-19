@@ -1,15 +1,23 @@
 # Platform implementation and validation — 2026-10-19
 
-The owner expanded the extraction scope to macOS, Linux, native Windows 11 and Windows 11 with WSL2, with platform selection before integration. This candidate keeps the common MCP/task code and the established Unix backend, adds native Windows filesystem/process/stdio primitives, and ships separate platform test routes. The repository remains private. Windows/WSL2 qualification and merge remain pending owner-run evidence.
+The owner expanded the extraction scope to macOS, Linux, native Windows 11 and Windows 11 with WSL2, with platform selection before integration. This candidate keeps the common MCP/task code and the established Unix backend, adds native Windows filesystem/process/stdio primitives, and ships separate platform test routes. The repository remains private. The first owner-run Windows acceptance failed; a corrected candidate needs a new run. WSL2 qualification and merge remain pending. See [the Windows report and corrections](windows-acceptance-2026-10-19.md).
 
-## Executed offline checks
+## Corrected Windows candidate regression
+
+After the owner-run failures, the corrected candidate passed the complete macOS
+and Linux Docker UID 501 runners: **495 passed, 4 skipped, 1 deselected**, actual
+MCP smoke, focused lint and all 25 transfer checks; both runner exits were **0**.
+See [corrections and retained failures](windows-acceptance-2026-10-19.md).
+Native Windows and WSL2 still require a new owner-run result.
+
+## Earlier platform candidate checks
 
 | Environment | Regression suite | MCP smoke | Focused lint |
 | --- | --- | --- | --- |
 | macOS 27.0.1 arm64, Python 3.14.6 | **494 passed, 4 Windows-only skipped, 1 installed-runtime deselected** | Passed | Passed |
 | Linux 7.0.14 LinuxKit aarch64/glibc 2.41, Python 3.14.6, Docker root | **494 passed, 4 skipped, 1 deselected** | Passed | Passed |
 | Same Linux Docker image, unprivileged UID 501 | **494 passed, 4 skipped, 1 deselected** | Passed | Passed |
-| Native Windows 11 | **Not run here** | Included in Windows test route; pending | Source lint only |
+| Native Windows 11 Home build 26300, AMD64, Python 3.12.14, candidate 69be672 | **6 passed, 4 failed, 1 skipped** in diagnostic commands; runner failed before dispatch | Not reached | Passed |
 | WSL2 / Windows-to-WSL forwarding | **Not run here** | Pending | Source lint only |
 
 The Linux runs used the existing local `python:3.14-slim` image, owned disposable containers with an init process, a read-only source snapshot, and destination-local dependencies. Network was disabled during tests. Package installation occurred only during explicit preparation. No installed Codex executable, provider/model turn, shared consumer configuration, CLI installation or credential was changed. macOS used the existing checkout environment and private short fixture paths.
@@ -28,6 +36,6 @@ The [machine record](provenance/platform-validation-2026-10-19.json) retains cou
 
 ## Remaining gates
 
-Run the native Windows 11 route as a standard user on local NTFS, retain its package notices and receipts, and resolve any failures before qualification. Run the WSL2 route separately and verify the Windows host's stdio forwarding. The supplied handoff is pinned to the pushed candidate; it does not authorize real Codex/provider calls, changes to shared configuration, fixes without reporting them, or merge/publication.
+Rerun the corrected native Windows 11 candidate as a standard user on local NTFS and retain fresh receipts. The first run's binding and CRLF failures remain recorded; its 17 Windows dependency notices have been retained. Run the WSL2 route separately and verify the Windows host's stdio forwarding. The supplied handoff is pinned to the pushed candidate; it does not authorize real Codex/provider calls, changes to shared configuration, fixes without reporting them, or merge/publication.
 
 The prior macOS live report applies to its recorded earlier code/runtime/model combination. No live Linux, Windows or WSL2 result is claimed. Other Python versions, x86 Linux, other distributions/filesystems and actual developer-host configurations need their own bounded evidence. The established peer-authentication and non-atomic unlink limitations remain for Unix. Native Windows uses local inherited pipes and jobs with a distinct implementation that awaits its kernel tests. Licensing/notice clearance remains an owner gate before public release.

@@ -41,8 +41,11 @@ def _check_windows_acl(path: Path, label: str) -> None:
     import win32con
     import win32security
 
-    with win32security.OpenProcessToken(win32api.GetCurrentProcess(), win32con.TOKEN_QUERY) as token:
+    token = win32security.OpenProcessToken(win32api.GetCurrentProcess(), win32con.TOKEN_QUERY)
+    try:
         user = win32security.GetTokenInformation(token, win32security.TokenUser)[0]
+    finally:
+        token.Close()
     descriptor = win32security.GetNamedSecurityInfo(
         str(path), win32security.SE_FILE_OBJECT,
         win32security.OWNER_SECURITY_INFORMATION | win32security.DACL_SECURITY_INFORMATION,
@@ -76,8 +79,11 @@ def make_private_directory(path: Path, *, parents: bool = False) -> None:
     import win32con
     import win32security
 
-    with win32security.OpenProcessToken(win32api.GetCurrentProcess(), win32con.TOKEN_QUERY) as token:
+    token = win32security.OpenProcessToken(win32api.GetCurrentProcess(), win32con.TOKEN_QUERY)
+    try:
         user = win32security.GetTokenInformation(token, win32security.TokenUser)[0]
+    finally:
+        token.Close()
     sid = win32security.ConvertSidToStringSid(user)
     descriptor = win32security.ConvertStringSecurityDescriptorToSecurityDescriptor(
         f"D:P(A;OICI;FA;;;{sid})(A;OICI;FA;;;SY)", win32security.SDDL_REVISION_1,

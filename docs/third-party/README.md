@@ -37,3 +37,9 @@ Actual license/NOTICE files copied from the 35 distributions installed from the 
 - typing_extensions 4.16.0: 1 retained notice text(s).
 - uvicorn 0.53.0: 1 retained notice text(s).
 - websockets 17.1: 1 retained notice text(s).
+
+The owner-run Windows 11/Python 3.12.14 acceptance session additionally retained
+16 pywin32 312 notice files and one colorama 0.4.6 license. See
+[the Windows inventory](windows/inventory.json) for original distribution paths
+and byte hashes. Notice retention does not change the failed Windows test verdict
+or grant public redistribution clearance.

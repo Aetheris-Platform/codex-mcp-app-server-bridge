@@ -6,7 +6,7 @@
       "source_path": "developer-tools/codex-bridge/LICENSE-DISPOSITION.md",
       "source_sha256": "fe59510858abc670ab0b10412a87f7e81d43e9ac324fc186717459c51e504826",
       "destination_path": "LICENSE-DISPOSITION.md",
-      "destination_sha256": "118c8e7053fe59febbcd1bf36b77c481dd0e8b26cedbcfbcd817d84c69883f8d",
+      "destination_sha256": "120b5c03b401febf60a233e842de1072fcb9cb1c80d7e0cb48423f4d7dfde6b3",
       "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
       "extraction_destination_sha256": "9f00d78002a4021207aad45ff52052e2af7a3cabac0a8008e582b97d9f30c8a4"
     },
