@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-19",
+  "scope": "offline harness and regression validation only; NOT WSL2 or Windows forwarding qualification",
+  "runtime_source_changed": false,
+  "development_snapshot_commit": "bb315ea0d4b382f21cb8adbf23bc0fa87a54ff67",
+  "tests": {
+    "macos": {
+      "counts": {
+        "tests": 511,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 4,
+        "passed": 507
+      },
+      "checks": [
+        "pytest",
+        "lint",
+        "transfer",
+        "mcp-smoke",
+        "test-counts"
+      ],
+      "verdict": "PASS"
+    },
+    "linux": {
+      "counts": {
+        "tests": 511,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 4,
+        "passed": 507
+      },
+      "checks": [
+        "pytest",
+        "lint",
+        "transfer",
+        "mcp-smoke",
+        "test-counts"
+      ],
+      "verdict": "PASS"
+    },
+    "harness_linux": {
+      "counts": null,
+      "checks": [
+        "MCP discovery, errors, replay/conflict, bounded status and UTF-8 pagination",
+        "EOF cleanup and persisted terminal reads without native traffic",
+        "destination guardian, losing startup noninterference and confirmed cancellation",
+        "deadline interruption without deadline extension",
+        "adapter death, independent root and restart replay without resubmission",
+        "abrupt initiating-client death closes forwarded stdin and cleans owned children",
+        "six fixture turns only, truthful identity, unchanged checkout and no surviving owned processes"
+      ],
+      "verdict": "PASS"
+    }
+  },
+  "code_sha256": {
+    "tests/wsl_fixture.py": "1a7ed95473be6aa01e0c8c3b18e309d9c6756bce570f8aa265ad6036d2ef5f52",
+    "tests/wsl_forwarding.py": "68ce57ebcac67ca1de90510cef3e76801ec0c04225356ca3a4b3380385d66dc3",
+    "tests/test_wsl_forwarding.py": "70a2bcc0b59a3bd73329f3294a5da9fb1bf3bc65cf16e1dae52743b10c9ba310",
+    "tools/test_platform.py": "fabe483077c99f4cbf98fc72af29ac64aa64d344b2e1d676e27fabf4c54e9b80"
+  },
+  "receipts_sha256": {
+    "macos-receipts/pytest.log": "c3debe73b0742c02606f7094c991fe6d1e69f94ebd482679eb9db661232cbf2a",
+    "macos-receipts/summary.json": "09eca123745a066761cf16b4f1223633894a740212449589b7e8a9a8b40eab54",
+    "macos-receipts/lint.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "macos-receipts/tests.xml": "3bade2ab2861c000388888b4afd0b49a48becf58be20d3a9217e74413bd2fb28",
+    "macos-receipts/mcp-smoke.log": "48f1859ca8d314fcd129dcd4e7241197c12a58ccae7b150952f8c4def76f8cf0",
+    "macos-receipts/transfer.log": "b6cd39ebb4f17e1f3cf3794c743ef44b2ef78ee74c6b079e843410eb25fde6f1",
+    "development-2/receipts/cb-1hntmg4v/pytest.log": "efebd2849b5a84e36057ec61f43b9de1f927950d6216f2262bdd5d13216a64d9",
+    "development-2/receipts/cb-1hntmg4v/summary.json": "48d3c2843f1c0f23a3c7e276c8ca091d867aa5e49335a418dddc2e77395743c1",
+    "development-2/receipts/cb-1hntmg4v/lint.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "development-2/receipts/cb-1hntmg4v/tests.xml": "af32bb11c42eab79b27a7b5cf97b797c0ba449f8e237f2b920ac45828b58442a",
+    "development-2/receipts/cb-1hntmg4v/mcp-smoke.log": "48f1859ca8d314fcd129dcd4e7241197c12a58ccae7b150952f8c4def76f8cf0",
+    "development-2/receipts/cb-1hntmg4v/transfer.log": "b6cd39ebb4f17e1f3cf3794c743ef44b2ef78ee74c6b079e843410eb25fde6f1",
+    "development-2/receipts/forwarding/deadline-ad305169f1e2434b85c39f084e6a1186.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "development-2/receipts/forwarding/summary.json": "64b4aa9fc20988374407cf8a43f7d98c0668e38bfaceffe1a04c6ee29ada7a91",
+    "development-2/receipts/forwarding/linux-state.json": "10ab735b2829e75e14e054c5501c4d9a1da78050aab4fb95233f9083f43e3f4a",
+    "development-2/receipts/forwarding/hostdeath-0494a27364d041bf92a5deea8a1dab3d.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "development-2/receipts/forwarding/complete-e4dda09ebd5943cd9ef6a38c831fb09a.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "development-2/receipts/forwarding/bystander-6ed79cc3fd0e47d8a97b857c7d599abf.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "development-2/receipts/forwarding/host-worker.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "development-2/receipts/forwarding/complete-404d23589d8645a082d0ae44e370116b.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "development-2/receipts/forwarding/crash-b48ffda995874cd9b773480fc670ef83.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "development-2/receipts/forwarding/crash-4705c4e90c014f6c9f01ca29067d7c3b.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "development-2/receipts/forwarding/cancel-0568ea648111495ab1ae03264339765c.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "development-2/receipts/forwarding/cancel-14310f690c5a462895466125e0e36dce.stderr.log": "e5bd406a5a2db304bedbd0a7fdc18f59ab4fdfbea7ff036fd844960e8d517935"
+  },
+  "retained_failures": [
+    "Development 1: Docker bind mount Git ownership blocked preparation. Resolved with a process-scoped safe.directory setting, no global Git change.",
+    "Development 1b: fixed polling count exhausted at deadline before reader consumed interruption. Changed harness to elapsed-time bound and a brief polling yield. No runtime change."
+  ],
+  "remaining_gates": [
+    "WSL2 ordinary-user full suite",
+    "Windows initiating MCP client through wsl.exe",
+    "actual developer-host adoption and any separately authorized live-provider tests"
+  ]
+}

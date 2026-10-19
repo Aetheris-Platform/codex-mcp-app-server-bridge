@@ -16,7 +16,7 @@ On native Windows use `py -3 tools/integrate.py`. For automation pass `--platfor
 | --- | --- | --- |
 | macOS | Existing Unix socket, flock and guardian backend | Offline suite/MCP smoke; prior live validation applies only to its recorded runtime/model/commit |
 | Linux | Same Unix backend; Linux anonymous-pipe admission uses procfs | Offline Docker qualification; distribution/native runtime/model acceptance remains configuration-specific |
-| Windows 11 native | Anonymous stdio pipes, Windows ACLs, byte-range locks and Job Objects | **First owner-run acceptance failed; corrected candidate awaits rerun**; not qualified |
+| Windows 11 native | Anonymous stdio pipes, Windows ACLs, byte-range locks and Job Objects | **Owner-run offline PASS at `5fdff37`** (Windows 11 build 26300 / Python 3.12.14); live runtime/model acceptance remains separate |
 | Windows 11 + WSL2 | Linux backend inside the distribution; optional Windows host launches `wsl.exe` | **Candidate pending WSL2 tests and Windows-host forwarding acceptance**; Docker is not WSL evidence |
 
 Git is required for checkout and the line-ending regression test. Repository attributes keep source/provenance text at LF even with `core.autocrlf=true`; the transfer verifier still checks raw bytes.
@@ -97,7 +97,7 @@ Example local stdio registration for any MCP host accepting this configuration s
 }
 ```
 
-Adapt the host's registration syntax while preserving command/argument boundaries. Keep its stdin open across tool calls. The Windows backend uses one owned app-server per native connection because native stdio is a single-client transport. Logical disconnect drains its output without killing work; jobs remain session-owned until bridge shutdown. This can use more processes than the shared Unix socket backend. Close idle bridge sessions normally. Job membership is assigned atomically before the child executes; descendants inherit the job, breakaway is not enabled, and the adapter alone owns the kill-on-close handle. No PID scanning or attachment to an existing runtime is used. These guarantees await kernel-level Windows acceptance, not just mocked tests.
+Adapt the host's registration syntax while preserving command/argument boundaries. Keep its stdin open across tool calls. The Windows backend uses one owned app-server per native connection because native stdio is a single-client transport. Logical disconnect drains its output without killing work; jobs remain session-owned until bridge shutdown. This can use more processes than the shared Unix socket backend. Close idle bridge sessions normally. Job membership is assigned atomically before the child executes; descendants inherit the job, breakaway is not enabled, and the adapter alone owns the kill-on-close handle. No PID scanning or attachment to an existing runtime is used. The bounded owner-run Windows acceptance at `5fdff37` exercised these kernel-level tests successfully; see the [recorded result](windows-offline-pass-2026-10-19.md).
 
 ## wsl
 
@@ -127,6 +127,8 @@ A Windows MCP host that supports launching an external stdio command can use:
 ```
 
 Replace the distribution and every path. Passing `--exec` and separate arguments avoids login-shell output corrupting MCP. Validate the host's forwarding, UTF-8, stdin lifetime and cancellation via the [host targets](integration-testing.md). An in-distribution fixture pass alone does not qualify Windows-to-WSL forwarding. See Microsoft's [WSL filesystem guidance](https://learn.microsoft.com/en-us/windows/wsl/filesystems).
+
+Follow the two-stage [WSL2 and Windows forwarding acceptance procedure](wsl-acceptance.md). It includes a Windows-side generic MCP harness and checkout-local dependency setup that does not require `ensurepip`.
 
 ## Included test routes
 

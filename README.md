@@ -39,12 +39,12 @@ This is an independent project, not an official OpenAI product. Compatibility de
 
 ## Supported environment
 
-- Select **macOS, Linux, native Windows 11, or Windows 11 with WSL2**. Unix uses private sockets, process groups and `flock`; native Windows uses private stdio pipes, ACLs, file locks and Job Objects. See the [platform status matrix](docs/platforms.md#status-and-boundaries): Windows/WSL2 are implemented candidates awaiting owner-machine acceptance, not yet qualified.
+- Select **macOS, Linux, native Windows 11, or Windows 11 with WSL2**. Unix uses private sockets, process groups and `flock`; native Windows uses private stdio pipes, ACLs, file locks and Job Objects. See the [platform status matrix](docs/platforms.md#status-and-boundaries): native Windows passed bounded offline acceptance at `5fdff37`; WSL2 and forwarding still require owner-machine acceptance.
 - Python 3.12+ is the declared requirement; local qualification uses 3.14.6. The dependency lock now includes macOS, Linux and Windows; other Python versions still need their own qualification.
 - `uv` 0.12.18 was used for locked setup. Dependencies are `mcp==2.2.0`, `websockets==17.1`, and the exact transitive artifacts in `uv.lock`.
 - An operator-selected Codex executable with the selected platform's local [app-server support](https://learn.chatgpt.com/docs/app-server), independently configured authentication, and an explicitly selected accessible model. The executable must have a stable absolute path without symlink components; a moving launcher is unsuitable.
 
-Historical source records cover direct sockets in CLI 0.154.0, deterministic aliases in 0.156.0, and one macOS arm64 0.159.2 / `gpt-6.1-sol` completed turn under the former client identity. Following the offline extraction, a bounded live test of the standalone identity passed with CLI **0.159.2**, **`gpt-6.1-sol` / low**, and one programmatic stdio MCP client: task completion, duplicate prevention, paginated results, confirmed provider-turn cancellation, persistence and cleanup. This does not qualify every client/model or live deadline expiry. See the [live results and precise limits](docs/live-validation.md) and [extraction provenance](docs/extraction.md). Those live receipts predate the platform changes; see [current platform validation](docs/platform-validation.md) for the new candidate and pending Windows/WSL2 gates.
+Historical source records cover direct sockets in CLI 0.154.0, deterministic aliases in 0.156.0, and one macOS arm64 0.159.2 / `gpt-6.1-sol` completed turn under the former client identity. Following the offline extraction, a bounded live test of the standalone identity passed with CLI **0.159.2**, **`gpt-6.1-sol` / low**, and one programmatic stdio MCP client: task completion, duplicate prevention, paginated results, confirmed provider-turn cancellation, persistence and cleanup. This does not qualify every client/model or live deadline expiry. See the [live results and precise limits](docs/live-validation.md) and [extraction provenance](docs/extraction.md). Those live receipts predate the platform changes; see [current platform validation](docs/platform-validation.md) for the Windows offline result and pending WSL2/forwarding gates.
 
 ## Get and prepare your local checkout
 
@@ -206,7 +206,7 @@ The first two stages use deterministic fixtures and need no provider authenticat
 
 ## Offline tests
 
-After selecting a platform and installing dev dependencies, run `.venv/bin/python tools/test_platform.py` (native Windows: `.venv\Scripts\python.exe tools/test_platform.py`). It uses the saved selection and retains logs/JUnit. The lower-level commands below are Unix-only.
+After selecting a platform and installing dev dependencies, run `.venv/bin/python tools/test_platform.py` (native Windows: `.venv\Scripts\python.exe tools/test_platform.py`). It uses the saved selection and retains logs/JUnit. For WSL2 and a Windows MCP host launching through `wsl.exe`, use the separate [two-stage acceptance procedure](docs/wsl-acceptance.md) and included Windows-side forwarding harness. The lower-level commands below are Unix-only.
 
 ```sh
 cd "$BRIDGE"

@@ -1,6 +1,31 @@
 # Platform implementation and validation — 2026-10-19
 
-The owner expanded the extraction scope to macOS, Linux, native Windows 11 and Windows 11 with WSL2, with platform selection before integration. This candidate keeps the common MCP/task code and the established Unix backend, adds native Windows filesystem/process/stdio primitives, and ships separate platform test routes. The repository remains private. The first owner-run Windows acceptance failed; a corrected candidate needs a new run. WSL2 qualification and merge remain pending. See [the Windows report and corrections](windows-acceptance-2026-10-19.md).
+The owner expanded the extraction scope to macOS, Linux, native Windows 11 and Windows 11 with WSL2, with platform selection before integration. This candidate keeps the common MCP/task code and the established Unix backend, adds native Windows filesystem/process/stdio primitives, and ships separate platform test routes. The repository remains private. Native Windows bounded offline acceptance passed at `5fdff37`; earlier failures remain recorded below. WSL2 qualification and merge remain pending. See [the Windows report and corrections](windows-acceptance-2026-10-19.md).
+
+## Forwarding harness development validation
+
+The new generic Windows-side driver and Linux fixture helper were exercised
+in **local Linux development mode**, inside a network-disabled Docker container
+as UID 501. All seven lifecycle check groups passed, including six fixture turns,
+513-page UTF-8 reconstruction and initiating-client-death cleanup. This does
+**not** execute `wsl.exe` or establish WSL2 support. The complete macOS and Linux
+platform runners each passed **507 tests, four Windows-only skips and one
+installed-runtime deselection**, plus MCP smoke, lint and all 25 transfer checks.
+No bridge runtime source changed from the Windows-passed `5fdff37` candidate.
+
+The initial container setup was blocked by Docker mount ownership in Git;
+a process-local safe.directory setting allowed that known read-only mount.
+The first behavioral run caught a harness polling-count race at deadline;
+the driver now yields briefly and uses an elapsed-time bound. Both unsuccessful
+receipts remain retained; the bridge was not changed to accommodate the test.
+The [machine record](provenance/wsl-harness-validation-2026-10-19.json) pins tested
+harness bytes and receipt hashes. Actual WSL2 and forwarding remain pending.
+
+## Native Windows offline pass
+
+Owner acceptance at `5fdff37e353ec11ec8bb7e237bd2d7658522673d` passed: **16 passed, one expected Unix-only skip**, runner/lint/25-file transfer all exit 0. Windows 11 Home build 26300, AMD64/NTFS, ordinary Windows user, Python 3.12.14. All 126 tracked files remained byte-identical. See the [sanitized result](windows-offline-pass-2026-10-19.md). WSL2 was blocked at dependency setup; Windows-to-WSL forwarding was not run. The [new two-stage procedure](wsl-acceptance.md) addresses those separate targets.
+
+The following correction entries retain their historical status at the time of each run.
 
 ## Current deadline correction
 
@@ -68,6 +93,6 @@ The [machine record](provenance/platform-validation-2026-10-19.json) retains cou
 
 ## Remaining gates
 
-Rerun the corrected native Windows 11 candidate as a standard user on local NTFS and retain fresh receipts. The first run's binding and CRLF failures remain recorded; its 17 Windows dependency notices have been retained. Run the WSL2 route separately and verify the Windows host's stdio forwarding. The supplied handoff is pinned to the pushed candidate; it does not authorize real Codex/provider calls, changes to shared configuration, fixes without reporting them, or merge/publication.
+Native Windows offline acceptance is complete for the recorded `5fdff37` configuration. The first run's binding and CRLF failures remain recorded; its 17 Windows dependency notices have been retained. Run the WSL2 route separately and verify the Windows host's stdio forwarding. The supplied handoff is pinned to the pushed candidate; it does not authorize real Codex/provider calls, changes to shared configuration, fixes without reporting them, or merge/publication.
 
-The prior macOS live report applies to its recorded earlier code/runtime/model combination. No live Linux, Windows or WSL2 result is claimed. Other Python versions, x86 Linux, other distributions/filesystems and actual developer-host configurations need their own bounded evidence. The established peer-authentication and non-atomic unlink limitations remain for Unix. Native Windows uses local inherited pipes and jobs with a distinct implementation that awaits its kernel tests. Licensing/notice clearance remains an owner gate before public release.
+The prior macOS live report applies to its recorded earlier code/runtime/model combination. No live Linux, Windows or WSL2 result is claimed. Other Python versions, x86 Linux, other distributions/filesystems and actual developer-host configurations need their own bounded evidence. The established peer-authentication and non-atomic unlink limitations remain for Unix. Native Windows uses local inherited pipes and jobs with a distinct implementation whose bounded kernel tests passed on the recorded Windows host. Licensing/notice clearance remains an owner gate before public release.
