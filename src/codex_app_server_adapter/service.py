@@ -465,6 +465,9 @@ class AdapterService:
             if event is None:
                 if (
                     self._deadline_reached(task_id)
+                    # A deadline crossed during next_event must first pass through
+                    # expiry handling above; RPC response events do not prove a stop.
+                    and _boolean(self.store.load(task_id).get("interrupt_sent"))
                     and _integer(self.store.load(task_id).get("last_event_sequence")) > 0
                 ):
                     self._set_state(task_id, AdapterTaskState.UNKNOWN, "unconfirmed_termination")

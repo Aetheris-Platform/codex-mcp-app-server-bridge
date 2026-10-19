@@ -2,7 +2,24 @@
 
 The owner expanded the extraction scope to macOS, Linux, native Windows 11 and Windows 11 with WSL2, with platform selection before integration. This candidate keeps the common MCP/task code and the established Unix backend, adds native Windows filesystem/process/stdio primitives, and ships separate platform test routes. The repository remains private. The first owner-run Windows acceptance failed; a corrected candidate needs a new run. WSL2 qualification and merge remain pending. See [the Windows report and corrections](windows-acceptance-2026-10-19.md).
 
-## Current persistence correction
+## Current deadline correction
+
+The corrected snapshot passes both full macOS and Linux Docker UID 501 runners:
+**500 passed, 4 skipped, 1 deselected**, plus actual MCP smoke, focused lint and
+all 25 transfer checks; runner exits **0**. Native Windows awaits a fresh full
+run with **16 passed, 1 Unix-only skip** as its target. See the
+[deadline correction](windows-deadline-rerun-2026-10-19.md).
+
+## Latest Windows deadline result
+
+Owner acceptance at `19b8b18` recorded **13 passed, 1 failed, 1 skipped**. Actual
+MCP completion, paginated results, cancellation and all persistence regressions
+passed. Deadline expiry missed interruption, leaving the remaining lifecycle
+sequence unreached. See [the deadline finding and correction](windows-deadline-rerun-2026-10-19.md).
+The corrected Windows target is **16 passes, 1 Unix-only skip**; a fresh owner-run
+result is still required. WSL2 and forwarding remain untested.
+
+## Previous persistence correction
 
 The latest corrected snapshot passes both full macOS and Linux Docker UID 501
 runners: **498 passed, 4 skipped, 1 deselected**, plus MCP smoke, lint and all

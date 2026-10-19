@@ -116,7 +116,7 @@
       "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/service.py",
       "source_sha256": "66f6e143da11eaf632ef1f95250f54ced32bb0dd1f10899a9357e60ef4fc4e3d",
       "destination_path": "src/codex_app_server_adapter/service.py",
-      "destination_sha256": "9a050ed62babe1f09f89569e2b720d005944c35bfe08c7d44076e2141848cc5b",
+      "destination_sha256": "3556bd4ca185d22d1cf88a950e2249c7b015d98633dbf2d988d9744f2f4a312a",
       "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
       "extraction_destination_sha256": "d3b2cb0d6b4079265e80abe4cae8fc0ecbd04137a642266650476b19ec59343e"
     },
