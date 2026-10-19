@@ -46,7 +46,7 @@
       "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/__main__.py",
       "source_sha256": "8d7ce422f335739e186919948995bd0502ea923ff7aca8de44324d8b65bb9cf9",
       "destination_path": "src/codex_app_server_adapter/__main__.py",
-      "destination_sha256": "6ec1d94e17424c188da3ead59f8771ab11a41c8a42ab5e7a692b26b8a612d592",
+      "destination_sha256": "8fab0e455d684669d74fde1fd9fdfd59b68b4fa1b214f92191ec8fe04e0d7429",
       "transfer": "adapted; see docs/extraction.md"
     },
     {

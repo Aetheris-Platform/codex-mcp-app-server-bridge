@@ -5,12 +5,43 @@ from __future__ import annotations
 import ast
 import asyncio
 import json
+import os
+import subprocess
+import sys
 import tomllib
 from pathlib import Path
 
+import pytest
 from test_codex_app_server_adapter import FakeClient, FakeTransport, _request, _service
 
 from codex_app_server_adapter.protocol import JsonRpcClient
+
+
+@pytest.mark.parametrize(
+    ("kind", "message"),
+    [("missing", "profile not found"), ("directory", "cannot read profile"),
+     ("invalid-utf8", "profile must be UTF-8 text")],
+)
+def test_cli_reports_unreadable_profile_without_traceback_or_stdout(
+    tmp_path: Path, kind: str, message: str,
+) -> None:
+    profile = tmp_path / "profile.json"
+    if kind == "directory":
+        profile.mkdir()
+    elif kind == "invalid-utf8":
+        profile.write_bytes(b"\xff")
+    root = Path(__file__).parents[1]
+    result = subprocess.run(  # noqa: S603 - local module, no runtime/profile creation
+        [sys.executable, "-m", "codex_app_server_adapter", "--profile", str(profile)],
+        cwd=tmp_path, env={**os.environ, "PYTHONPATH": str(root / "src")},
+        capture_output=True, text=True, timeout=10, check=False,
+    )
+    assert result.returncode == 2
+    assert result.stdout == ""
+    assert message in result.stderr
+    assert str(profile) in result.stderr
+    assert "Traceback" not in result.stderr
+    assert set(tmp_path.iterdir()) == ({profile} if kind != "missing" else set())
 
 
 def test_native_identity_is_truthful_and_matches_thread_source(tmp_path: Path) -> None:

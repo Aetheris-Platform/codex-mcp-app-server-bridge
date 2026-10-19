@@ -39,6 +39,8 @@ An optional installed command is declared as `codex-mcp-app-server-bridge --prof
 
 ## Private operator profile
 
+**Setup does not create a live profile.** `/absolute/private/profile.json` is an example path, not a file shipped by this project. Do not run the live launch command until you have created a real profile with your chosen runtime, model, workspace and private storage paths.
+
 Copy [the sanitized example](examples/profile.json), replace every placeholder, and keep the real profile outside version control with mode `0600`. Create its socket parent and data root with mode `0700` under your own account. All path components must be real, non-symlink directories. On macOS use canonical `/private/tmp`, not `/tmp`, for a temporary profile socket. Keep socket paths short enough for the OS Unix-socket limit.
 
 ```json
@@ -59,6 +61,21 @@ Record the exact executable's `--version` output and SHA-256 (`shasum -a 256 /ab
 One data root has one cooperative adapter owner, even if two profiles have different names or socket paths. Concurrent independent adapters need distinct roots **and** endpoints. Do not run an older nonlocking adapter on the same root.
 
 ## Launch from any directory
+
+To check the prepared checkout immediately without a live profile or provider call, run:
+
+```sh
+cd /private/tmp
+(umask 077
+PYTHONPATH="$BRIDGE/src" "$BRIDGE/.venv/bin/python" \
+  "$BRIDGE/tests/installed_wheel_smoke.py" --source-root "$BRIDGE/src" \
+  --fixture "$BRIDGE/tests/fixtures/codex_app_server_adapter/native_server.py"
+)
+```
+
+This creates and cleans up temporary fixture profiles and processes. It is an offline MCP check, not a live Codex session.
+
+For a live launch, replace **both example paths** below with your checkout and an existing private profile:
 
 ```sh
 BRIDGE=/absolute/path/codex-mcp-app-server-bridge

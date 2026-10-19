@@ -44,3 +44,7 @@ Path admission does not authenticate the connected peer. A restored substitution
 ## Owner release gates
 
 Review the local commits and tests; decide source licensing/attribution and exact third-party distribution notices; separately authorize any live runtime/model qualification, code push/PR, package or release publication, public visibility, and consumer/verifier adoption. The repository must remain private until that owner decision. No paid turn is necessary to complete this offline extraction, so none was requested or run.
+
+## Follow-up: missing profile launch diagnostic
+
+The owner encountered the example `/absolute/private/profile.json` path verbatim. Dependency setup does not create that file. The README now places an executable offline smoke before the live launch example and explicitly labels both live paths as placeholders. The entry point catches profile-read failures before service construction and reports a concise error on stderr with exit code 2. Missing files, directory paths and invalid UTF-8 are tested through the actual module entry point from an unrelated directory; stdout remains empty and no runtime/store is created. This narrowly extends the initial identity-only runtime diff with startup diagnostics, not lifecycle or profile-schema changes. The original source hash is preserved and the destination manifest hash updated.

@@ -14,7 +14,17 @@ from .runtime import create_owned_service
 
 
 async def _run(profile_path: Path) -> None:
-    text = await asyncio.to_thread(profile_path.read_text, encoding="utf-8")
+    try:
+        text = await asyncio.to_thread(profile_path.read_text, encoding="utf-8")
+    except FileNotFoundError as exc:
+        raise ValidationError(
+            f"profile not found: {profile_path}. Create a private operator profile first; "
+            "the example profile contains placeholders, not a ready-to-run configuration."
+        ) from exc
+    except OSError as exc:
+        raise ValidationError(f"cannot read profile {profile_path}: {exc.strerror}") from exc
+    except UnicodeError as exc:
+        raise ValidationError(f"profile must be UTF-8 text: {profile_path}") from exc
     service = create_owned_service(OperatorProfile.parse_json(text))
     stop_requested = asyncio.Event()
     loop = asyncio.get_running_loop()

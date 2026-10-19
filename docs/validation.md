@@ -57,3 +57,7 @@ Full test-file lint is not clean; it retains the 52 source diagnostics. Python 3
 Local wheel SHA-256 (not published): `776f0b0422b9432554df84f6f3806eea23af17d9d845281c9c0d90b756154e39`. The wheel excludes dependencies, tests, local environments, caches and source checkouts. The runtime lock is the supported checkout installation path.
 
 Verbatim upstream `cffi` and `pycparser` license texts retain their original trailing whitespace; full Git whitespace checking reports those notice bytes. Authored/extracted code and documentation pass the scoped whitespace check. Notice hashes remain exact; the texts were not reformatted to conceal that result.
+
+## Follow-up: missing profile diagnostic
+
+After the owner attempted the placeholder launch path, the entry point gained bounded profile-read diagnostics and the README gained an immediately runnable offline check. Focused extraction/CLI tests: **5 passed**, including three new real-entry-point negatives (missing path, directory, invalid UTF-8). Runtime/affected-test Ruff, transfer manifest and authored diff hygiene passed. The exact README offline source smoke passed again from `/private/tmp`, covering stdio/replay/status/pages/cancel/cleanup with disposable fixtures. No live profile or Codex runtime was created. The earlier wheel and original 484-case receipts remain historical extraction artifacts; this follow-up validated the source entry point without rebuilding that wheel or repeating the unaffected suite.
