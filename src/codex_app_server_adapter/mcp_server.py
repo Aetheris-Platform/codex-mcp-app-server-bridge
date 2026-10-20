@@ -99,7 +99,7 @@ def create_server(service: AdapterService) -> Server:
 
     return Server(
         "codex-app-server",
-        version="0.1.0",
+        version="1.0.0",
         on_list_tools=on_list_tools,
         on_call_tool=on_call_tool,
     )

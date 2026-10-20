@@ -16,7 +16,7 @@ or remediation SLA, a bug bounty, or authorization to test third-party systems.
 ## Supported scope
 
 Before the first public release, security fixes target the current reviewed
-candidate. After release, fixes target the latest released 0.1.x version;
+candidate. After release, fixes target the latest released 1.0.x version;
 older commits and locally modified forks are not separately maintained.
 Report the exact commit even when the package version is unchanged. Platform
 and runtime qualification is limited to the configurations in

@@ -75,6 +75,10 @@ def test_package_is_self_contained_and_has_neutral_entrypoint() -> None:
     root = Path(__file__).parents[1]
     project = tomllib.loads((root / "pyproject.toml").read_text())["project"]
     assert project["name"] == "codex-mcp-app-server-bridge"
+    assert project["version"] == "1.0.0"
+    lock = tomllib.loads((root / "uv.lock").read_text())
+    locked_project = next(p for p in lock["package"] if p["name"] == project["name"])
+    assert locked_project["version"] == project["version"]
     assert project["scripts"] == {
         "codex-mcp-app-server-bridge": "codex_app_server_adapter.__main__:main",
     }

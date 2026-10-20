@@ -1,6 +1,6 @@
 # Developer integration contract
 
-This is the caller-facing contract for the current `0.1.0` checkout interface. It documents existing behavior; it does not add tools or change runtime semantics. Use it with the [setup instructions](../README.md#get-and-prepare-your-local-checkout) and [operational contract](contract.md).
+This is the caller-facing contract for the current `1.0.0` checkout interface. It documents existing behavior; it does not add tools or change runtime semantics. Use it with the [setup instructions](../README.md#get-and-prepare-your-local-checkout) and [operational contract](contract.md).
 
 ## Parties and responsibilities
 
@@ -17,7 +17,7 @@ The operator can configure reasoning effort in the selected Codex home's `config
 
 The host starts `python -m codex_app_server_adapter --profile <existing-private-profile>` using absolute interpreter/profile paths and `PYTHONPATH` pointing to the checkout's `src` directory. See the [registration example](../README.md#launch-from-any-directory); adapt its enclosing configuration format to the host. Installation and authentication are separate setup steps, never runtime downloads.
 
-Use standard MCP initialization and tool discovery over stdin/stdout. The bridge reports server name `codex-app-server`, version `0.1.0`; the tested MCP protocol revision is `2025-06-18`. The native client identity is `codex-mcp-app-server-bridge`. Native thread/turn RPC methods are not accepted as MCP tools.
+Use standard MCP initialization and tool discovery over stdin/stdout. The bridge reports server name `codex-app-server`, version `1.0.0`; the tested MCP protocol revision is `2025-06-18`. The native client identity is `codex-mcp-app-server-bridge`. Native thread/turn RPC methods are not accepted as MCP tools.
 
 Keep the bridge process and its stdin alive while tasks run. Asynchronous submission means a tool call can return before the task completes; it does not make the task independent of the adapter process. Closing stdin initiates bounded shutdown and interruption of owned work on every platform; Unix also installs SIGINT/SIGTERM shutdown handlers. Native Windows hosts should close stdin for graceful shutdown, not assume Unix signal behavior. Forced termination triggers owned-process cleanup but is not confirmation of a provider-turn outcome. An MCP host that kills a server after each tool call cannot preserve this lifecycle.
 
@@ -124,7 +124,7 @@ A host RPC timeout does not extend or replace the task deadline, automatically c
 
 ## Compatibility and integration acceptance
 
-Pin a reviewed bridge commit, locked dependencies and the exact native runtime. The `0.1.0` interface does not promise that every future runtime or store version is compatible; this extraction supplies no general migration tool. Do not use the private task-record schema as an application API. Preserve unfamiliar diagnostics and fail visibly on unsupported states rather than silently interpreting them as success.
+Pin a reviewed bridge commit, locked dependencies and the exact native runtime. The `1.0.0` interface does not promise that every future runtime or store version is compatible; this extraction supplies no general migration tool. Do not use the private task-record schema as an application API. Preserve unfamiliar diagnostics and fail visibly on unsupported states rather than silently interpreting them as success.
 
 Before activating a host integration, follow the [client-neutral integration test procedure and success targets](integration-testing.md). Verify the host can keep a stdio server alive, discover all four tools, decode success/errors, retain request/task identity, advance cursors, reconstruct multiple result pages, and distinguish cancellation acknowledgement from a confirmed outcome. Start with the included offline fixture smoke; real-provider checks require your selected runtime/model/authentication and usage authorization. MCP support alone does not prove that a particular host can launch local stdio servers or correctly handle this lifecycle.
 

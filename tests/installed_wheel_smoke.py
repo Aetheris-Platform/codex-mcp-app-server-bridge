@@ -112,7 +112,7 @@ async def _case(
             env=environment,
         )
         try:
-            await _rpc(
+            initialized = await _rpc(
                 process,
                 1,
                 "initialize",
@@ -122,6 +122,8 @@ async def _case(
                     "clientInfo": {"name": "installed-wheel-smoke", "version": "1"},
                 },
             )
+            assert initialized["serverInfo"]["name"] == "codex-app-server"
+            assert initialized["serverInfo"]["version"] == "1.0.0"
             tools = await _rpc(process, 2, "tools/list", {})
             assert {item["name"] for item in tools["tools"]} == {
                 "codex_start",
