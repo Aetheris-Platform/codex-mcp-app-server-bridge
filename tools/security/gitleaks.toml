@@ -1,3 +1,20 @@
 title = "Bridge maintainer secret scan"
 [extend]
 useDefault = true
+
+# Reviewed 2026-10-20: these are SHA-256 digests of retained scanner receipts,
+# not credentials. Require both the exact evidence path and exact receipt line.
+[[allowlists]]
+description = "Verified scanner receipt digests in the 2026-10-20 evidence record"
+targetRules = ["generic-api-key"]
+condition = "AND"
+regexTarget = "line"
+paths = ['''(^|[\\/])docs[\\/]provenance[\\/]security-validation-2026-10-20\.json$''']
+regexes = [
+    '''^\s*"security/secrets\-history\.log": "69cd4de3211c61fd14533f213f9f25fd49ebec345def44d8ece6fb109d24f00b",?\s*$''',
+    '''^\s*"security/secrets\-files\.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",?\s*$''',
+    '''^\s*"security/secrets\-files\.log": "cf91a6881d4c4a0e405ded72b855a15391282df22c8f8cb174ed190a0f996632",?\s*$''',
+    '''^\s*"security/secrets\-pr\.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",?\s*$''',
+    '''^\s*"security/secrets\-pr\.log": "90ed45d4927d9d24fbd5b0cb1f75ec4d4eec4a3ac75f679807a3443aa4d0f52e",?\s*$''',
+    '''^\s*"security/secrets\-history\.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",?\s*$''',
+]

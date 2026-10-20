@@ -29,6 +29,17 @@ The [machine record](provenance/security-validation-2026-10-20.json) retains
 input/receipt hashes, exact environments, tool versions, base commit and counts.
 Raw reports remain private under ignored local storage.
 
+After the evidence was committed at `1f2280e4618550a4af2ee393c90790128510548e`,
+Gitleaks flagged six receipt-digest lines in the evidence JSON as generic API
+keys. That failed run is retained. Each digest was recomputed from its scanner
+receipt and confirmed to be a SHA-256, not a credential. The configuration now
+requires the exact evidence path and exact line/value for those reviewed false
+positives; other secrets in that file remain detectable. The later PR records
+the final candidate's rerun separately from the original candidate above.
+Focused scanner probes accepted the six exact receipt lines and detected a
+changed digest, the same values under another path and a synthetic key added
+to the evidence path, with findings fully redacted.
+
 Bandit's raw exit was 1 because it reports the 21 reviewed uses. The runner
 accepted their exact fingerprints and reasons from the committed review file;
 it did not label the raw scan finding-free. New findings, changed source or

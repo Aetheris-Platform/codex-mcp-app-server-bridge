@@ -89,6 +89,12 @@ Commit only a sanitized summary; retain failures as well as successful reruns.
 
 ## Reviewed code-analysis findings
 
+The Gitleaks configuration retains all default rules. Six exact receipt-digest
+lines in the dated evidence JSON are reviewed false positives for
+`generic-api-key`: each SHA-256 was recomputed from its retained scanner receipt.
+The exception requires both the exact evidence file path and exact line/value;
+it does not exclude that file, arbitrary hashes or the rule as a whole.
+
 `tools/security/bandit-reviewed.json` contains individual review reasons. Each
 exception is bound to file path, test ID, line, code excerpt and the whole source
 file SHA-256. A changed file, new finding, stale exception or parse error fails
