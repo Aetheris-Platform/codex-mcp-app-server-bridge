@@ -27,9 +27,10 @@
       "source_path": "developer-tools/codex-bridge/pyproject.toml",
       "source_sha256": "faaa8fef79a6943415acb95f7a2167c347b6df9d6b966db246aee6d292a1b349",
       "destination_path": "pyproject.toml",
-      "destination_sha256": "570c9b341d782673720ca1b18e2f6b1558b076b7f380132e1c7fc76acae1d700",
-      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
-      "extraction_destination_sha256": "763f00240c2c1c4cfb553ead7128b0a8012e52d8201cfda04507c247eeb521d0"
+      "destination_sha256": "77e74d826fa88daa524d8d9850307b79aaff210a7478551a3d07582001c63bce",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md; version 1.0.0 follow-up; see docs/version-1.0.0.md",
+      "extraction_destination_sha256": "763f00240c2c1c4cfb553ead7128b0a8012e52d8201cfda04507c247eeb521d0",
+      "pre_1_0_0_destination_sha256": "570c9b341d782673720ca1b18e2f6b1558b076b7f380132e1c7fc76acae1d700"
     },
     {
       "source_path": "developer-tools/codex-bridge/source-transfer.json",
@@ -71,9 +72,10 @@
       "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/mcp_server.py",
       "source_sha256": "d63124ad40acb98e1374f86e5e5c4eb806ad6200bdbe3a030c1e2ee50e2bedcc",
       "destination_path": "src/codex_app_server_adapter/mcp_server.py",
-      "destination_sha256": "9ce425d1021826e8350ebc1588f449f7a46fd12d953f8fad052bee8d26a6d540",
-      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
-      "extraction_destination_sha256": "d63124ad40acb98e1374f86e5e5c4eb806ad6200bdbe3a030c1e2ee50e2bedcc"
+      "destination_sha256": "7c64ef935b3fbc121a729be15f507987ef9766d830e3e85675402195121d0cd9",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md; version 1.0.0 follow-up; see docs/version-1.0.0.md",
+      "extraction_destination_sha256": "d63124ad40acb98e1374f86e5e5c4eb806ad6200bdbe3a030c1e2ee50e2bedcc",
+      "pre_1_0_0_destination_sha256": "9ce425d1021826e8350ebc1588f449f7a46fd12d953f8fad052bee8d26a6d540"
     },
     {
       "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/models.py",
@@ -147,9 +149,10 @@
       "source_path": "developer-tools/codex-bridge/tests/installed_wheel_smoke.py",
       "source_sha256": "a2c60e82078c13801363ab021e047d62526fe62e6c61d78895489a6b56406fab",
       "destination_path": "tests/installed_wheel_smoke.py",
-      "destination_sha256": "68da655b35173d2307686db0f7072199751ce54a068edbfc6db528c509b1a097",
-      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
-      "extraction_destination_sha256": "7f0c8cee204b2e9f927bb0624e6c6a2c1dfc252cb74189225fcda0803ecda974"
+      "destination_sha256": "e664cdd1662013062ec347873fe198b6882f2112bad22d0adae6f36dbfeef6e9",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md; version 1.0.0 follow-up; see docs/version-1.0.0.md",
+      "extraction_destination_sha256": "7f0c8cee204b2e9f927bb0624e6c6a2c1dfc252cb74189225fcda0803ecda974",
+      "pre_1_0_0_destination_sha256": "68da655b35173d2307686db0f7072199751ce54a068edbfc6db528c509b1a097"
     },
     {
       "source_path": "developer-tools/codex-bridge/tests/test_codex_app_server_adapter.py",
@@ -211,10 +214,11 @@
       "source_path": "developer-tools/codex-bridge/uv.lock",
       "source_sha256": "790d9cd24d23aa3cce35998e3f3329b68ca58087d829a907b0037c5ead187802",
       "destination_path": "uv.lock",
-      "destination_sha256": "038e81fb59cd9ceb079e17be3c7f10105f6307e088b71263b34cf8579589ec88",
-      "transfer": "adapted; PyJWT 2.15.0 security update; see docs/security-testing.md",
+      "destination_sha256": "968aa1c465175072be17ea1165c5b911b57450ff4be7055082028492d0afd672",
+      "transfer": "adapted; PyJWT 2.15.0 security update; see docs/security-testing.md; version 1.0.0 follow-up; see docs/version-1.0.0.md",
       "extraction_destination_sha256": "be400f28768c422b670b9af27df2319192c2bb2d453482d14305f87517c2cb41",
-      "pre_security_update_destination_sha256": "b09c882a8616c21e8930dcb5ffb9500ef5c52e8ff9c0079e3b45e919b841213a"
+      "pre_security_update_destination_sha256": "b09c882a8616c21e8930dcb5ffb9500ef5c52e8ff9c0079e3b45e919b841213a",
+      "pre_1_0_0_destination_sha256": "038e81fb59cd9ceb079e17be3c7f10105f6307e088b71263b34cf8579589ec88"
     }
   ],
   "destination_initial_commit": "64056785b21b51e269098a47583111723845542d",

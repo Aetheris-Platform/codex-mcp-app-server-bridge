@@ -1,5 +1,11 @@
 # Codex MCP app-server bridge
 
+The package and MCP server identify this checkout as **1.0.0**. This version
+update preserves the accepted tool interfaces and task behavior; it does not
+publish a package or GitHub release. Platform evidence remains tied to its
+recorded candidate, with [version-update checks](docs/version-1.0.0.md) recorded
+separately.
+
 Clone the bridge, run it locally, and integrate it into your own development workflow. It connects an MCP-compatible client to your local Codex app-server so your tools can start coding tasks asynchronously, inspect progress, retrieve complete results in pages, and request cancellation. Task identity and history persist in a private local store.
 
 **GitHub hosts the source code, not a running bridge service.** Developers pull the code onto their own machines, install its locked dependencies, create their own private configuration, and register the local executable with their MCP client. There is no GitHub-hosted endpoint to connect to and no GitHub Actions requirement for using the bridge. Codex model execution still requires the developer's configured provider access.
