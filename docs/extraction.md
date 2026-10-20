@@ -8,7 +8,7 @@ This owner-authorized extraction is a separate developer repository. It changes 
 | --- | --- | --- |
 | Implementation source committed HEAD | `7a55276bf76e35ecd1004b79a1256da4cca5bc53` | Source of every transferred implementation/test/lock file |
 | Implementation source bridge `src` tree | `10ea2a3d556c0a074adcb198cf2dab4a6b11b83d` | 13 Python modules including ownership and guardian |
-| Implementation source bridge lock SHA-256 | `790d9cd24d23aa3cce35998e3f3329b68ca58087d829a907b0037c5ead187802` | Dependency graph/artifact hashes unchanged; root project renamed |
+| Implementation source bridge lock SHA-256 | `790d9cd24d23aa3cce35998e3f3329b68ca58087d829a907b0037c5ead187802` | Initial extraction preserved dependency graph/artifact hashes and renamed the root project; later platform/security changes are recorded separately |
 | Design source checkout HEAD | `54848f1c9bdd190c5d06bae4d4a73f69ae9d2299` | ADR/context; existing `.gitignore` edit left untouched |
 | Design source locally available origin/main snapshot | `589ca38086f9b98790c9a651305974b001c1da2a` | Committed successor records for socket alias and notification qualification missing at checkout HEAD; no fetch, checkout or edit |
 | Prior design-source to implementation-source transfer | `844f56c77d2f73d9b6f4e78bca69fd94ccce49d5` | Historical attribution in retained Implementation source `source-transfer.json`; not the current extraction input |

@@ -99,11 +99,12 @@ death terminates jobs. Normal shutdown requests job termination and checks that
 all members exited. This uses more processes than Unix's shared socket backend;
 it does not add task continuation, routing fallback or an unattended service.
 Native Windows kernel behavior and Windows-to-WSL forwarding require separate
-Windows 11 receipts before qualification. The macOS live receipt is not evidence
-for these new routes or this changed candidate.
+Windows 11 receipts; the [release acceptance](release-acceptance-2026-10-20.md)
+records those passing offline checks at `cd5d3f6`. The macOS live receipt does
+not qualify a live provider on these routes.
 
 The operator profile pins an executable by absolute path, SHA-256 and exact
-`--version` output. Runtime drift blocks dispatch. The adapter owns one
+`--version` output. Runtime drift blocks dispatch. On Unix, the adapter owns one
 session-scoped local guardian, app-server child and endpoint; it does not
 install an unattended service or promise survival across host shutdown.
 The adapter creates an anonymous liveness pipe, keeps its sole write end,

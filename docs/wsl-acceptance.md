@@ -1,7 +1,8 @@
 # WSL2 and Windows-to-WSL offline acceptance
 
-Owner-machine acceptance passed both stages at `ade75b4` on 2026-10-20;
-see the [recorded result and limits](wsl-offline-pass-2026-10-20.md). The steps
+Current owner-machine acceptance passed both stages at `cd5d3f6` on 2026-10-20;
+see [release acceptance](release-acceptance-2026-10-20.md) for results and limits.
+The [earlier `ade75b4` record](wsl-offline-pass-2026-10-20.md) remains historical. The steps
 below are reusable acceptance instructions for a chosen candidate.
 
 These are two separate tests. First run the Linux bridge suite inside WSL2;

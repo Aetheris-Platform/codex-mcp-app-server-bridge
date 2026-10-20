@@ -24,16 +24,16 @@ checks. Corrected candidate `cd5d3f6` passed native Windows (19 passes/one skip
 plus three lifecycle repeats), WSL2 (535 passes/four skips/one deselection),
 actual forwarding and Windows direct/WSL transferred security acceptance.
 The earlier native failure and WSL network-blocked queries remain recorded.
-See [release acceptance](release-acceptance-2026-10-20.md) for current results;
-the table below retains the earlier platform baselines.
+See [release acceptance](release-acceptance-2026-10-20.md) for current results.
+Earlier baselines remain in the dated validation records.
 
 | Target | Implementation | Recorded acceptance and limits |
 | --- | --- | --- |
-| macOS | Unix socket, flock and guardian backend | Offline PASS: 507 tests plus MCP smoke, arm64 / Python 3.14.6; earlier live evidence applies only to its recorded candidate/runtime/model |
-| Linux | Same Unix backend; anonymous-pipe admission uses procfs | Offline Docker PASS: 507 tests plus MCP smoke, aarch64 / Python 3.14.6; additional WSL2 evidence below |
-| Windows 11 native | Anonymous stdio pipes, Windows ACLs, byte-range locks and Job Objects | **Owner-run offline PASS at `5fdff37`** (Windows 11 build 26300 / Python 3.12.14); live runtime/model acceptance remains separate |
-| WSL2 | Linux backend inside the distribution | **Owner-run offline PASS at `ade75b4`**: 507 passes, 4 Windows-only skips, 1 installed-runtime deselection; Debian 13.5 x86_64 / Python 3.13.5, ordinary Linux user |
-| Windows-to-WSL2 | Windows MCP client launches the same Linux package through `wsl.exe` | **Separate owner-run offline PASS at `ade75b4`**: all 7 harness check groups; Windows 11 build 26300 / Python 3.12.14 initiating client |
+| macOS | Unix socket, flock and guardian backend | Offline PASS for the `cd5d3f6` implementation: 535 passes, 4 Windows-only skips, 1 deselection plus MCP smoke; arm64 / Python 3.14.6; earlier live evidence retains its original scope |
+| Linux | Same Unix backend; anonymous-pipe admission uses procfs | Offline Docker PASS at `cd5d3f6`: 535 passes, 4 skips, 1 deselection plus MCP smoke; aarch64 / Python 3.14.6, UID 501 |
+| Windows 11 native | Anonymous stdio pipes, Windows ACLs, byte-range locks and Job Objects | **Owner-run offline PASS at `cd5d3f6`**: 19 passes, 1 Unix-only skip and three additional lifecycle passes; Windows 11 build 26300 / Python 3.12.14; live runtime/model acceptance remains separate |
+| WSL2 | Linux backend inside the distribution | **Owner-run offline PASS at `cd5d3f6`**: 535 passes, 4 Windows-only skips, 1 installed-runtime deselection; Debian 13.5 x86_64 / Python 3.13.5, ordinary Linux user |
+| Windows-to-WSL2 | Windows MCP client launches the same Linux package through `wsl.exe` | **Separate owner-run offline PASS at `cd5d3f6`**: all 7 harness check groups; Windows 11 build 26300 / Python 3.12.14 initiating client |
 
 Git is required for checkout and the line-ending regression test. Repository attributes keep source/provenance text at LF even with `core.autocrlf=true`; the transfer verifier still checks raw bytes.
 
@@ -113,7 +113,7 @@ Example local stdio registration for any MCP host accepting this configuration s
 }
 ```
 
-Adapt the host's registration syntax while preserving command/argument boundaries. Keep its stdin open across tool calls. The Windows backend uses one owned app-server per native connection because native stdio is a single-client transport. Logical disconnect drains its output without killing work; jobs remain session-owned until bridge shutdown. This can use more processes than the shared Unix socket backend. Close idle bridge sessions normally. Job membership is assigned atomically before the child executes; descendants inherit the job, breakaway is not enabled, and the adapter alone owns the kill-on-close handle. No PID scanning or attachment to an existing runtime is used. The bounded owner-run Windows acceptance at `5fdff37` exercised these kernel-level tests successfully; see the [recorded result](windows-offline-pass-2026-10-19.md).
+Adapt the host's registration syntax while preserving command/argument boundaries. Keep its stdin open across tool calls. The Windows backend uses one owned app-server per native connection because native stdio is a single-client transport. Logical disconnect drains its output without killing work; jobs remain session-owned until bridge shutdown. This can use more processes than the shared Unix socket backend. Close idle bridge sessions normally. Job membership is assigned atomically before the child executes; descendants inherit the job, breakaway is not enabled, and the adapter alone owns the kill-on-close handle. No PID scanning or attachment to an existing runtime is used. The bounded owner-run Windows acceptance at `cd5d3f6` exercised these kernel-level tests successfully; see the [reviewed release acceptance](release-acceptance-2026-10-20.md).
 
 ## wsl
 

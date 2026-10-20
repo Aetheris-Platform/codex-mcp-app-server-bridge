@@ -1,6 +1,6 @@
 # Platform implementation and validation — updated 2026-10-20
 
-The owner expanded the extraction scope to macOS, Linux, native Windows 11 and Windows 11 with WSL2, with platform selection before integration. This candidate keeps the common MCP/task code and the established Unix backend, adds native Windows filesystem/process/stdio primitives, and ships separate platform test routes. The repository remains private. Native Windows bounded offline acceptance passed at `5fdff37`; earlier failures remain recorded below. WSL2 and Windows-to-WSL forwarding passed bounded offline acceptance at `ade75b4`; merge remains the owner’s decision. See [the Windows report and corrections](windows-acceptance-2026-10-19.md).
+The owner expanded the extraction scope to macOS, Linux, native Windows 11 and Windows 11 with WSL2, with platform selection before integration. This candidate keeps the common MCP/task code and the established Unix backend, adds native Windows filesystem/process/stdio primitives, and ships separate platform test routes. The repository remains private. Native Windows, WSL2 and actual Windows-to-WSL forwarding passed bounded offline acceptance at `cd5d3f6`; merge remains the owner’s decision. See [current release acceptance](release-acceptance-2026-10-20.md). Earlier candidate results and failures remain recorded below.
 
 ## Current release acceptance — 2026-10-20
 
@@ -80,7 +80,7 @@ runners: **498 passed, 4 skipped, 1 deselected**, plus MCP smoke, lint and all
 25 transfer checks; runner exits **0**. Native Windows still requires a fresh
 run with a target of **14 passed, 1 Unix-only skip**.
 
-## Latest Windows rerun
+## Historical Windows persistence rerun — 2026-10-19
 
 Owner acceptance at `950e79e` recorded **10 passed, 1 failed, 1 skipped**; lint
 and all 25 transfer checks passed. Real Windows ACL, lock and descendant-death
@@ -94,7 +94,7 @@ After the owner-run failures, the corrected candidate passed the complete macOS
 and Linux Docker UID 501 runners: **495 passed, 4 skipped, 1 deselected**, actual
 MCP smoke, focused lint and all 25 transfer checks; both runner exits were **0**.
 See [corrections and retained failures](windows-acceptance-2026-10-19.md).
-Native Windows and WSL2 still require a new owner-run result.
+Native Windows and WSL2 required a new owner-run result at that checkpoint; subsequent acceptance is recorded above.
 
 ## Earlier platform candidate checks
 

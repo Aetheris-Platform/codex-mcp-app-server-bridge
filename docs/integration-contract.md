@@ -6,7 +6,7 @@ This is the caller-facing contract for the current `0.1.0` checkout interface. I
 
 | Party | Responsibility |
 | --- | --- |
-| Operator | Install locked dependencies, select and authenticate the pinned Codex executable, prepare the private profile/store/socket directories, choose allowed workspaces/models/sandboxes and protect credentials and retained data |
+| Operator | Install locked dependencies, select and authenticate the pinned Codex executable, prepare the private profile/store and Unix socket directories where applicable, choose allowed workspaces/models/sandboxes and protect credentials and retained data |
 | MCP host/application | Launch the local bridge, initialize MCP, persist the original request and returned task ID, advance status cursors, assemble result pages, handle uncertainty and follow cancellation through to an outcome |
 | Bridge | Validate admission, persist task identity, translate the four MCP tools to native Codex, enforce its configured constraints, retain outcomes and manage only its owned runtime resources |
 | Native Codex/provider | Execute model turns under its own authentication, permissions and availability; supply native events/history and interruption outcomes |
@@ -19,9 +19,9 @@ The host starts `python -m codex_app_server_adapter --profile <existing-private-
 
 Use standard MCP initialization and tool discovery over stdin/stdout. The bridge reports server name `codex-app-server`, version `0.1.0`; the tested MCP protocol revision is `2025-06-18`. The native client identity is `codex-mcp-app-server-bridge`. Native thread/turn RPC methods are not accepted as MCP tools.
 
-Keep the bridge process and its stdin alive while tasks run. Asynchronous submission means a tool call can return before the task completes; it does not make the task independent of the adapter process. Closing stdin or sending SIGINT/SIGTERM initiates bounded shutdown and interruption of owned work. An MCP host that kills a server after each tool call cannot preserve this lifecycle.
+Keep the bridge process and its stdin alive while tasks run. Asynchronous submission means a tool call can return before the task completes; it does not make the task independent of the adapter process. Closing stdin initiates bounded shutdown and interruption of owned work on every platform; Unix also installs SIGINT/SIGTERM shutdown handlers. Native Windows hosts should close stdin for graceful shutdown, not assume Unix signal behavior. Forced termination triggers owned-process cleanup but is not confirmation of a provider-turn outcome. An MCP host that kills a server after each tool call cannot preserve this lifecycle.
 
-One data root admits one cooperating adapter owner, even with different profile filenames. Hosts that launch separate bridge processes need distinct data roots and socket endpoints. Task IDs address records in the configured store, not a global service. Preserve the same compatible profile/runtime and store when restarting; changing profile contents is not a transparent way to resume or replay old tasks. Do not edit records or delete the persistent ownership lock to bypass contention.
+One data root admits one cooperating adapter owner, even with different profile filenames. Hosts that launch separate bridge processes need distinct data roots and, on Unix, distinct socket endpoints. Native Windows uses owned pipes and requires `socket_path: null`. Task IDs address records in the configured store, not a global service. Preserve the same compatible profile/runtime and store when restarting; changing profile contents is not a transparent way to resume or replay old tasks. Do not edit records or delete the persistent ownership lock to bypass contention.
 
 ## Requests
 

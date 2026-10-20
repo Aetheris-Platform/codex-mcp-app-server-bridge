@@ -1,5 +1,7 @@
 # Offline validation — 2026-10-19
 
+For the current cross-platform candidate, see [release acceptance](release-acceptance-2026-10-20.md). This file records the historical extraction baseline.
+
 Subsequent independent offline reviews and the separately authorized two-turn live test are recorded in [live validation](live-validation.md). The original runs and retained failures below remain unchanged.
 
 Environment: macOS arm64, Python 3.14.6, uv 0.12.18, destination-local locked dependencies. All native work used deterministic fixture executables, private task roots/profiles and uniquely owned sockets/processes. No installed Codex runtime, model/provider turn, source environment or consumer registration was used.

@@ -46,7 +46,7 @@ This is an independent project, not an official OpenAI product. Compatibility de
 
 ## Supported environment
 
-- Select **macOS, Linux, native Windows 11, or Windows 11 with WSL2**. Unix uses private sockets, process groups and `flock`; native Windows uses private stdio pipes, ACLs, file locks and Job Objects. See the [platform status matrix](docs/platforms.md#status-and-boundaries): native Windows passed bounded offline acceptance at `5fdff37`; WSL2 and Windows-to-WSL forwarding passed separately at `ade75b4`. See the [acceptance results](docs/wsl-offline-pass-2026-10-20.md) for the exact environments and scope.
+- Select **macOS, Linux, native Windows 11, or Windows 11 with WSL2**. Unix uses private sockets, process groups and `flock`; native Windows uses private stdio pipes, ACLs, file locks and Job Objects. Native Windows, WSL2 and actual Windows-to-WSL forwarding passed bounded offline acceptance at `cd5d3f6`. See the [platform status matrix](docs/platforms.md#status-and-boundaries) and [reviewed release acceptance](docs/release-acceptance-2026-10-20.md) for exact environments, test counts and scope.
 - Python 3.12+ is the declared requirement. Recorded offline tests used 3.14.6 on macOS/Linux Docker, 3.12.14 on native Windows and the Windows forwarding client, and 3.13.5 inside WSL2. Other combinations need their own qualification.
 - `uv` 0.12.18 was used for locked setup. Dependencies are `mcp==2.2.0`, `websockets==17.1`, Windows-only `pywin32==312`, and the exact transitive artifacts in the shared `uv.lock`. Locked setup selects the dependencies applicable to its environment.
 - An operator-selected Codex executable with the selected platform's local [app-server support](https://learn.chatgpt.com/docs/app-server), independently configured authentication, and an explicitly selected accessible model. The executable must have a stable absolute path without symlink components; a moving launcher is unsuitable.
@@ -99,7 +99,7 @@ On Unix, copy [the sanitized example](examples/profile.json), replace every plac
 
 Record the exact executable's `--version` output and SHA-256 (`shasum -a 256 /absolute/private/bin/codex`). The adapter verifies both before dispatch. Do not put credentials in the profile. Authentication remains the operator's responsibility. `CODEX_HOME`, when explicitly supplied, selects Codex's private home and the trusted `sessions/` root for native-journal capture; otherwise Codex's ordinary user home applies. Use an independently provisioned private home when isolation is required. This project neither provisions nor copies credentials.
 
-One data root has one cooperative adapter owner, even if two profiles have different names or socket paths. Concurrent independent adapters need distinct roots **and** endpoints. Do not run an older nonlocking adapter on the same root.
+One data root has one cooperative adapter owner, even if two profiles have different names or socket paths. Concurrent independent adapters need distinct data roots; Unix adapters also need distinct socket endpoints. Native Windows uses owned pipes with `socket_path: null`. Do not run an older nonlocking adapter on the same root.
 
 ## Launch from any directory
 
@@ -183,7 +183,7 @@ Wait for a terminal status before reading the final result. Decode each `chunk` 
 
 An acknowledgement is not confirmed termination. Continue observing `cancel-requested`; `cancelled / provider_interrupted` confirms provider interruption, while `cancelled_before_dispatch` means no turn was submitted. `unknown` preserves an unconfirmed outcome. A task that races to provider completion after stop intent is not relabeled as successful cancellation.
 
-Closing stdin or sending SIGINT/SIGTERM stops admission and requests bounded shutdown. Worker draining may take five seconds; the guardian allows five seconds for TERM and five for KILL, plus scheduling margin. Adapter death closes a liveness pipe so a surviving guardian can clean up only its own child. Guardian death/wedge or machine failure can leave resources behind. Nothing promises survival across host shutdown.
+Closing stdin stops admission and requests bounded shutdown on every platform. On Unix, SIGINT/SIGTERM also request that shutdown. Worker draining may take five seconds; the Unix guardian allows five seconds for TERM and five for KILL, plus scheduling margin. Unix adapter death closes a liveness pipe so a surviving guardian can clean up only its own child. Native Windows uses owned Job Objects for child/descendant cleanup; close stdin for graceful shutdown rather than assuming Unix signal behavior. Forced process termination does not confirm a provider-turn outcome. Guardian death/wedge or machine failure can leave resources behind. Nothing promises survival across host shutdown.
 
 ## Security boundaries and troubleshooting
 
@@ -197,7 +197,7 @@ The profile binds executable, paths, model and sandbox. Permissions returned by 
 - **Missing journal:** output can exist without complete native evidence. Native-journal capture is transport custody, not a formal verifier or approval mechanism. Prompts, results and journals may contain private data; protect the entire store and do not commit it.
 - **No response in a client:** verify the interpreter, absolute `PYTHONPATH`, stdin/stdout transport and locked environment. Keep diagnostics off stdout. No dependency fetching belongs in the launch command.
 
-Direct sockets and deterministic aliases are admitted. Alias admission checks a captured **path**, not the connected peer: a substitution restored before the post-connect check is undetectable. Identity comparison followed by unlink is **not atomic**; a replacement in that window can be removed. Same-user inode reuse and noncooperating processes remain outside the assurance boundary. See the [complete contract](docs/contract.md).
+On Unix, direct sockets and deterministic aliases are admitted. Alias admission checks a captured **path**, not the connected peer: a substitution restored before the post-connect check is undetectable. Identity comparison followed by unlink is **not atomic**; a replacement in that window can be removed. Same-user inode reuse and noncooperating processes remain outside the assurance boundary. See the [complete contract](docs/contract.md).
 
 ## Validate your integration
 
@@ -231,8 +231,8 @@ secret scanning, dependency auditing, code analysis and Ruff. Tool installations
 and raw receipts stay under ignored `.local/`; reusable scripts, versions and
 reviewed exceptions are committed. These checks use no paid GitHub product or
 Actions minutes. See [SECURITY.md](SECURITY.md) for private vulnerability reporting
-and [security validation](docs/security-validation-2026-10-20.md) for results and
-the updated dependency candidate’s results. The corrected candidate passed
+and [security validation](docs/security-validation-2026-10-20.md) for the initial
+audit and dependency correction. The corrected candidate passed
 native Windows and three lifecycle repeats, WSL2, actual forwarding, Windows
 direct security and WSL transferred-advisory acceptance. See the
 [reviewed release acceptance](docs/release-acceptance-2026-10-20.md).

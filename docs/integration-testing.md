@@ -16,7 +16,9 @@ enforce local test completion.
 Run [local security acceptance](security-testing.md) alongside the platform
 checks before release. It scans retained history and PR/candidate files, audits
 both dependency locks and checks reviewed code-analysis findings. Advisory
-queries need network access; no paid GitHub tools or model calls are involved.
+queries need network access on the querying machine. A disconnected WSL host
+may use the explicit [verified receipt-transfer procedure](security-testing.md#disconnected-wsl-advisory-checks);
+its code/secret scans still run locally. No paid GitHub tools or model calls are involved.
 
 After the selected environment's [locked development setup](platforms.md), run
 the following from its checkout root:
