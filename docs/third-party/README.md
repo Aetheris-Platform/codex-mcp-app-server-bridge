@@ -24,7 +24,7 @@ Actual license/NOTICE files copied from the 35 distributions installed from the 
 - pydantic 2.13.5: 1 retained notice text(s).
 - pydantic_core 2.46.5: 1 retained notice text(s).
 - Pygments 2.21.0: 1 retained notice text(s).
-- PyJWT 2.14.0: 1 retained notice text(s).
+- PyJWT 2.15.0: 2 retained notice text(s).
 - pytest 9.1.1: 1 retained notice text(s).
 - python-multipart 0.0.32: 1 retained notice text(s).
 - referencing 0.37.0: 1 retained notice text(s).
@@ -45,3 +45,5 @@ and byte hashes. These notices were collected during an earlier failed attempt;
 the subsequent [native Windows offline acceptance](../windows-offline-pass-2026-10-19.md)
 passed at its recorded candidate. Notice retention is separate from test
 acceptance and does not replace review of the exact artifacts being distributed.
+
+Security follow-up (2026-10-20): PyJWT was updated from 2.14.0 to 2.15.0. Its installed LICENSE and AUTHORS.rst are retained in the current inventory; the other recorded dependency notices are unchanged. Optional maintainer security tools are installed separately and are not bundled with the bridge.

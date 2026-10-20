@@ -343,13 +343,18 @@
   },
   {
     "name": "PyJWT",
-    "version": "2.14.0",
+    "version": "2.15.0",
     "license_expression": "MIT",
     "license_metadata": null,
     "license_classifiers": [],
     "texts": [
       {
-        "installed_path": "pyjwt-2.14.0.dist-info/licenses/LICENSE",
+        "installed_path": "pyjwt-2.15.0.dist-info/licenses/AUTHORS.rst",
+        "retained_path": "docs/third-party/pyjwt/licenses/AUTHORS.rst",
+        "sha256": "925ce43461029eedbf558ec0b7cf7fc4b045def5120ebb97937c70814071cf07"
+      },
+      {
+        "installed_path": "pyjwt-2.15.0.dist-info/licenses/LICENSE",
         "retained_path": "docs/third-party/pyjwt/licenses/LICENSE",
         "sha256": "797a7a20231d4c433e9f1911db1731d06b5828b98f499819a034f7c0f56f5ce5"
       }

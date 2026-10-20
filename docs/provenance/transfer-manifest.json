@@ -211,9 +211,10 @@
       "source_path": "developer-tools/codex-bridge/uv.lock",
       "source_sha256": "790d9cd24d23aa3cce35998e3f3329b68ca58087d829a907b0037c5ead187802",
       "destination_path": "uv.lock",
-      "destination_sha256": "b09c882a8616c21e8930dcb5ffb9500ef5c52e8ff9c0079e3b45e919b841213a",
-      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
-      "extraction_destination_sha256": "be400f28768c422b670b9af27df2319192c2bb2d453482d14305f87517c2cb41"
+      "destination_sha256": "038e81fb59cd9ceb079e17be3c7f10105f6307e088b71263b34cf8579589ec88",
+      "transfer": "adapted; PyJWT 2.15.0 security update; see docs/security-testing.md",
+      "extraction_destination_sha256": "be400f28768c422b670b9af27df2319192c2bb2d453482d14305f87517c2cb41",
+      "pre_security_update_destination_sha256": "b09c882a8616c21e8930dcb5ffb9500ef5c52e8ff9c0079e3b45e919b841213a"
     }
   ],
   "destination_initial_commit": "64056785b21b51e269098a47583111723845542d",

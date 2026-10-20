@@ -1,0 +1,191 @@
+[
+  {
+    "fingerprint": "16e24769a930d6ebc68af29538244f0b08967be3f0d121b35dc16f90190d0a2f",
+    "file": "src/codex_app_server_adapter/guardian.py",
+    "line": 17,
+    "test_id": "B404",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Module is required for the owned app-server child; subprocess creation is separately reviewed below."
+  },
+  {
+    "fingerprint": "ea41cfd216672e1654111ac5198c84acf178865b87f571a632e328d1d7c9cba6",
+    "file": "src/codex_app_server_adapter/guardian.py",
+    "line": 58,
+    "test_id": "B108",
+    "severity": "MEDIUM",
+    "reviewed_on": "2026-10-20",
+    "reason": "Fixed per-user runtime rendezvous path is part of the socket contract. Owner and mode 0700 are checked before endpoint admission; no arbitrary temporary filename is created here. Peer authentication and non-atomic unlink remain documented limits."
+  },
+  {
+    "fingerprint": "2d72fa75ebc9d63195302ca90f000ba2531957ca86583e9e33707d1e50d8bdb5",
+    "file": "src/codex_app_server_adapter/guardian.py",
+    "line": 409,
+    "test_id": "B603",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Explicit argv launches the operator-pinned runtime under a new owned session, with closed descriptors and no shell. Runtime digest/version admission occurs before guardian start."
+  },
+  {
+    "fingerprint": "143b3ae886e61abde31464c7088d1ebb99802e79a621e9aaefa20edb1b0831d7",
+    "file": "src/codex_app_server_adapter/profile.py",
+    "line": 9,
+    "test_id": "B404",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Required for the bounded runtime version probe; call reviewed separately."
+  },
+  {
+    "fingerprint": "15bfbe0cbf5630833eae88e5e1e69911a2b531e2d2cd05871bc8cb6e42ce29b4",
+    "file": "src/codex_app_server_adapter/profile.py",
+    "line": 100,
+    "test_id": "B603",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Absolute operator runtime path is validated and its SHA-256 checked immediately before a fixed --version argv probe with a five-second timeout; no shell."
+  },
+  {
+    "fingerprint": "37f58e919d04243886624d6fefb47fab8464eb28c1492b213d7bfaa4b16e230d",
+    "file": "src/codex_app_server_adapter/windows_process.py",
+    "line": 13,
+    "test_id": "B404",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Uses subprocess constants and list2cmdline for the native owned-process API, not shell execution."
+  },
+  {
+    "fingerprint": "d25b98609dd2a5868b305c85eaa4dfbc66299f5667eef4c8aef66a35ac93c8b0",
+    "file": "tools/security_check.py",
+    "line": 11,
+    "test_id": "B404",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Maintainer runner executes fixed argv lists for installed local security tools and read-only Git queries; no shell or runtime credentials."
+  },
+  {
+    "fingerprint": "62397f1fafe2f4a3601565337ce833eacf062552903536ec13212eaa4c5f9bbf",
+    "file": "tools/security_check.py",
+    "line": 71,
+    "test_id": "B603",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Explicit argv uses the operator Git resolved through PATH or pinned checkout-local tools. Base ref resolves with --end-of-options before use as a commit range. No shell; tool calls bounded at 600 seconds. Maintainers review candidate code before running it."
+  },
+  {
+    "fingerprint": "34e1fa18d28f94feb5a9e780e4ce9ad9d18202089f468cf10d64ed60644882cc",
+    "file": "tools/security_check.py",
+    "line": 86,
+    "test_id": "B603",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Explicit argv uses the operator Git resolved through PATH or pinned checkout-local tools. Base ref resolves with --end-of-options before use as a commit range. No shell; tool calls bounded at 600 seconds. Maintainers review candidate code before running it."
+  },
+  {
+    "fingerprint": "f342c4804a7ae03881e3e1b9b9995c03f971144fd16d94dfa14c3df96ec818de",
+    "file": "tools/security_check.py",
+    "line": 91,
+    "test_id": "B603",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Explicit argv uses the operator Git resolved through PATH or pinned checkout-local tools. Base ref resolves with --end-of-options before use as a commit range. No shell; tool calls bounded at 600 seconds. Maintainers review candidate code before running it."
+  },
+  {
+    "fingerprint": "9028c04e5189cff09c5868082f832866d4e25de9423033102cecddb577042900",
+    "file": "tools/security_check.py",
+    "line": 104,
+    "test_id": "B603",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Explicit argv uses the operator Git resolved through PATH or pinned checkout-local tools. Base ref resolves with --end-of-options before use as a commit range. No shell; tool calls bounded at 600 seconds. Maintainers review candidate code before running it."
+  },
+  {
+    "fingerprint": "aa7fa1698f095a68d83d5cb8bddcbae38b354bcd4a90cb9b724414cf6b4b6b6a",
+    "file": "tools/security_check.py",
+    "line": 126,
+    "test_id": "B603",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Explicit argv uses the operator Git resolved through PATH or pinned checkout-local tools. Base ref resolves with --end-of-options before use as a commit range. No shell; tool calls bounded at 600 seconds. Maintainers review candidate code before running it."
+  },
+  {
+    "fingerprint": "f5addc6f9dbae08b720f4fac7ab40274814799ff6d71471679154d4d9fbe525d",
+    "file": "tools/setup_security.py",
+    "line": 55,
+    "test_id": "B310",
+    "severity": "MEDIUM",
+    "reviewed_on": "2026-10-20",
+    "reason": "Explicit network setup only. URL is constructed from a committed official HTTPS release pin; downloaded bytes must match its committed SHA-256 before named regular members are read. No arbitrary extraction or launch-time download."
+  },
+  {
+    "fingerprint": "3f4821e7a460898af691a17f30c7208294236b1eb5f0ea42860ea546c07935ff",
+    "file": "tools/test_platform.py",
+    "line": 11,
+    "test_id": "B404",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Maintainer runner invokes its own interpreter with fixed local test/tool paths; no shell."
+  },
+  {
+    "fingerprint": "791e8da175f586147b41b2c3a3a63a39054952ddb5934f9a8c5b03f11fed3a2f",
+    "file": "tools/test_platform.py",
+    "line": 15,
+    "test_id": "B405",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "XML is an owned pytest receipt generated in this invocation, not an external upload; the tested candidate already executes with this account privileges."
+  },
+  {
+    "fingerprint": "25243a7eed95c1a6f5c7094048124c1f0a46ba27a601a146c0e90831ccf12caa",
+    "file": "tools/test_platform.py",
+    "line": 37,
+    "test_id": "B108",
+    "severity": "MEDIUM",
+    "reviewed_on": "2026-10-20",
+    "reason": "Canonical temporary root only; a unique mkdtemp directory with private permissions is created below it before fixture data is written. Windows uses checked private directory creation."
+  },
+  {
+    "fingerprint": "db2cc2503c882dca2da76ddccb8108592e4e8294f9d9d5649e275271dac47a09",
+    "file": "tools/test_platform.py",
+    "line": 72,
+    "test_id": "B603",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Fixed command lists invoke the selected local Python with repository fixtures and private receipt paths; no shell and each command has a 600-second bound."
+  },
+  {
+    "fingerprint": "c6fa8fd994a8f336f25977e26c6006dd95f24072a34aad5a4b7543cb7da0e005",
+    "file": "tools/test_platform.py",
+    "line": 82,
+    "test_id": "B314",
+    "severity": "MEDIUM",
+    "reviewed_on": "2026-10-20",
+    "reason": "Parses only tests.xml generated by the owned pytest child in its fresh private receipt directory. Do not use this runner to parse third-party XML reports."
+  },
+  {
+    "fingerprint": "232f89d7498a325f7e32bd36b8aed7cf2e3fb98af03c5d3ef1a5f30ca3328673",
+    "file": "tools/verify_transfer.py",
+    "line": 8,
+    "test_id": "B404",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Required for optional read-only source Git blob comparison; no source mutation."
+  },
+  {
+    "fingerprint": "f51e96eb485641cee6d139fb0d42453248f6b37b23bdf577a8c4a55dd631febe",
+    "file": "tools/verify_transfer.py",
+    "line": 27,
+    "test_id": "B607",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Uses the maintainer Git from PATH as documented prerequisite. Optional source comparison executes git show only; source argument is a separate -C argv value."
+  },
+  {
+    "fingerprint": "dd714ccb93f85244c59954156b19ebe8dc8e77b337630feeb6a089ad1add5298",
+    "file": "tools/verify_transfer.py",
+    "line": 27,
+    "test_id": "B603",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "reason": "Explicit git -C PATH show COMMIT:PATH argv reads pinned blobs; no shell or execution of source repository code."
+  }
+]

@@ -13,6 +13,11 @@ stores the source and PR discussion; the owner reviews local evidence and merges
 manually. The existing branch rules remain unchanged and do not automatically
 enforce local test completion.
 
+Run [local security acceptance](security-testing.md) alongside the platform
+checks before release. It scans retained history and PR/candidate files, audits
+both dependency locks and checks reviewed code-analysis findings. Advisory
+queries need network access; no paid GitHub tools or model calls are involved.
+
 After the selected environment's [locked development setup](platforms.md), run
 the following from its checkout root:
 
@@ -126,7 +131,7 @@ Run the suite in a fresh short temporary root. Retain that root and its XML whil
 )
 ```
 
-**Pass:** exit 0, zero test failures/errors, and no unexplained skips. The current recorded Unix platform target is **507 passed, 4 Windows-only skips, 1 deselected**; native Windows has its own route below. The original extraction baseline was 487 passes before platform tests were added. The deselected test is the explicitly opt-in installed Codex 0.156.0 alias check; it is not a hidden failure or a live-provider pass. Counts can change with later commits: record your tested commit and actual counts. Investigate a lower count rather than accepting it solely because the exit code is zero.
+**Pass:** exit 0, zero test failures/errors, and no unexplained skips. The current Unix platform target is **519 passed, 4 Windows-only skips, 1 deselected**, including 12 security-tool regressions; native Windows has its own route below and runs the security-tool regressions separately. The original extraction baseline was 487 passes before platform tests were added. The deselected test is the explicitly opt-in installed Codex 0.156.0 alias check; it is not a hidden failure or a live-provider pass. Counts can change with later commits: record your tested commit and actual counts. Investigate a lower count rather than accepting it solely because the exit code is zero.
 
 The suite covers validation negatives, task lifecycle, deadlines, cancellation, persistence, restart reconciliation, exclusive ownership, independent roots, losing-startup noninterference, shutdown, process death, guardian behavior, sockets and protocol compatibility. These are fixture observations, not real-provider guarantees. Unix socket/process facilities are required for this suite. Native Windows has a separate kernel/MCP route; passing Docker does not qualify WSL2 forwarding or native Windows. See the [platform test targets](platforms.md#included-test-routes).
 

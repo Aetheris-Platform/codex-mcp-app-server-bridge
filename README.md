@@ -226,6 +226,12 @@ See the [local maintainer acceptance procedure](docs/integration-testing.md#loca
 for commands, evidence and documentation-only changes. Integrators separately
 test their own MCP host using the guide above; they do not need to configure CI.
 
+Maintainers also run [local security checks](docs/security-testing.md): pinned
+secret scanning, dependency auditing, code analysis and Ruff. Tool installations
+and raw receipts stay under ignored `.local/`; reusable scripts, versions and
+reviewed exceptions are committed. These checks use no paid GitHub product or
+Actions minutes. See [SECURITY.md](SECURITY.md) for private vulnerability reporting.
+
 ## Offline tests
 
 After selecting a platform and installing dev dependencies, run `.venv/bin/python tools/test_platform.py` (native Windows: `.venv\Scripts\python.exe tools/test_platform.py`). It uses the saved selection and retains logs/JUnit. For WSL2 and a Windows MCP host launching through `wsl.exe`, use the separate [two-stage acceptance procedure](docs/wsl-acceptance.md) and included Windows-side forwarding harness. The lower-level commands below are Unix-only.

@@ -1,0 +1,3 @@
+title = "Bridge maintainer secret scan"
+[extend]
+useDefault = true
