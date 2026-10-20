@@ -1,0 +1,690 @@
+{
+  "before": {
+    "open-lifecycle-traceability-standard": {
+      "repository": {
+        "ok": true,
+        "data": {
+          "name": "open-lifecycle-traceability-standard",
+          "description": "A repo-native standard for explicit lifecycle traceability across requirements, tests, evidence, decisions, artifacts, and release readiness without requiring a specific tool, database, or platform.",
+          "homepage": null,
+          "private": false,
+          "visibility": "public",
+          "default_branch": "main",
+          "has_issues": true,
+          "has_projects": false,
+          "has_wiki": false,
+          "has_discussions": true,
+          "is_template": false,
+          "allow_forking": true,
+          "web_commit_signoff_required": false,
+          "allow_merge_commit": true,
+          "allow_squash_merge": false,
+          "allow_rebase_merge": false,
+          "allow_auto_merge": false,
+          "delete_branch_on_merge": true,
+          "allow_update_branch": true,
+          "use_squash_pr_title_as_default": false,
+          "squash_merge_commit_message": "COMMIT_MESSAGES",
+          "squash_merge_commit_title": "COMMIT_OR_PR_TITLE",
+          "merge_commit_message": "PR_TITLE",
+          "merge_commit_title": "MERGE_MESSAGE",
+          "security_and_analysis": {
+            "secret_scanning": {
+              "status": "enabled"
+            },
+            "secret_scanning_push_protection": {
+              "status": "enabled"
+            },
+            "dependabot_security_updates": {
+              "status": "enabled"
+            },
+            "secret_scanning_non_provider_patterns": {
+              "status": "disabled"
+            },
+            "secret_scanning_ai_detection": {
+              "status": "disabled"
+            },
+            "secret_scanning_validity_checks": {
+              "status": "disabled"
+            },
+            "secret_scanning_delegated_alert_dismissal": {
+              "status": "disabled"
+            },
+            "secret_scanning_delegated_bypass": {
+              "status": "disabled"
+            }
+          },
+          "archived": false
+        },
+        "error": ""
+      },
+      "/branches": {
+        "ok": true,
+        "data": [
+          {
+            "name": "main",
+            "commit": {
+              "sha": "76310d24efa330f8edda1d45879383e724a51bd0",
+              "url": "https://api.github.com/repos/Aetheris-Platform/open-lifecycle-traceability-standard/commits/76310d24efa330f8edda1d45879383e724a51bd0"
+            },
+            "protected": true,
+            "protection": {
+              "enabled": false,
+              "required_status_checks": {
+                "enforcement_level": "off",
+                "contexts": [],
+                "checks": []
+              }
+            },
+            "protection_url": "https://api.github.com/repos/Aetheris-Platform/open-lifecycle-traceability-standard/branches/main/protection"
+          }
+        ],
+        "error": ""
+      },
+      "/rulesets?includes_parents=true": {
+        "ok": true,
+        "data": [
+          {
+            "id": 22298686,
+            "name": "Main Branch Protection",
+            "target": "branch",
+            "source_type": "Repository",
+            "source_url": "https://github.com/Aetheris-Platform/open-lifecycle-traceability-standard",
+            "enforcement": "active",
+            "node_id": "RRS_lACqUmVwb3NpdG9yec5LxD96zgFUQD4",
+            "_links": {
+              "self": {
+                "href": "https://api.github.com/repos/Aetheris-Platform/open-lifecycle-traceability-standard/rulesets/22298686"
+              },
+              "html": {
+                "href": "https://github.com/Aetheris-Platform/open-lifecycle-traceability-standard/rules/22298686"
+              }
+            },
+            "created_at": "2026-09-04T16:11:28.726-04:00",
+            "updated_at": "2026-09-04T16:34:38.614-04:00"
+          }
+        ],
+        "error": ""
+      },
+      "/actions/permissions": {
+        "ok": true,
+        "data": {
+          "enabled": true,
+          "allowed_actions": "all",
+          "sha_pinning_required": false
+        },
+        "error": ""
+      },
+      "/actions/permissions/workflow": {
+        "ok": true,
+        "data": {
+          "default_workflow_permissions": "read",
+          "can_approve_pull_request_reviews": true
+        },
+        "error": ""
+      },
+      "/actions/permissions/selected-actions": {
+        "ok": false,
+        "data": {
+          "message": "Conflict",
+          "errors": "All actions and workflows are allowed on this repository",
+          "documentation_url": "https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository",
+          "status": "409"
+        },
+        "error": "gh: All actions and workflows are allowed on this repository (Conflict)"
+      },
+      "/vulnerability-alerts": {
+        "ok": true,
+        "data": null,
+        "error": ""
+      },
+      "/automated-security-fixes": {
+        "ok": true,
+        "data": {
+          "enabled": true,
+          "paused": false
+        },
+        "error": ""
+      },
+      "/code-scanning/default-setup": {
+        "ok": true,
+        "data": {
+          "state": "not-configured",
+          "languages": [],
+          "query_suite": "default",
+          "threat_model": "remote",
+          "updated_at": null,
+          "schedule": null,
+          "runner_type": "standard",
+          "runner_label": null
+        },
+        "error": ""
+      },
+      "/interaction-limits": {
+        "ok": true,
+        "data": {},
+        "error": ""
+      },
+      "/pages": {
+        "ok": false,
+        "data": {
+          "message": "Not Found",
+          "documentation_url": "https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site",
+          "status": "404"
+        },
+        "error": "gh: Not Found (HTTP 404)"
+      },
+      "/environments": {
+        "ok": true,
+        "data": {
+          "total_count": 0,
+          "environments": []
+        },
+        "error": ""
+      },
+      "/topics": {
+        "ok": true,
+        "data": {
+          "names": [
+            "mbse",
+            "systems-engineering",
+            "traceability",
+            "ci-cd",
+            "devops",
+            "evidence",
+            "open-standard",
+            "requirements",
+            "requirements-management",
+            "software-lifecycle",
+            "validation",
+            "verification"
+          ]
+        },
+        "error": ""
+      },
+      "/private-vulnerability-reporting": {
+        "ok": true,
+        "data": {
+          "enabled": false
+        },
+        "error": ""
+      },
+      "/branches/main/protection": {
+        "ok": false,
+        "data": {
+          "message": "Branch not protected",
+          "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+          "status": "404"
+        },
+        "error": "gh: Branch not protected (HTTP 404)"
+      }
+    },
+    "codex-mcp-app-server-bridge": {
+      "repository": {
+        "ok": true,
+        "data": {
+          "name": "codex-mcp-app-server-bridge",
+          "description": "Connect any MCP-compatible AI assistant or developer tool to Codex. Run coding tasks asynchronously, track progress, cancel jobs, and retrieve results through a consistent MCP interface, with isolated profiles and persistent task history.",
+          "homepage": null,
+          "private": true,
+          "visibility": "private",
+          "default_branch": "main",
+          "has_issues": true,
+          "has_projects": false,
+          "has_wiki": true,
+          "has_discussions": false,
+          "is_template": false,
+          "allow_forking": true,
+          "web_commit_signoff_required": false,
+          "allow_merge_commit": true,
+          "allow_squash_merge": true,
+          "allow_rebase_merge": true,
+          "allow_auto_merge": false,
+          "delete_branch_on_merge": false,
+          "allow_update_branch": false,
+          "use_squash_pr_title_as_default": false,
+          "squash_merge_commit_message": "COMMIT_MESSAGES",
+          "squash_merge_commit_title": "COMMIT_OR_PR_TITLE",
+          "merge_commit_message": "PR_TITLE",
+          "merge_commit_title": "MERGE_MESSAGE",
+          "security_and_analysis": {
+            "code_security": {
+              "status": "disabled"
+            },
+            "secret_scanning": {
+              "status": "disabled"
+            },
+            "secret_scanning_push_protection": {
+              "status": "disabled"
+            },
+            "dependabot_security_updates": {
+              "status": "disabled"
+            },
+            "secret_scanning_non_provider_patterns": {
+              "status": "disabled"
+            },
+            "secret_scanning_validity_checks": {
+              "status": "disabled"
+            }
+          },
+          "archived": false
+        },
+        "error": ""
+      },
+      "/branches": {
+        "ok": true,
+        "data": [
+          {
+            "name": "main",
+            "commit": {
+              "sha": "64056785b21b51e269098a47583111723845542d",
+              "url": "https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/commits/64056785b21b51e269098a47583111723845542d"
+            },
+            "protected": false,
+            "protection": {
+              "enabled": false,
+              "required_status_checks": {
+                "enforcement_level": "off",
+                "contexts": [],
+                "checks": []
+              }
+            },
+            "protection_url": "https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/branches/main/protection"
+          }
+        ],
+        "error": ""
+      },
+      "/rulesets?includes_parents=true": {
+        "ok": true,
+        "data": [],
+        "error": ""
+      },
+      "/actions/permissions": {
+        "ok": true,
+        "data": {
+          "enabled": true,
+          "allowed_actions": "all",
+          "sha_pinning_required": false
+        },
+        "error": ""
+      },
+      "/actions/permissions/workflow": {
+        "ok": true,
+        "data": {
+          "default_workflow_permissions": "read",
+          "can_approve_pull_request_reviews": true
+        },
+        "error": ""
+      },
+      "/actions/permissions/selected-actions": {
+        "ok": false,
+        "data": {
+          "message": "Conflict",
+          "errors": "All actions and workflows are allowed on this repository",
+          "documentation_url": "https://docs.github.com/rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository",
+          "status": "409"
+        },
+        "error": "gh: All actions and workflows are allowed on this repository (Conflict)"
+      },
+      "/vulnerability-alerts": {
+        "ok": false,
+        "data": {
+          "message": "Vulnerability alerts are disabled.",
+          "documentation_url": "https://docs.github.com/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository",
+          "status": "404"
+        },
+        "error": "gh: Vulnerability alerts are disabled. (HTTP 404)"
+      },
+      "/automated-security-fixes": {
+        "ok": true,
+        "data": {
+          "enabled": false,
+          "paused": false
+        },
+        "error": ""
+      },
+      "/code-scanning/default-setup": {
+        "ok": false,
+        "data": {
+          "message": "Code Security must be enabled for this repository to use code scanning.",
+          "documentation_url": "https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration",
+          "status": "403"
+        },
+        "error": "gh: Code Security must be enabled for this repository to use code scanning. (HTTP 403)"
+      },
+      "/interaction-limits": {
+        "ok": false,
+        "data": {
+          "message": "Server Error",
+          "errors": "Interaction limits are not available for private repositories.",
+          "documentation_url": "https://docs.github.com/rest/interactions/repos#get-interaction-restrictions-for-a-repository",
+          "status": "405"
+        },
+        "error": "gh: Interaction limits are not available for private repositories. (Server Error)"
+      },
+      "/pages": {
+        "ok": false,
+        "data": {
+          "message": "Not Found",
+          "documentation_url": "https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site",
+          "status": "404"
+        },
+        "error": "gh: Not Found (HTTP 404)"
+      },
+      "/environments": {
+        "ok": true,
+        "data": {
+          "total_count": 0,
+          "environments": []
+        },
+        "error": ""
+      },
+      "/topics": {
+        "ok": true,
+        "data": {
+          "names": []
+        },
+        "error": ""
+      },
+      "/private-vulnerability-reporting": {
+        "ok": false,
+        "data": {
+          "message": "Not Found",
+          "documentation_url": "https://docs.github.com/rest",
+          "status": "404"
+        },
+        "error": "gh: Not Found (HTTP 404)"
+      },
+      "/branches/main/protection": {
+        "ok": false,
+        "data": {
+          "message": "Branch not protected",
+          "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+          "status": "404"
+        },
+        "error": "gh: Branch not protected (HTTP 404)"
+      }
+    }
+  },
+  "applied": [
+    {
+      "method": "PATCH",
+      "path": "",
+      "request": {
+        "private": true,
+        "has_wiki": false,
+        "has_discussions": true,
+        "allow_squash_merge": false,
+        "allow_rebase_merge": false,
+        "delete_branch_on_merge": true,
+        "allow_update_branch": true,
+        "description": "Connect MCP-compatible developer tools to Codex for asynchronous coding tasks, progress, results and cancellation, with isolated profiles and persistent task history."
+      },
+      "ok": true,
+      "response": "{\"id\":1425601001,\"node_id\":\"R_kgDOVPjx6Q\",\"name\":\"codex-mcp-app-server-bridge\",\"full_name_url\":\"https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge\",\"private\":true,\"owner\":{\"id\":273854576,\"node_id\":\"O_kgDOEFKwcA\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/273854576?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Aetheris-Platform\",\"html_url\":\"https://github.com/Aetheris-Platform\",\"followers_url\":\"https://api.github.com/users/Aetheris-Platform/followers\",\"following_url\":\"https://api.github.com/users/Aetheris-Platform/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Aetheris-Platform/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Aetheris-Platform/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Aetheris-Platform/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Aetheris-Platform/orgs\",\"repos_url\":\"https://api.github.com/users/Aetheris-Platform/repos\",\"events_url\":\"https://api.github.com/users/Aetheris-Platform/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Aetheris-Platform/received_events\",\"type\":\"Organization\",\"user_view_type\":\"public\",\"site_admin\":false},\"html_url\":\"https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge\",\"description\":\"Connect MCP-compatible developer tools to Codex for asynchronous coding tasks, progress, results and cancellation, with isolated profiles and persistent task history.\",\"fork\":false,\"url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge\",\"forks_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/forks\",\"keys_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/teams\",\"hooks_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/hooks\",\"issue_events_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/events\",\"assignees_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/tags\",\"blobs_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/languages\",\"stargazers_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/stargazers\",\"contributors_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/contributors\",\"subscribers_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/subscribers\",\"subscription_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/subscription\",\"commits_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/merges\",\"archive_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/downloads\",\"issues_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/deployments\",\"created_at\":\"2026-10-19T12:43:57Z\",\"updated_at\":\"2026-10-19T12:56:57Z\",\"pushed_at\":\"2026-10-19T12:43:59Z\",\"git_url\":\"git://github.com/Aetheris-Platform/codex-mcp-app-server-bridge.git\",\"ssh_url\":\"git@github.com:Aetheris-Platform/codex-mcp-app-server-bridge.git\",\"clone_url\":\"https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge.git\",\"svn_url\":\"https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge\",\"homepage\":null,\"size\":0,\"stargazers_count\":0,\"watchers_count\":0,\"language\":null,\"has_issues\":true,\"has_projects\":false,\"has_downloads\":false,\"has_wiki\":false,\"has_pages\":false,\"has_discussions\":true,\"forks_count\":0,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":0,\"license\":{\"key\":\"apache-2.0\",\"name\":\"Apache License 2.0\",\"spdx_id\":\"Apache-2.0\",\"url\":\"https://api.github.com/licenses/apache-2.0\",\"node_id\":\"MDc6TGljZW5zZTI=\"},\"allow_forking\":true,\"is_template\":false,\"web_commit_signoff_required\":false,\"has_pull_requests\":true,\"pull_request_creation_policy\":\"collaborators_only\",\"topics\":[],\"visibility\":\"private\",\"forks\":0,\"open_issues\":0,\"watchers\":0,\"default_branch\":\"main\",\"permissions\":{\"admin\":true,\"maintain\":true,\"push\":true,\"triage\":true,\"pull\":true},\"allow_squash_merge\":false,\"allow_merge_commit\":true,\"allow_rebase_merge\":false,\"allow_auto_merge\":false,\"delete_branch_on_merge\":true,\"allow_update_branch\":true,\"use_squash_pr_title_as_default\":false,\"squash_merge_commit_message\":\"COMMIT_MESSAGES\",\"squash_merge_commit_title\":\"COMMIT_OR_PR_TITLE\",\"merge_commit_message\":\"PR_TITLE\",\"merge_commit_title\":\"MERGE_MESSAGE\",\"custom_properties\":{},\"organization\":{\"id\":273854576,\"node_id\":\"O_kgDOEFKwcA\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/273854576?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Aetheris-Platform\",\"html_url\":\"https://github.com/Aetheris-Platform\",\"followers_url\":\"https://api.github.com/users/Aetheris-Platform/followers\",\"following_url\":\"https://api.github.com/users/Aetheris-Platform/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Aetheris-Platform/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Aetheris-Platform/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Aetheris-Platform/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Aetheris-Platform/orgs\",\"repos_url\":\"https://api.github.com/users/Aetheris-Platform/repos\",\"events_url\":\"https://api.github.com/users/Aetheris-Platform/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Aetheris-Platform/received_events\",\"type\":\"Organization\",\"user_view_type\":\"public\",\"site_admin\":false},\"security_and_analysis\":{\"code_security\":{\"status\":\"disabled\"},\"secret_scanning\":{\"status\":\"disabled\"},\"secret_scanning_push_protection\":{\"status\":\"disabled\"},\"dependabot_security_updates\":{\"status\":\"disabled\"},\"secret_scanning_non_provider_patterns\":{\"status\":\"disabled\"},\"secret_scanning_validity_checks\":{\"status\":\"disabled\"}},\"network_count\":0,\"subscribers_count\":0}",
+      "error": ""
+    },
+    {
+      "method": "POST",
+      "path": "/rulesets",
+      "request": {
+        "name": "Main Branch Protection",
+        "target": "branch",
+        "enforcement": "active",
+        "conditions": {
+          "ref_name": {
+            "exclude": [],
+            "include": [
+              "refs/heads/main"
+            ]
+          }
+        },
+        "rules": [
+          {
+            "type": "deletion"
+          },
+          {
+            "type": "non_fast_forward"
+          },
+          {
+            "type": "required_signatures"
+          },
+          {
+            "type": "pull_request",
+            "parameters": {
+              "required_approving_review_count": 0,
+              "dismiss_stale_reviews_on_push": false,
+              "required_reviewers": [],
+              "require_code_owner_review": false,
+              "dismissal_restriction": {
+                "enabled": false,
+                "allowed_actors": []
+              },
+              "require_last_push_approval": false,
+              "required_review_thread_resolution": false,
+              "require_extra_approval_for_unattributed_changes": true,
+              "allowed_merge_methods": [
+                "merge"
+              ]
+            }
+          }
+        ],
+        "bypass_actors": [
+          {
+            "actor_id": 5,
+            "actor_type": "RepositoryRole",
+            "bypass_mode": "always"
+          }
+        ]
+      },
+      "ok": true,
+      "response": "{\"id\":25405154,\"name\":\"Main Branch Protection\",\"target\":\"branch\",\"source_type\":\"Repository\",\"source_url\":\"https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge\",\"enforcement\":\"active\",\"conditions\":{\"ref_name\":{\"exclude\":[],\"include\":[\"refs/heads/main\"]}},\"rules\":[{\"type\":\"deletion\"},{\"type\":\"non_fast_forward\"},{\"type\":\"required_signatures\"},{\"type\":\"pull_request\",\"parameters\":{\"required_approving_review_count\":0,\"dismiss_stale_reviews_on_push\":false,\"required_reviewers\":[],\"require_code_owner_review\":false,\"dismissal_restriction\":{\"enabled\":false,\"allowed_actors\":[]},\"require_last_push_approval\":false,\"required_review_thread_resolution\":false,\"require_extra_approval_for_unattributed_changes\":true,\"allowed_merge_methods\":[\"merge\"]}}],\"node_id\":\"RRS_lACqUmVwb3NpdG9yec5U-PHpzgGDpuI\",\"created_at\":\"2026-10-19T08:56:58.010-04:00\",\"updated_at\":\"2026-10-19T08:56:58.053-04:00\",\"bypass_actors\":[{\"actor_id\":5,\"actor_type\":\"RepositoryRole\",\"bypass_mode\":\"always\"}],\"current_user_can_bypass\":\"always\",\"_links\":{\"self\":{\"href\":\"https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/rulesets/25405154\"},\"html\":{\"href\":\"https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge/rules/25405154\"}}}",
+      "error": ""
+    },
+    {
+      "method": "PUT",
+      "path": "/vulnerability-alerts",
+      "request": null,
+      "ok": true,
+      "response": "",
+      "error": ""
+    },
+    {
+      "method": "PUT",
+      "path": "/automated-security-fixes",
+      "request": null,
+      "ok": true,
+      "response": "",
+      "error": ""
+    }
+  ],
+  "verified_repository": {
+    "allow_auto_merge": false,
+    "allow_forking": true,
+    "allow_merge_commit": true,
+    "allow_rebase_merge": false,
+    "allow_squash_merge": false,
+    "allow_update_branch": true,
+    "default_branch": "main",
+    "delete_branch_on_merge": true,
+    "has_discussions": true,
+    "has_issues": true,
+    "has_projects": false,
+    "has_wiki": false,
+    "is_template": false,
+    "merge_commit_message": "PR_TITLE",
+    "merge_commit_title": "MERGE_MESSAGE",
+    "private": true,
+    "security_and_analysis": {
+      "code_security": {
+        "status": "disabled"
+      },
+      "dependabot_security_updates": {
+        "status": "enabled"
+      },
+      "secret_scanning": {
+        "status": "disabled"
+      },
+      "secret_scanning_non_provider_patterns": {
+        "status": "disabled"
+      },
+      "secret_scanning_push_protection": {
+        "status": "disabled"
+      },
+      "secret_scanning_validity_checks": {
+        "status": "disabled"
+      }
+    },
+    "visibility": "private",
+    "web_commit_signoff_required": false
+  },
+  "verified_ruleset": {
+    "id": 25405154,
+    "name": "Main Branch Protection",
+    "target": "branch",
+    "source_type": "Repository",
+    "source_url": "https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge",
+    "enforcement": "active",
+    "conditions": {
+      "ref_name": {
+        "exclude": [],
+        "include": [
+          "refs/heads/main"
+        ]
+      }
+    },
+    "rules": [
+      {
+        "type": "deletion"
+      },
+      {
+        "type": "non_fast_forward"
+      },
+      {
+        "type": "required_signatures"
+      },
+      {
+        "type": "pull_request",
+        "parameters": {
+          "required_approving_review_count": 0,
+          "dismiss_stale_reviews_on_push": false,
+          "required_reviewers": [],
+          "require_code_owner_review": false,
+          "dismissal_restriction": {
+            "enabled": false,
+            "allowed_actors": []
+          },
+          "require_last_push_approval": false,
+          "required_review_thread_resolution": false,
+          "require_extra_approval_for_unattributed_changes": true,
+          "allowed_merge_methods": [
+            "merge"
+          ]
+        }
+      }
+    ],
+    "node_id": "RRS_lACqUmVwb3NpdG9yec5U-PHpzgGDpuI",
+    "created_at": "2026-10-19T08:56:58.010-04:00",
+    "updated_at": "2026-10-19T08:56:58.053-04:00",
+    "bypass_actors": [
+      {
+        "actor_id": 5,
+        "actor_type": "RepositoryRole",
+        "bypass_mode": "always"
+      }
+    ],
+    "current_user_can_bypass": "always",
+    "_links": {
+      "self": {
+        "href": "https://api.github.com/repos/Aetheris-Platform/codex-mcp-app-server-bridge/rulesets/25405154"
+      },
+      "html": {
+        "href": "https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge/rules/25405154"
+      }
+    }
+  },
+  "additional_actions": {
+    "open-lifecycle-traceability-standard": {
+      "artifact-and-log-retention": {
+        "ok": true,
+        "data": {
+          "days": 90,
+          "maximum_allowed_days": 90
+        },
+        "error": ""
+      },
+      "fork-pr-contributor-approval": {
+        "ok": true,
+        "data": {
+          "approval_policy": "first_time_contributors"
+        },
+        "error": ""
+      },
+      "fork-pr-workflows-private-repos": {
+        "ok": false,
+        "data": {
+          "message": "Fork PR workflow settings is not allowed for public repositories.",
+          "documentation_url": "https://docs.github.com/rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-a-repository",
+          "status": "422"
+        },
+        "error": "gh: Fork PR workflow settings is not allowed for public repositories. (HTTP 422)"
+      },
+      "access": {
+        "ok": false,
+        "data": {
+          "message": "Access policy only applies to internal and private repositories.",
+          "documentation_url": "https://docs.github.com/rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository",
+          "status": "422"
+        },
+        "error": "gh: Access policy only applies to internal and private repositories. (HTTP 422)"
+      }
+    },
+    "codex-mcp-app-server-bridge": {
+      "artifact-and-log-retention": {
+        "ok": true,
+        "data": {
+          "days": 90,
+          "maximum_allowed_days": 90
+        },
+        "error": ""
+      },
+      "fork-pr-contributor-approval": {
+        "ok": false,
+        "data": {
+          "message": "Validation Failed",
+          "errors": "Fork PR approval is not allowed for private repositories.",
+          "documentation_url": "https://docs.github.com/rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-a-repository",
+          "status": "422"
+        },
+        "error": "gh: Fork PR approval is not allowed for private repositories. (Validation Failed)"
+      },
+      "fork-pr-workflows-private-repos": {
+        "ok": true,
+        "data": {
+          "run_workflows_from_fork_pull_requests": false,
+          "send_write_tokens_to_workflows": false,
+          "send_secrets_and_variables": false,
+          "require_approval_for_fork_pr_workflows": false
+        },
+        "error": ""
+      },
+      "access": {
+        "ok": true,
+        "data": {
+          "access_level": "none"
+        },
+        "error": ""
+      }
+    }
+  },
+  "local_integration_description_followup": {
+    "description": "Clone and run locally to connect MCP-compatible developer tools to Codex. Integrate asynchronous coding tasks, progress, results and cancellation into your own workflows.",
+    "private": true,
+    "visibility": "private"
+  },
+  "sanitization": {
+    "date": "2026-10-20",
+    "original_sha256": "b7c521be936ce179ed0c25c1d77a072ada06c0c9d07df8a17b751b12eb6800d4",
+    "scope": "Bare repository identity values converted to GitHub URLs; redundant organization login fields removed, including in embedded response JSON. Settings values unchanged. This is a sanitized historical record, not verbatim API output."
+  }
+}

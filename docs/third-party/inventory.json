@@ -1,0 +1,533 @@
+[
+  {
+    "name": "annotated-types",
+    "version": "0.8.0",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [
+      "License :: OSI Approved :: MIT License"
+    ],
+    "texts": [
+      {
+        "installed_path": "annotated_types-0.8.0.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/annotated-types/licenses/LICENSE",
+        "sha256": "fe1049884b1a0d9342901e88e07f32925d24b3121d9972b6a6805fb9824b095d"
+      }
+    ]
+  },
+  {
+    "name": "anyio",
+    "version": "4.15.1",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "anyio-4.15.1.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/anyio/licenses/LICENSE",
+        "sha256": "5361ac9dc58f2ef5fd2e9b09c68297c17f04950909bbc8023bdb82eacf22c2b0"
+      }
+    ]
+  },
+  {
+    "name": "attrs",
+    "version": "26.1.0",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "attrs-26.1.0.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/attrs/licenses/LICENSE",
+        "sha256": "882115c95dfc2af1eeb6714f8ec6d5cbcabf667caff8729f42420da63f714e9f"
+      }
+    ]
+  },
+  {
+    "name": "cffi",
+    "version": "2.1.1",
+    "license_expression": "MIT-0",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "cffi-2.1.1.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/cffi/licenses/LICENSE",
+        "sha256": "5ba24ddc57067f9249add644c3afc41a5d6dc37e23433ef759d95df370b0af63"
+      }
+    ]
+  },
+  {
+    "name": "click",
+    "version": "8.5.0",
+    "license_expression": "BSD-3-Clause",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "click-8.5.0.dist-info/licenses/LICENSE.txt",
+        "retained_path": "docs/third-party/click/licenses/LICENSE.txt",
+        "sha256": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d"
+      }
+    ]
+  },
+  {
+    "name": "cryptography",
+    "version": "50.0.1",
+    "license_expression": "Apache-2.0 OR BSD-3-Clause",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "cryptography-50.0.1.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/cryptography/licenses/LICENSE",
+        "sha256": "3e0c7c091a948b82533ba98fd7cbb40432d6f1a9acbf85f5922d2f99a93ae6bb"
+      },
+      {
+        "installed_path": "cryptography-50.0.1.dist-info/licenses/LICENSE.APACHE",
+        "retained_path": "docs/third-party/cryptography/licenses/LICENSE.APACHE",
+        "sha256": "aac73b3148f6d1d7111dbca32099f68d26c644c6813ae1e4f05f6579aa2663fe"
+      },
+      {
+        "installed_path": "cryptography-50.0.1.dist-info/licenses/LICENSE.BSD",
+        "retained_path": "docs/third-party/cryptography/licenses/LICENSE.BSD",
+        "sha256": "602c4c7482de6479dd2e9793cda275e5e63d773dacd1eca689232ab7008fb4fb"
+      }
+    ]
+  },
+  {
+    "name": "h11",
+    "version": "0.16.0",
+    "license_expression": null,
+    "license_metadata": "MIT",
+    "license_classifiers": [
+      "License :: OSI Approved :: MIT License"
+    ],
+    "texts": [
+      {
+        "installed_path": "h11-0.16.0.dist-info/licenses/LICENSE.txt",
+        "retained_path": "docs/third-party/h11/licenses/LICENSE.txt",
+        "sha256": "37db5bb85926db28a427a25867f10b1232003aea1be69ccb851138adb8e6f361"
+      }
+    ]
+  },
+  {
+    "name": "httpcore2",
+    "version": "2.13.0",
+    "license_expression": "BSD-3-Clause",
+    "license_metadata": null,
+    "license_classifiers": [
+      "License :: OSI Approved :: BSD License"
+    ],
+    "texts": [
+      {
+        "installed_path": "httpcore2-2.13.0.dist-info/licenses/LICENSE.md",
+        "retained_path": "docs/third-party/httpcore2/licenses/LICENSE.md",
+        "sha256": "c4df125c807b0613501e943a5c92496dd11d2c16604ce396097a8dde396304d9"
+      }
+    ]
+  },
+  {
+    "name": "httpx2",
+    "version": "2.13.0",
+    "license_expression": "BSD-3-Clause",
+    "license_metadata": null,
+    "license_classifiers": [
+      "License :: OSI Approved :: BSD License"
+    ],
+    "texts": [
+      {
+        "installed_path": "httpx2-2.13.0.dist-info/licenses/LICENSE.md",
+        "retained_path": "docs/third-party/httpx2/licenses/LICENSE.md",
+        "sha256": "7e7d6dbaf7fe160d39fd6e84fd02c33cab96bcbea34d36998d545bceb4a19c30"
+      }
+    ]
+  },
+  {
+    "name": "idna",
+    "version": "3.19",
+    "license_expression": "BSD-3-Clause",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "idna-3.19.dist-info/licenses/LICENSE.md",
+        "retained_path": "docs/third-party/idna/licenses/LICENSE.md",
+        "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04"
+      }
+    ]
+  },
+  {
+    "name": "iniconfig",
+    "version": "2.3.0",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "iniconfig-2.3.0.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/iniconfig/licenses/LICENSE",
+        "sha256": "3409fa91f7ace557894632676656e32264fe5ef7581535725dc9a23774551bd4"
+      }
+    ]
+  },
+  {
+    "name": "jsonschema",
+    "version": "4.26.0",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "jsonschema-4.26.0.dist-info/licenses/COPYING",
+        "retained_path": "docs/third-party/jsonschema/licenses/COPYING",
+        "sha256": "4f92a015a13c4d1a040bef018aa13430b4f1bc73b41b16bb846c346766de7439"
+      }
+    ]
+  },
+  {
+    "name": "jsonschema-specifications",
+    "version": "2025.9.1",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "jsonschema_specifications-2025.9.1.dist-info/licenses/COPYING",
+        "retained_path": "docs/third-party/jsonschema-specifications/licenses/COPYING",
+        "sha256": "42dcd63495f87b4eb7c7757afa379bb55a53f94afd7a5f657d9adf57236e515c"
+      }
+    ]
+  },
+  {
+    "name": "mcp",
+    "version": "2.2.0",
+    "license_expression": null,
+    "license_metadata": "MIT",
+    "license_classifiers": [
+      "License :: OSI Approved :: MIT License"
+    ],
+    "texts": [
+      {
+        "installed_path": "mcp-2.2.0.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/mcp/licenses/LICENSE",
+        "sha256": "5e13dbbc1d120fc2a03cecde7c91424ae2d7de11b63d58ded2f4431e261ee50d"
+      }
+    ]
+  },
+  {
+    "name": "mcp-types",
+    "version": "2.2.0",
+    "license_expression": null,
+    "license_metadata": "MIT",
+    "license_classifiers": [
+      "License :: OSI Approved :: MIT License"
+    ],
+    "texts": [
+      {
+        "installed_path": "mcp_types-2.2.0.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/mcp-types/licenses/LICENSE",
+        "sha256": "5e13dbbc1d120fc2a03cecde7c91424ae2d7de11b63d58ded2f4431e261ee50d"
+      }
+    ]
+  },
+  {
+    "name": "opentelemetry-api",
+    "version": "1.44.0",
+    "license_expression": "Apache-2.0",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "opentelemetry_api-1.44.0.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/opentelemetry-api/licenses/LICENSE",
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      }
+    ]
+  },
+  {
+    "name": "packaging",
+    "version": "26.3",
+    "license_expression": "Apache-2.0 OR BSD-2-Clause",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "packaging-26.3.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/packaging/licenses/LICENSE",
+        "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48"
+      },
+      {
+        "installed_path": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "retained_path": "docs/third-party/packaging/licenses/LICENSE.APACHE",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+      },
+      {
+        "installed_path": "packaging-26.3.dist-info/licenses/LICENSE.BSD",
+        "retained_path": "docs/third-party/packaging/licenses/LICENSE.BSD",
+        "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+      }
+    ]
+  },
+  {
+    "name": "pluggy",
+    "version": "1.6.0",
+    "license_expression": null,
+    "license_metadata": "MIT",
+    "license_classifiers": [
+      "License :: OSI Approved :: MIT License"
+    ],
+    "texts": [
+      {
+        "installed_path": "pluggy-1.6.0.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/pluggy/licenses/LICENSE",
+        "sha256": "d6b65e6c213a5d0b577911d34d6e5949b9f59d76c238c5071a2f3fc16cfb2606"
+      }
+    ]
+  },
+  {
+    "name": "pycparser",
+    "version": "3.0",
+    "license_expression": "BSD-3-Clause",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "pycparser-3.0.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/pycparser/licenses/LICENSE",
+        "sha256": "0c846399369ea76ddd7b5c44fe6d16497415fcf015f5cbb508c24bf98b81c5b1"
+      }
+    ]
+  },
+  {
+    "name": "pydantic",
+    "version": "2.13.5",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "pydantic-2.13.5.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/pydantic/licenses/LICENSE",
+        "sha256": "a9e186f3ca16b5eef84318e7a701721351a00cb7b8ae3a4394b67b49e3529ef3"
+      }
+    ]
+  },
+  {
+    "name": "pydantic_core",
+    "version": "2.46.5",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "pydantic_core-2.46.5.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/pydantic-core/licenses/LICENSE",
+        "sha256": "2afdd30d54b4d62b6f488a6bcc1546e84ec5061f13f4209c03d012348783795a"
+      }
+    ]
+  },
+  {
+    "name": "Pygments",
+    "version": "2.21.0",
+    "license_expression": "BSD-2-Clause",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "pygments-2.21.0.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/pygments/licenses/LICENSE",
+        "sha256": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17"
+      }
+    ]
+  },
+  {
+    "name": "PyJWT",
+    "version": "2.15.0",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "pyjwt-2.15.0.dist-info/licenses/AUTHORS.rst",
+        "retained_path": "docs/third-party/pyjwt/licenses/AUTHORS.rst",
+        "sha256": "925ce43461029eedbf558ec0b7cf7fc4b045def5120ebb97937c70814071cf07"
+      },
+      {
+        "installed_path": "pyjwt-2.15.0.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/pyjwt/licenses/LICENSE",
+        "sha256": "797a7a20231d4c433e9f1911db1731d06b5828b98f499819a034f7c0f56f5ce5"
+      }
+    ]
+  },
+  {
+    "name": "pytest",
+    "version": "9.1.1",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "pytest-9.1.1.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/pytest/licenses/LICENSE",
+        "sha256": "ca836a5f9ecca3b2f350230faa20a48fb8b145653b5568d784862df864706b9b"
+      }
+    ]
+  },
+  {
+    "name": "python-multipart",
+    "version": "0.0.32",
+    "license_expression": "Apache-2.0",
+    "license_metadata": null,
+    "license_classifiers": [
+      "License :: OSI Approved :: Apache Software License"
+    ],
+    "texts": [
+      {
+        "installed_path": "python_multipart-0.0.32.dist-info/licenses/LICENSE.txt",
+        "retained_path": "docs/third-party/python-multipart/licenses/LICENSE.txt",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      }
+    ]
+  },
+  {
+    "name": "referencing",
+    "version": "0.37.0",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "referencing-0.37.0.dist-info/licenses/COPYING",
+        "retained_path": "docs/third-party/referencing/licenses/COPYING",
+        "sha256": "42dcd63495f87b4eb7c7757afa379bb55a53f94afd7a5f657d9adf57236e515c"
+      }
+    ]
+  },
+  {
+    "name": "rpds-py",
+    "version": "2026.6.3",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "rpds_py-2026.6.3.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/rpds-py/licenses/LICENSE",
+        "sha256": "314e4e91be3baa93c0fb4bccc9e4e97cd643eb839b065af921782c2175fe9909"
+      }
+    ]
+  },
+  {
+    "name": "ruff",
+    "version": "0.16.9",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "ruff-0.16.9.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/ruff/licenses/LICENSE",
+        "sha256": "2597d854122b77ddc71971564ca2350a37608575ce324adc5650a2b2051c8f18"
+      }
+    ]
+  },
+  {
+    "name": "sse-starlette",
+    "version": "3.4.11",
+    "license_expression": "BSD-3-Clause",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "sse_starlette-3.4.11.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/sse-starlette/licenses/LICENSE",
+        "sha256": "80af6bfccbebd2c14d4aab96695cab9950e177190cc80f5ef819e99996883e8e"
+      }
+    ]
+  },
+  {
+    "name": "starlette",
+    "version": "1.6.0",
+    "license_expression": "BSD-3-Clause",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "starlette-1.6.0.dist-info/licenses/LICENSE.md",
+        "retained_path": "docs/third-party/starlette/licenses/LICENSE.md",
+        "sha256": "dcb95677a02240243187e964f941847d19b17821cf99e5afae684fab328c19bf"
+      }
+    ]
+  },
+  {
+    "name": "truststore",
+    "version": "0.10.4",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "truststore-0.10.4.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/truststore/licenses/LICENSE",
+        "sha256": "33be7b7e8fa4fd19b1760e1a8ed8a668bdab852c91b692dd41424bcb725a9fca"
+      }
+    ]
+  },
+  {
+    "name": "typing-inspection",
+    "version": "0.4.4",
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "typing_inspection-0.4.4.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/typing-inspection/licenses/LICENSE",
+        "sha256": "804b59b25f2c31bd278f9202a19ae49a3945aa2664387e2d0a128c7cacc61ec3"
+      }
+    ]
+  },
+  {
+    "name": "typing_extensions",
+    "version": "4.16.0",
+    "license_expression": "PSF-2.0",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "typing_extensions-4.16.0.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/typing-extensions/licenses/LICENSE",
+        "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+      }
+    ]
+  },
+  {
+    "name": "uvicorn",
+    "version": "0.53.0",
+    "license_expression": "BSD-3-Clause",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "uvicorn-0.53.0.dist-info/licenses/LICENSE.md",
+        "retained_path": "docs/third-party/uvicorn/licenses/LICENSE.md",
+        "sha256": "efe1acf3e62fb99c288b0ec73e5a773b7268ef4320fe757ea994214e4b63c371"
+      }
+    ]
+  },
+  {
+    "name": "websockets",
+    "version": "17.1",
+    "license_expression": "BSD-3-Clause",
+    "license_metadata": null,
+    "license_classifiers": [],
+    "texts": [
+      {
+        "installed_path": "websockets-17.1.dist-info/licenses/LICENSE",
+        "retained_path": "docs/third-party/websockets/licenses/LICENSE",
+        "sha256": "3d6a0c050d8bec52fabad502e45fb25bd02bcadbd70dea34d447b6a0ff4e6da8"
+      }
+    ]
+  }
+]

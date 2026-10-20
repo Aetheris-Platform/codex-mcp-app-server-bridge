@@ -1,0 +1,5 @@
+# Keep source, fixtures and provenance-checked text byte-identical on all hosts.
+* text=auto eol=lf
+
+# Preserve retained third-party notice bytes, including any original CRLF.
+docs/third-party/** -text

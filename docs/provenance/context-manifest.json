@@ -1,0 +1,266 @@
+[
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/planning/bridge-profile-ownership-v0/amendment-0159-tool-output.md",
+    "sha256": "d5460ba1c69ca54deb17b1022fb44360f43509ad8a590051efe0a87770662785"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/planning/bridge-profile-ownership-v0/design.md",
+    "sha256": "dcf4fddbff3efae594a577fee784a344aef846567f7630510b6942e39089a8d1"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/planning/bridge-profile-ownership-v0/proof-matrix.md",
+    "sha256": "ab6e735615f761e89ba01501522b04e950f79c2c83934c2a2646b598ae3552aa"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/planning/bridge-profile-ownership-v0/proposal.md",
+    "sha256": "e1a16c4dedc2f949c3732d5643d297f7c028113c3e32fab35968dca26a15d3b6"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/planning/bridge-profile-ownership-v0/tasks.md",
+    "sha256": "6e99209c6127e7f192c10a1df1f2d311615e4cc9d7079f57dec64a90f5c05d01"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/planning/package-shared-codex-bridge-v0/architecture-decision.md",
+    "sha256": "6992c6942061d892be57d2f510de5ad02659f5f10d35750d478fa604553edcef"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/planning/package-shared-codex-bridge-v0/contract-map.md",
+    "sha256": "b8044cb76a7e4f6e6ebb7ebcfb82f14e049932175c679c72b0f377435ce0f0c2"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/planning/package-shared-codex-bridge-v0/design.md",
+    "sha256": "16234202253388e4a1d9d70260c6eef78d28893a137d239b4e29ae5a192d6129"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/planning/package-shared-codex-bridge-v0/implementation-record.md",
+    "sha256": "972a5fb68785559723a70d01c7ffd0253094c2f94d67f322edda3855c2fdddac"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/planning/package-shared-codex-bridge-v0/inventory.md",
+    "sha256": "a19875db8da5fa20c444ac831333fc8938bb1af6d69cac0ff1b9a7acfed6c32d"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/planning/package-shared-codex-bridge-v0/proposal.md",
+    "sha256": "557113c7793b67eaf058ab1bc411e29c810835d662796dcfb6cb61d080131914"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/planning/package-shared-codex-bridge-v0/tasks.md",
+    "sha256": "c028e32042bdd05e1f6b245eb3cb07cfc4e5fc66103ad66ae84ef7e7ff7e3c4a"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/reviews/2026-09-24-package-shared-codex-bridge-v0-review.md",
+    "sha256": "11d6afddccaeeb37031a326641a6e98df366513daaad872a58b4c21152226e51"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/reviews/2026-10-02-bridge-profile-ownership-v0-review.md",
+    "sha256": "87741f968f89cb9f306ecfa429e74b43f5e5f07d7050bd6f4fdf0beecd08d5c1"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/workflow/codex-0159-qualification.md",
+    "sha256": "38444ca13d3324dac7d2a1b456a6322331ab7f1a0888a4e2adddab8e3349d6a8"
+  },
+  {
+    "repository": "implementation-source",
+    "commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+    "path": "docs/workflow/codex-app-server-bridge-contract.md",
+    "sha256": "18fdaf815ef78e8bfc26f8043a37c634de56f55d8cfe189d9227fe4c8fe586d7"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "docs/adr/0018-shared-codex-app-server-adapter.md",
+    "sha256": "f4984a36496ae1277e3e07e4842c724f69a5b88302e765b037365f74868c65c4"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "docs/reviews/2026-09-16-integrate-codex-app-server-adapter-v0-review.md",
+    "sha256": "21c4d7c80ca5456c86e6275c519704f9dc55a88087e77107f857bb6ad8f12ebc"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "docs/reviews/2026-09-22-support-codex-0156-deterministic-socket-alias-v0-review.md",
+    "sha256": "a7f23addd09a43257716bfbbc52a97992e5a6aa87ba4fca33e5e3e3f4f0f0cf1"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "docs/reviews/2026-09-24-qualify-codex-0156-adapter-notification-path-v0-review.md",
+    "sha256": "9d34fa6de0e7917b96176be32b0369c3265ec94e304717454047d7fbfde03bc4"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/integrate-codex-app-server-adapter-v0/.openspec.yaml",
+    "sha256": "50c36dfa766b2fc52e8a7d270b1d67cc487bcd95d1b4c8a5f929d62738e3c77e"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/integrate-codex-app-server-adapter-v0/design.md",
+    "sha256": "97a5335a9108122b9d187ced03f63c29b5819c6eb2a87a21257900e644a9b9c0"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/integrate-codex-app-server-adapter-v0/ecosystem-impact.v1.json",
+    "sha256": "28bfe0bac25a908e457394794797fd1f60aea743e6e9e20924dca937d921bcbc"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/integrate-codex-app-server-adapter-v0/evidence-inventory.md",
+    "sha256": "e7bb95b109b185ddb6005bc5d1154bbd89b25024cc3de1df08c89a10707a06b9"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/integrate-codex-app-server-adapter-v0/native-adoption.md",
+    "sha256": "1f0a1dd2ccd8d4795786a67e3abb1ef718d274387e29437eb7b18b8fb8f8b561"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/integrate-codex-app-server-adapter-v0/proposal.md",
+    "sha256": "3f9db23617ef1ad1caf2da2d98c7ff88b9e0eccda2be88a639ebca6bed2aacee"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/integrate-codex-app-server-adapter-v0/specs/agent-collaboration-protocol/spec.md",
+    "sha256": "11ceaaa5f8d6b74f4b435a15282e120d5107baaa27ce0e5c7fa90c0d8f1f9af1"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/integrate-codex-app-server-adapter-v0/specs/codex-app-server-adapter/spec.md",
+    "sha256": "aff21e729190f5377b8115ca96eacfe18b574929a3a140564c11127d3aa058bb"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/integrate-codex-app-server-adapter-v0/specs/index.md",
+    "sha256": "a850aa3d021f71a8ef5aaf74d62ae069ffca65277b6bccab4a9ba8625e86b706"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/integrate-codex-app-server-adapter-v0/tasks.md",
+    "sha256": "4800fd4c58cdb9e36722863012b14f524f06c3cf800e536553fe807530a3393c"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/integrate-codex-app-server-adapter-v0/validation-strategy.md",
+    "sha256": "280f521c90534c935772e7ac73bf98be19c6a53d9642ec69ea24115ede555837"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/qualify-codex-0156-adapter-notification-path-v0/.openspec.yaml",
+    "sha256": "e002504731ceb6e8fcf026b601ec3f0568d075aa00e43292bbd0642986212f03"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/qualify-codex-0156-adapter-notification-path-v0/proposal.md",
+    "sha256": "e23009dbff7d40f49a5edbff4aeb01cf4ba5b6b269e106d6d915649bc418e2b8"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/qualify-codex-0156-adapter-notification-path-v0/specs/codex-app-server-adapter/spec.md",
+    "sha256": "4e86ccd4436407820028543a0afb6e29db799d1c3be5fd261abc776bba962b72"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/qualify-codex-0156-adapter-notification-path-v0/specs/index.md",
+    "sha256": "715c33da7f1d8a02d34661dfe99673227100f2dce87f0212fb8b7f7ae992df2a"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/qualify-codex-0156-adapter-notification-path-v0/tasks.md",
+    "sha256": "31f0fbc9511bb7c8d0db694c4003404c3c09bc40be99498e424c73ede8f6ca71"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/support-codex-0156-deterministic-socket-alias-v0/.openspec.yaml",
+    "sha256": "cf5360f31deed84738022ca9c3a2083e4a5b799c20222b896b83cca22d874996"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/support-codex-0156-deterministic-socket-alias-v0/design.md",
+    "sha256": "081e91bbbf86aefd85610edf7774087b95eca26d2482babef8a57fbc80dba4bf"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/support-codex-0156-deterministic-socket-alias-v0/proposal.md",
+    "sha256": "abb464f532218c16b2536c4c2f15b4239c2e05fecf6353740bce94a5a7d8d9d8"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/support-codex-0156-deterministic-socket-alias-v0/specs/codex-app-server-adapter/spec.md",
+    "sha256": "b152e2b6e0f19f8e68beec7af68e6448626f05dcbccc4ee632be5ead4d662f18"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/support-codex-0156-deterministic-socket-alias-v0/specs/index.md",
+    "sha256": "9bba4c49f5458ceaa9dad1ecfb80d6e6ddd923d586a814257a4a9ffc5569412c"
+  },
+  {
+    "repository": "design-source",
+    "commit": "589ca38086f9b98790c9a651305974b001c1da2a",
+    "path": "openspec/changes/support-codex-0156-deterministic-socket-alias-v0/tasks.md",
+    "sha256": "58233a3adb4a1cc54832bac0781a8b2f54ca6205b0fcf722cef77378d5fba34c"
+  },
+  {
+    "repository": "design-source",
+    "commit": "54848f1c9bdd190c5d06bae4d4a73f69ae9d2299",
+    "path": "AGENTS.md",
+    "sha256": "5b630eb147fc7740d39e150f38cefeac2f3f57b432bf6b50ec2bfe789c43abaa"
+  },
+  {
+    "repository": "design-source",
+    "commit": "54848f1c9bdd190c5d06bae4d4a73f69ae9d2299",
+    "path": "docs/adr/0018-shared-codex-app-server-adapter.md",
+    "sha256": "7f0b13fb8a053cc5958356ff594ec6aaa938e64c7fa8bb2bacb299d0ef8afa1e"
+  }
+]

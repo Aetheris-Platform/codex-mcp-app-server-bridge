@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codex-mcp-app-server-bridge"
+version = "0.1.0"
+description = "Developer-only bounded Codex app-server adapter"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp==2.2.0",
+    "websockets==17.1",
+    "pywin32==312; sys_platform == 'win32'",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.13,<1"]
+
+[project.scripts]
+codex-mcp-app-server-bridge = "codex_app_server_adapter.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+codex_app_server_adapter = ["guardian.py"]
+
+[tool.uv]
+environments = ["sys_platform == 'darwin'", "sys_platform == 'linux'", "sys_platform == 'win32'"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "C4", "PT", "RET", "TCH", "ASYNC", "S", "BLE", "T20", "LOG", "G"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "SLF001"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers --strict-config"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+markers = ["installed_runtime: opt-in check that launches an explicitly supplied Codex executable"]

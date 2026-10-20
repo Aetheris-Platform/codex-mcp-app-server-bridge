@@ -1,0 +1,223 @@
+{
+  "source_repository": "implementation-source",
+  "source_commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
+  "files": [
+    {
+      "source_path": "developer-tools/codex-bridge/LICENSE-DISPOSITION.md",
+      "source_sha256": "fe59510858abc670ab0b10412a87f7e81d43e9ac324fc186717459c51e504826",
+      "destination_path": "LICENSE-DISPOSITION.md",
+      "destination_sha256": "8b70e9d6fbba106269062beaa46be692b4a4bdc2267fd56ecd74deab59b9f0c0",
+      "transfer": "adapted; owner Apache-2.0 decision and neutral source naming; see docs/extraction.md",
+      "extraction_destination_sha256": "9f00d78002a4021207aad45ff52052e2af7a3cabac0a8008e582b97d9f30c8a4",
+      "previous_destination_sha256": "120b5c03b401febf60a233e842de1072fcb9cb1c80d7e0cb48423f4d7dfde6b3"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/README.md",
+      "source_sha256": "b37cbe37ce3720aca3298b22b65ae50fb237bf7ac6a3ee0c8078edcc70b1e672",
+      "destination_path": null,
+      "excluded_reason": "source adoption/preflight tooling or superseded source documentation; see standalone documentation"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/coverage.md",
+      "source_sha256": "73104902493f149e7c18874bd9753ac76247e8e93a6718a90e007026d04a0643",
+      "destination_path": null,
+      "excluded_reason": "source adoption/preflight tooling or superseded source documentation; see standalone documentation"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/pyproject.toml",
+      "source_sha256": "faaa8fef79a6943415acb95f7a2167c347b6df9d6b966db246aee6d292a1b349",
+      "destination_path": "pyproject.toml",
+      "destination_sha256": "570c9b341d782673720ca1b18e2f6b1558b076b7f380132e1c7fc76acae1d700",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
+      "extraction_destination_sha256": "763f00240c2c1c4cfb553ead7128b0a8012e52d8201cfda04507c247eeb521d0"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/source-transfer.json",
+      "source_sha256": "55bdb25a129438b1bbb1511076f978ade0ebc752874bd7ad3b5b671d93c1138a",
+      "destination_path": "docs/provenance/prior-source-transfer.json",
+      "destination_sha256": "55bdb25a129438b1bbb1511076f978ade0ebc752874bd7ad3b5b671d93c1138a",
+      "transfer": "unchanged"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/__init__.py",
+      "source_sha256": "d041f213dd31eff848be7cbfb269a042dcb33ae30b7344c3b6eb04a03da0a233",
+      "destination_path": "src/codex_app_server_adapter/__init__.py",
+      "destination_sha256": "d041f213dd31eff848be7cbfb269a042dcb33ae30b7344c3b6eb04a03da0a233",
+      "transfer": "unchanged"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/__main__.py",
+      "source_sha256": "8d7ce422f335739e186919948995bd0502ea923ff7aca8de44324d8b65bb9cf9",
+      "destination_path": "src/codex_app_server_adapter/__main__.py",
+      "destination_sha256": "8fab0e455d684669d74fde1fd9fdfd59b68b4fa1b214f92191ec8fe04e0d7429",
+      "transfer": "adapted; see docs/extraction.md"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/errors.py",
+      "source_sha256": "cc67df337d932a936f63e1c57c620d3d5ef18a880a61ad5495bf49330dd32260",
+      "destination_path": "src/codex_app_server_adapter/errors.py",
+      "destination_sha256": "cc67df337d932a936f63e1c57c620d3d5ef18a880a61ad5495bf49330dd32260",
+      "transfer": "unchanged"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/guardian.py",
+      "source_sha256": "784ac93f16e807840bc89282ae93e6c60f9e26b797dcd7477977d640e632066c",
+      "destination_path": "src/codex_app_server_adapter/guardian.py",
+      "destination_sha256": "e419bbc534db11bfea3db53c64df1dfdb00ea1c063e1038be1b0a36e934c6c5f",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
+      "extraction_destination_sha256": "e9f47b647ba39aa33b31d2a06f6644a4aed47777adb753edc5ac883945ca77a7"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/mcp_server.py",
+      "source_sha256": "d63124ad40acb98e1374f86e5e5c4eb806ad6200bdbe3a030c1e2ee50e2bedcc",
+      "destination_path": "src/codex_app_server_adapter/mcp_server.py",
+      "destination_sha256": "9ce425d1021826e8350ebc1588f449f7a46fd12d953f8fad052bee8d26a6d540",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
+      "extraction_destination_sha256": "d63124ad40acb98e1374f86e5e5c4eb806ad6200bdbe3a030c1e2ee50e2bedcc"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/models.py",
+      "source_sha256": "57244488e92e1c7c704e788496f4c042690e9820da50799eb3c3ffabc61a3ae9",
+      "destination_path": "src/codex_app_server_adapter/models.py",
+      "destination_sha256": "57244488e92e1c7c704e788496f4c042690e9820da50799eb3c3ffabc61a3ae9",
+      "transfer": "unchanged"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/ownership.py",
+      "source_sha256": "32d54c309e3fb2857bfc189b46245939e58684eda5557e1459270ca2cc03063f",
+      "destination_path": "src/codex_app_server_adapter/ownership.py",
+      "destination_sha256": "df182515eef5de10800a79cb99f10a4fcec2de6285e137b9ebafb10a056f84f6",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
+      "extraction_destination_sha256": "32d54c309e3fb2857bfc189b46245939e58684eda5557e1459270ca2cc03063f"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/profile.py",
+      "source_sha256": "aff04b69dce9a257af5182ee2531e7868f2d9052c666bd75abcde74992109e67",
+      "destination_path": "src/codex_app_server_adapter/profile.py",
+      "destination_sha256": "89d04e4fbe85f33e9985aead543957703f6c1a4e18140e867905da5dde8cb915",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
+      "extraction_destination_sha256": "aff04b69dce9a257af5182ee2531e7868f2d9052c666bd75abcde74992109e67"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/protocol.py",
+      "source_sha256": "262811ee595f033c640852204b6bcf7837f06d89aafd06e8bbf9ff90530e3eeb",
+      "destination_path": "src/codex_app_server_adapter/protocol.py",
+      "destination_sha256": "fabcc7e226c1c8869167928d5401066846acb937d951c9922349d959591e57fb",
+      "transfer": "adapted; see docs/extraction.md"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/runtime.py",
+      "source_sha256": "aa89dc117a7ec1051497bd8de1afc21870522ed0f99d260eb14ed5f582fe358a",
+      "destination_path": "src/codex_app_server_adapter/runtime.py",
+      "destination_sha256": "c03f8318497311757784f3e858c84748088db04f1c8a2b03e3625ab0a52db46b",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
+      "extraction_destination_sha256": "aa89dc117a7ec1051497bd8de1afc21870522ed0f99d260eb14ed5f582fe358a"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/service.py",
+      "source_sha256": "66f6e143da11eaf632ef1f95250f54ced32bb0dd1f10899a9357e60ef4fc4e3d",
+      "destination_path": "src/codex_app_server_adapter/service.py",
+      "destination_sha256": "3556bd4ca185d22d1cf88a950e2249c7b015d98633dbf2d988d9744f2f4a312a",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
+      "extraction_destination_sha256": "d3b2cb0d6b4079265e80abe4cae8fc0ecbd04137a642266650476b19ec59343e"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/store.py",
+      "source_sha256": "c9e77f91f9a015d207f09c7a45d02d373954fc01dd0145eaf4da034ab1685465",
+      "destination_path": "src/codex_app_server_adapter/store.py",
+      "destination_sha256": "94b5151f8e24049140a389f8c50c5793d7a7690f7e8a41e05cb7ee84158e1ae8",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
+      "extraction_destination_sha256": "c9e77f91f9a015d207f09c7a45d02d373954fc01dd0145eaf4da034ab1685465"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/src/codex_app_server_adapter/validation.py",
+      "source_sha256": "b8ec0286df26d02adcfd84776566af667740a6fcbb444c8ec4290262d0a30bc0",
+      "destination_path": "src/codex_app_server_adapter/validation.py",
+      "destination_sha256": "b8ec0286df26d02adcfd84776566af667740a6fcbb444c8ec4290262d0a30bc0",
+      "transfer": "unchanged"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/tests/fixtures/codex_app_server_adapter/native_server.py",
+      "source_sha256": "bc2ca6778c1f23e07edc68a6d694b44b40d114aece1d72cf6a1db66c7c06180d",
+      "destination_path": "tests/fixtures/codex_app_server_adapter/native_server.py",
+      "destination_sha256": "430bd3a8d769d046ec055a9c7a698fb1af096768b17dd443488f765e4efd9a16",
+      "transfer": "adapted; see docs/extraction.md"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/tests/installed_wheel_smoke.py",
+      "source_sha256": "a2c60e82078c13801363ab021e047d62526fe62e6c61d78895489a6b56406fab",
+      "destination_path": "tests/installed_wheel_smoke.py",
+      "destination_sha256": "68da655b35173d2307686db0f7072199751ce54a068edbfc6db528c509b1a097",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
+      "extraction_destination_sha256": "7f0c8cee204b2e9f927bb0624e6c6a2c1dfc252cb74189225fcda0803ecda974"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/tests/test_codex_app_server_adapter.py",
+      "source_sha256": "3b2acdff852333e4da99ea60eee8af84b2cfa25c6c5c3b5263c13e6955513c21",
+      "destination_path": "tests/test_codex_app_server_adapter.py",
+      "destination_sha256": "7af3b13e31169262fcdfadb6146c36050094c702370bc96ad18cd829ed18c541",
+      "transfer": "adapted; see docs/extraction.md"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/tests/test_codex_app_server_adapter_guardian.py",
+      "source_sha256": "46d1f7ae701cc972ddb4072ab83ac5db3aab1d77d86dede0bc914ca100be36f2",
+      "destination_path": "tests/test_codex_app_server_adapter_guardian.py",
+      "destination_sha256": "ec52186480f9596f3a00212c7e502690b7493294d2fec07b98f5c44bd974f050",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
+      "extraction_destination_sha256": "84e562971ec3af651bba8447ad34114af9048497dfe00f34dfa02d52c90e94df"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/tests/test_codex_app_server_adapter_matrix.py",
+      "source_sha256": "7e69149aa749be49af660945ee7f1c14b1002d321a3129d00730a27de0ceeec6",
+      "destination_path": "tests/test_codex_app_server_adapter_matrix.py",
+      "destination_sha256": "178d7d8bd4de2f8e3a37165582e41c335185bf9c0313cf7e54a6f84259bbaca0",
+      "transfer": "adapted; see docs/extraction.md"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/tests/test_codex_app_server_adapter_native.py",
+      "source_sha256": "a2c4b9242c37c2da592183ec3eda706438c2a8a5e61cccb5be8ac4bc8a978bb8",
+      "destination_path": "tests/test_codex_app_server_adapter_native.py",
+      "destination_sha256": "4ce2ba56b5d423167f7960eff9ffe394063bac8e847e8fd6eb550da951eb724b",
+      "transfer": "adapted; see docs/extraction.md"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/tests/test_codex_app_server_adapter_ownership.py",
+      "source_sha256": "5e02211188e1a495a994b97cb1ce41b6633362b4a69c5637411ed4921c49d298",
+      "destination_path": "tests/test_codex_app_server_adapter_ownership.py",
+      "destination_sha256": "c66ff752f90441fb688d1bb95af14974ddbc6108465a169d8cc96e770148b449",
+      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
+      "extraction_destination_sha256": "5e02211188e1a495a994b97cb1ce41b6633362b4a69c5637411ed4921c49d298"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/tests/test_codex_app_server_adapter_provider.py",
+      "source_sha256": "4dc923a7c8e02e70a575f2df4b391f295d7a8ee3139a36bcf9b195d63b794263",
+      "destination_path": "tests/test_codex_app_server_adapter_provider.py",
+      "destination_sha256": "4dc923a7c8e02e70a575f2df4b391f295d7a8ee3139a36bcf9b195d63b794263",
+      "transfer": "unchanged"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/tools/preflight.py",
+      "source_sha256": "a847c472d25c105ae3f5a362c865d415fbf1e77631b81994e1017bafbf22cb46",
+      "destination_path": null,
+      "excluded_reason": "source adoption/preflight tooling or superseded source documentation; see standalone documentation"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/tools/verify_transfer.py",
+      "source_sha256": "81d2108e2ab78a4ad7f66bfdc16169944dbeedeae6a751804e3da9b285f7f89e",
+      "destination_path": null,
+      "excluded_reason": "source adoption/preflight tooling or superseded source documentation; see standalone documentation"
+    },
+    {
+      "source_path": "developer-tools/codex-bridge/uv.lock",
+      "source_sha256": "790d9cd24d23aa3cce35998e3f3329b68ca58087d829a907b0037c5ead187802",
+      "destination_path": "uv.lock",
+      "destination_sha256": "038e81fb59cd9ceb079e17be3c7f10105f6307e088b71263b34cf8579589ec88",
+      "transfer": "adapted; PyJWT 2.15.0 security update; see docs/security-testing.md",
+      "extraction_destination_sha256": "be400f28768c422b670b9af27df2319192c2bb2d453482d14305f87517c2cb41",
+      "pre_security_update_destination_sha256": "b09c882a8616c21e8930dcb5ffb9500ef5c52e8ff9c0079e3b45e919b841213a"
+    }
+  ],
+  "destination_initial_commit": "64056785b21b51e269098a47583111723845542d",
+  "destination_repository": "https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge",
+  "source_identity_note": "Neutral repository label requested by owner; source commit, source paths and source SHA-256 values remain unchanged."
+}
