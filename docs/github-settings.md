@@ -1,6 +1,6 @@
 # GitHub settings comparison — 2026-10-19
 
-Authenticated repository-admin API reads compared `Aetheris-Platform/open-lifecycle-traceability-standard` with `Aetheris-Platform/codex-mcp-app-server-bridge`. Only destination repository-level non-secret settings were changed. The reference was read-only. Applied controls were read back; this is a bounded comparison, not a complete-match claim.
+Authenticated repository-admin API reads compared [the reference repository](https://github.com/Aetheris-Platform/open-lifecycle-traceability-standard) with [this repository](https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge). Only destination repository-level non-secret settings were changed. The reference was read-only. Applied controls were read back; this is a bounded comparison, not a complete-match claim.
 
 | Control | Reference | Destination/result |
 | --- | --- | --- |
@@ -34,8 +34,26 @@ Authenticated repository-admin API reads compared `Aetheris-Platform/open-lifecy
 
 Repository secret values, credentials, deploy keys, tokens and secret-bearing webhook configuration were neither inventoried nor copied. Collaborator/team access, organization-wide settings, installed apps, billing and custom properties governed at organization level were not changed; no equivalent access-control or full organization-policy match is claimed. Repository ruleset inventory included inherited rules and returned no additional parent rules. No PR, code push, release or package publication occurred.
 
-Sanitized machine receipts: [settings evidence](provenance/github-settings.json). They intentionally exclude keys, hooks, secrets and credentials.
+Sanitized machine receipts (repository identity fields converted to links; not verbatim API responses): [settings evidence](provenance/github-settings.json). They intentionally exclude keys, hooks, secrets and credentials.
 
 Endpoint scope checked against [GitHub Actions permissions documentation](https://docs.github.com/en/rest/actions/permissions).
 
 Description follow-up: updated the destination About text to say developers clone and run the bridge locally, then integrate it into their own workflows. Read-back confirmed private visibility. GitHub is the source distribution location; it is not a hosted bridge endpoint. No code was pushed.
+
+## Protection recheck — 2026-10-20
+
+Read-only API verification confirmed active ruleset `25405154` on
+`refs/heads/main`: deletion and non-fast-forward updates blocked, signed commits
+and PRs required, merge commits only. The administrator role retains its always
+bypass. Required approval count remains zero; stale-review dismissal,
+last-push approval and required thread resolution are off.
+
+There are no required status-check rules and no Actions workflows. Main is
+protected by the ruleset even though the separate classic-protection endpoint
+returns 404. Ruleset protection does not establish a passing test result.
+
+Actions currently allows all actions without mandatory SHA pinning. Default
+workflow-token access is read-only, but workflows may approve PR reviews.
+Dependabot security updates are enabled; code security, secret scanning and
+push protection are disabled. The repository is private. This recheck changed
+no GitHub control, enabled no paid feature and launched no workflow.

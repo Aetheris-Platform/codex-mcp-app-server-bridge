@@ -41,5 +41,7 @@ Actual license/NOTICE files copied from the 35 distributions installed from the 
 The owner-run Windows 11/Python 3.12.14 acceptance session additionally retained
 16 pywin32 312 notice files and one colorama 0.4.6 license. See
 [the Windows inventory](windows/inventory.json) for original distribution paths
-and byte hashes. Notice retention does not change the failed Windows test verdict
-or grant public redistribution clearance.
+and byte hashes. These notices were collected during an earlier failed attempt;
+the subsequent [native Windows offline acceptance](../windows-offline-pass-2026-10-19.md)
+passed at its recorded candidate. Notice retention is separate from test
+acceptance and does not replace review of the exact artifacts being distributed.

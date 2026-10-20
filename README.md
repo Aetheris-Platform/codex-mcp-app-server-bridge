@@ -142,7 +142,7 @@ For normal workflow integration, your MCP client launches this local process and
 }
 ```
 
-Adapt the enclosing registration format to your client. Saving an example does not register or activate anything. The native initialize name and thread source are truthfully `codex-mcp-app-server-bridge`; the MCP server name remains the generic `codex-app-server`. Downstream verifiers expecting the former product identity must be adopted separately.
+Adapt the enclosing registration format to your client. Saving an example does not register or activate anything. The native initialize name and thread source are truthfully `codex-mcp-app-server-bridge`; the MCP server name remains the generic `codex-app-server`.
 
 ## Four tools
 
@@ -235,6 +235,6 @@ See [integration testing](docs/integration-testing.md) for fresh-checkout comman
 
 ## Provenance and licensing
 
-The implementation originated in Aetheris and was maintained as Central's standalone Python package before this extraction. [Transfer manifests](docs/provenance/transfer-manifest.json) pin committed inputs and per-file hashes. Runtime imports do not require either source checkout; no workflow core, formal verifier, role firing or product adoption machinery is included.
+The bridge is a standalone extraction of an existing implementation. [Transfer manifests](docs/provenance/transfer-manifest.json) retain exact source commits and per-file hashes under neutral source identifiers. Runtime imports do not require a source checkout or external workflow system.
 
-The remote's existing Apache-2.0 [LICENSE](LICENSE) is preserved unchanged. Central's original licensing notice is also retained. The owner must resolve its applicability to transferred code and required third-party distribution notices before public release; successful tests or the existing license file do not establish redistribution clearance. See [LICENSE-DISPOSITION.md](LICENSE-DISPOSITION.md) and [dependency notices](docs/third-party/README.md).
+The owner has confirmed **Apache-2.0** for this bridge, including the extracted implementation. The existing [LICENSE](LICENSE) is unchanged. Dependencies retain their own licenses and notices; see [LICENSE-DISPOSITION.md](LICENSE-DISPOSITION.md) and [dependency notices](docs/third-party/README.md). This licensing decision does not publish the repository or authorize a release.

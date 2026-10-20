@@ -40,8 +40,8 @@ that stopping had been attempted.
 
 A deterministic FakeClient reproduction on macOS confirmed this behavior without
 wall-clock sleeps or a provider. Read-only comparison found the event loop was
-identical to the pinned Central source at
-`7a55276bf76e35ecd1004b79a1256da4cca5bc53`. Central remains untouched.
+identical to the pinned implementation source source at
+`7a55276bf76e35ecd1004b79a1256da4cca5bc53`. implementation source remains untouched.
 
 The no-event branch now requires the persisted interruption-attempt flag before
 classifying termination as unconfirmed. If the deadline crossed during the wait,

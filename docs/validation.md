@@ -20,7 +20,7 @@ Environment: macOS arm64, Python 3.14.6, uv 0.12.18, destination-local locked de
 | Inherited test lint | 52 diagnostics | Same file/code/message multiset as committed source; no unrelated lint cleanup or suppression |
 | Dependency boundary | Passed | Parsed lock differs only in root distribution name; all dependency versions, URLs, artifact hashes and markers unchanged |
 | Package boundary | Passed | Wheel contains only 13 expected bridge modules and distribution metadata/notices, including guardian; module bytes match destination source |
-| Source provenance | Passed | 25 transferred destination files verified; all 29 inventoried Central inputs rehashed from exact committed blobs, including 4 deliberate exclusions |
+| Source provenance | Passed | 25 transferred destination files verified; all 29 inventoried implementation source inputs rehashed from exact committed blobs, including 4 deliberate exclusions |
 | Compilation, diff hygiene and leakage | Passed | Runtime compilation; authored diff hygiene; no credential/private-home/LAN patterns in deliverable files; existing LICENSE unchanged |
 
 Earlier test-harness attempts remain retained, not relabeled as passes:

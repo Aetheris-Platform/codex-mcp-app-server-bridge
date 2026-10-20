@@ -1,26 +1,27 @@
 {
-  "source_repository": "https://github.com/Aetheris-Platform/aetherion-core-dev-workflow",
+  "source_repository": "implementation-source",
   "source_commit": "7a55276bf76e35ecd1004b79a1256da4cca5bc53",
   "files": [
     {
       "source_path": "developer-tools/codex-bridge/LICENSE-DISPOSITION.md",
       "source_sha256": "fe59510858abc670ab0b10412a87f7e81d43e9ac324fc186717459c51e504826",
       "destination_path": "LICENSE-DISPOSITION.md",
-      "destination_sha256": "120b5c03b401febf60a233e842de1072fcb9cb1c80d7e0cb48423f4d7dfde6b3",
-      "transfer": "adapted; extraction plus platform follow-up; see docs/platforms.md",
-      "extraction_destination_sha256": "9f00d78002a4021207aad45ff52052e2af7a3cabac0a8008e582b97d9f30c8a4"
+      "destination_sha256": "8b70e9d6fbba106269062beaa46be692b4a4bdc2267fd56ecd74deab59b9f0c0",
+      "transfer": "adapted; owner Apache-2.0 decision and neutral source naming; see docs/extraction.md",
+      "extraction_destination_sha256": "9f00d78002a4021207aad45ff52052e2af7a3cabac0a8008e582b97d9f30c8a4",
+      "previous_destination_sha256": "120b5c03b401febf60a233e842de1072fcb9cb1c80d7e0cb48423f4d7dfde6b3"
     },
     {
       "source_path": "developer-tools/codex-bridge/README.md",
       "source_sha256": "b37cbe37ce3720aca3298b22b65ae50fb237bf7ac6a3ee0c8078edcc70b1e672",
       "destination_path": null,
-      "excluded_reason": "Central adoption/preflight tooling or superseded Central documentation; see standalone documentation"
+      "excluded_reason": "source adoption/preflight tooling or superseded source documentation; see standalone documentation"
     },
     {
       "source_path": "developer-tools/codex-bridge/coverage.md",
       "source_sha256": "73104902493f149e7c18874bd9753ac76247e8e93a6718a90e007026d04a0643",
       "destination_path": null,
-      "excluded_reason": "Central adoption/preflight tooling or superseded Central documentation; see standalone documentation"
+      "excluded_reason": "source adoption/preflight tooling or superseded source documentation; see standalone documentation"
     },
     {
       "source_path": "developer-tools/codex-bridge/pyproject.toml",
@@ -33,7 +34,7 @@
     {
       "source_path": "developer-tools/codex-bridge/source-transfer.json",
       "source_sha256": "55bdb25a129438b1bbb1511076f978ade0ebc752874bd7ad3b5b671d93c1138a",
-      "destination_path": "docs/provenance/central-source-transfer.json",
+      "destination_path": "docs/provenance/prior-source-transfer.json",
       "destination_sha256": "55bdb25a129438b1bbb1511076f978ade0ebc752874bd7ad3b5b671d93c1138a",
       "transfer": "unchanged"
     },
@@ -198,13 +199,13 @@
       "source_path": "developer-tools/codex-bridge/tools/preflight.py",
       "source_sha256": "a847c472d25c105ae3f5a362c865d415fbf1e77631b81994e1017bafbf22cb46",
       "destination_path": null,
-      "excluded_reason": "Central adoption/preflight tooling or superseded Central documentation; see standalone documentation"
+      "excluded_reason": "source adoption/preflight tooling or superseded source documentation; see standalone documentation"
     },
     {
       "source_path": "developer-tools/codex-bridge/tools/verify_transfer.py",
       "source_sha256": "81d2108e2ab78a4ad7f66bfdc16169944dbeedeae6a751804e3da9b285f7f89e",
       "destination_path": null,
-      "excluded_reason": "Central adoption/preflight tooling or superseded Central documentation; see standalone documentation"
+      "excluded_reason": "source adoption/preflight tooling or superseded source documentation; see standalone documentation"
     },
     {
       "source_path": "developer-tools/codex-bridge/uv.lock",
@@ -216,5 +217,6 @@
     }
   ],
   "destination_initial_commit": "64056785b21b51e269098a47583111723845542d",
-  "destination_repository": "https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge"
+  "destination_repository": "https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge",
+  "source_identity_note": "Neutral repository label requested by owner; source commit, source paths and source SHA-256 values remain unchanged."
 }

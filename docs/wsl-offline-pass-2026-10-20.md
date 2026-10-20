@@ -79,6 +79,7 @@ No candidate bridge defect was observed in the executed scope.
 
 The uv archive contains executables but no bundled license/NOTICE text; the
 archive/content inventory and original locked wheels remain retained. Existing
-project notices and prior Windows dependency notices remain preserved. Public
-licensing clearance, live-provider qualification, consumer adoption, merge and
-publication remain separate owner decisions. The repository stays private.
+dependency notices remain preserved. The owner subsequently confirmed
+Apache-2.0 for the extracted implementation; see [license disposition](../LICENSE-DISPOSITION.md).
+Live-provider qualification, consumer adoption, merge and publication remain
+separate owner decisions. The repository stays private.

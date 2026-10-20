@@ -62,7 +62,6 @@ def test_native_identity_is_truthful_and_matches_thread_source(tmp_path: Path) -
             await service.status({"task_id": started["task_id"], "wait_seconds": 2})
             thread = next(params for method, params in client.calls if method == "thread/start")
             assert thread["threadSource"] == initialize["name"]
-            assert "aetheris" not in thread["threadSource"]
             assert thread["modelProvider"] == "openai"
             assert thread["approvalPolicy"] == "never"
         finally:
@@ -82,15 +81,21 @@ def test_package_is_self_contained_and_has_neutral_entrypoint() -> None:
     assert project["dependencies"] == [
         "mcp==2.2.0", "websockets==17.1", "pywin32==312; sys_platform == 'win32'",
     ]
-    forbidden = {"workflow_core", "devtools", "aetheris", "aetherion"}
+    # Only stdlib and modules supplied by the locked runtime dependencies are
+    # admitted. This excludes every undeclared product/workflow package without
+    # embedding a list of former product identities in the distributed tests.
+    allowed = sys.stdlib_module_names | {
+        "anyio", "mcp", "mcp_types", "pydantic", "websockets", "pywintypes",
+        "win32api", "win32con", "win32event", "win32file", "win32job",
+        "win32pipe", "win32process", "win32security",
+    }
     for path in (root / "src").rglob("*.py"):
         source = path.read_text()
         assert "/Users/" not in source
-        assert "aetheris-codex-app-server-adapter" not in source
         for node in ast.walk(ast.parse(source)):
             modules = []
             if isinstance(node, ast.Import):
                 modules = [alias.name for alias in node.names]
             elif isinstance(node, ast.ImportFrom) and node.level == 0 and node.module:
                 modules = [node.module]
-            assert not any(module.split(".")[0] in forbidden for module in modules)
+            assert all(module.split(".")[0] in allowed for module in modules), path

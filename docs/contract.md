@@ -2,15 +2,16 @@
 
 For application developers integrating an MCP host, start with the [developer integration contract](integration-contract.md). This document supplies the underlying operational guarantees and accepted residuals.
 
-Extracted from the pinned Central contract; operational requirements below remain unchanged. The standalone native client/thread identity is `codex-mcp-app-server-bridge`. Historical native verifier identities are not impersonated; downstream adoption is outside this repository.
+This standalone contract defines the bridge's transport, task and resource-ownership behavior. Its native client/thread identity is `codex-mcp-app-server-bridge`. No external verifier or workflow system is required.
 
 The bridge provides local transport, task persistence and native-journal capture. It grants no workflow, review, merge or release authority. Operators own private profiles, endpoints and activation.
 
 ## Interface and results
 
 The stdio MCP interface exposes exactly `codex_start`, `codex_status`,
-`codex_result`, and `codex_cancel` to product hosts. It uses a native local
-WebSocket JSON-RPC app-server client, explicit model and worktree selection,
+`codex_result`, and `codex_cancel` to MCP hosts. It uses native JSON-RPC over
+WebSocket connections through Unix sockets on macOS/Linux/WSL2 or private stdio pipes on native
+Windows, explicit model and worktree selection,
 and no removed `codex mcp-server` path or model fallback. A valid start returns
 a durable task ID within its start bound, without waiting for coding; later
 calls address the same provider thread and turn. A complete result larger
@@ -45,10 +46,10 @@ distinctly; acknowledgement alone is not confirmed cancellation.
 
 Retain original provider output and available journals with truthful source
 metadata, identities and digests. A displayed final answer with an incomplete
-journal retains its evidence limitation and cannot satisfy formal workflow
-completion. A native source incompatible with the adopted Central verifier
-blocks formal adoption pending a governed compatibility decision; the bridge
-does not rewrite metadata or recast native evidence as legacy MCP evidence.
+journal retains its evidence limitation; result availability and journal
+completeness are reported independently. The bridge does not rewrite source
+metadata or claim evidence it did not capture. Applications decide how to use
+the result; journal capture grants no approval or workflow authority.
 The canonical result is assembled from explicit final-answer items in native
 full history, once each in history order with original text. Commentary,
 partial history, streaming duplicates and unknown output phases are not
@@ -214,15 +215,16 @@ result, pending event, native journal and artifact fields. The package
 relocation does not migrate, rewrite or invalidate records or journals. A
 controlled restart must still read retained tasks from the same private
 profile/store. The standalone native client and thread-source literal is
-`codex-mcp-app-server-bridge`. Existing downstream verifiers may reject this new identity; that is not repaired by impersonating the old client.
+`codex-mcp-app-server-bridge`. Consumers must use that truthful identity.
 
 ## Source scenario coverage
 
-The consolidated sections above preserve every scenario in the pinned
-source specs. Base: start before completion, large result, lost
+The consolidated sections above preserve the transport and lifecycle scenarios
+from the pinned source specs. External workflow-adoption requirements are
+excluded. Base: start before completion, large result, lost
 acknowledgement, conflicting request ID, bounded status timeout, cancel
-acknowledgement, broader permissions, incomplete journal, incompatible
-source, adapter shutdown, adapter kill, guardian loss, runtime drift, host
+acknowledgement, broader permissions, incomplete journal, truthful source
+metadata, adapter shutdown, adapter kill, guardian loss, runtime drift, host
 follow-through, inherited permissions, cancellation/start race, and
 commentary versus final output. Socket amendment: deterministic alias,
 direct socket, unsafe layout, alias/socket replacement, connect-window
