@@ -87,6 +87,38 @@ command failures are failures. Review the exact commit, base and dirty flag.
 Keep the checkout private while testing and restrict access to raw reports.
 Commit only a sanitized summary; retain failures as well as successful reruns.
 
+### Disconnected WSL advisory checks
+
+Advisory lookups cover every package/version in both locks, independent of the
+host OS. A disconnected host may explicitly reuse a trusted maintainer's
+successful **direct** audit of the exact same committed candidate:
+
+1. On connected Windows, run the normal checker above on the clean pinned
+   checkout. Preserve its complete receipt directory, including `summary.json`
+   and both `dependencies-*.json` reports.
+2. Copy that directory byte-for-byte to private storage inside WSL, without
+   editing any report. Compare its file hashes with the Windows originals.
+3. Within **24 hours of the source run's start**, run in the same clean commit:
+
+   ```sh
+   .venv/bin/python tools/security_check.py --base origin/main \
+     --advisory-receipts /absolute/private/copied-windows-receipts
+   ```
+
+The checker still runs all five code/secret checks locally. For the two advisory
+checks it requires matching commit, both lock hashes, pip-audit version, complete
+inventories, successful direct source checks, report hashes and a non-future
+timestamp. Dirty, failed, missing, changed, expired or already-transferred
+evidence is rejected. No automatic fallback occurs after network failure.
+Older receipts without these identity fields cannot be used.
+
+The receiving summary records `mode: transferred`, original query time and
+receipt hashes. This proves reuse of dated advisory evidence; it is **not** a
+successful WSL network query. Hashes detect copy changes, not a malicious report
+producer: use only evidence from a trusted maintainer-controlled machine.
+Do not upload credentials or change WSL network/security policy to run this
+procedure. Keep the original blocked run alongside the paired acceptance.
+
 ## Reviewed code-analysis findings
 
 The Gitleaks configuration retains all default rules. Six exact receipt-digest

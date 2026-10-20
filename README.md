@@ -232,7 +232,10 @@ and raw receipts stay under ignored `.local/`; reusable scripts, versions and
 reviewed exceptions are committed. These checks use no paid GitHub product or
 Actions minutes. See [SECURITY.md](SECURITY.md) for private vulnerability reporting
 and [security validation](docs/security-validation-2026-10-20.md) for results and
-the updated dependency candidate’s pending Windows/WSL2 acceptance.
+the updated dependency candidate’s results. The latest owner run passed WSL2,
+forwarding and Windows security but failed native Windows expiry polling;
+WSL advisory queries were network-blocked. See the
+[correction and pending rerun](docs/acceptance-followup-2026-10-20.md).
 
 ## Offline tests
 

@@ -14,6 +14,8 @@ import tomllib
 from datetime import UTC, datetime
 from pathlib import Path
 
+from advisory_receipts import load_advisory_receipt
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -61,6 +63,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", default="origin/main", help="Local PR base ref; never fetched automatically")
     parser.add_argument("--allow-dirty", action="store_true", help="Development checks only, not clean-candidate acceptance")
+    parser.add_argument("--advisory-receipts", type=Path,
+                        help="Explicit trusted direct-audit receipt directory from this commit within 24 hours")
     args = parser.parse_args()
     os.umask(0o077)
     git = shutil.which("git")
@@ -95,7 +99,10 @@ def main() -> None:
     receipt = Path(tempfile.mkdtemp(prefix="run-", dir=reports))
     summary = {"commit": head, "base_commit": base, "dirty": dirty,
                "started_at_utc": datetime.now(UTC).isoformat(),
-               "tools": {**versions, "gitleaks": pins["version"]}, "checks": {}}
+               "tools": {**versions, "gitleaks": pins["version"]}, "checks": {},
+               "lock_sha256": {label: hashlib.sha256(path.read_bytes()).hexdigest()
+                               for label, path in (("bridge", ROOT / "uv.lock"),
+                                                   ("tools", ROOT / "tools/security/uv.lock"))}}
     print(f"Security receipts: {receipt}")
 
     def run(name: str, command: list[str]) -> int:
@@ -147,15 +154,36 @@ def main() -> None:
     summary["checks"][name]["pass"] = code in (0, 1) and isinstance(report, dict) and bandit_ok(report, exceptions)
     summary["checks"][name]["reviewed_findings"] = len(exceptions)
     run("ruff", [str(python), "-m", "ruff", "check", "--no-cache", "src", "tools",
-                 "tests/test_standalone_extraction.py", "tests/installed_wheel_smoke.py", "tests/test_security_tools.py"])
+                 "tests/test_standalone_extraction.py", "tests/installed_wheel_smoke.py", "tests/test_security_tools.py",
+                 "tests/test_advisory_receipts.py", "tests/mcp_polling.py", "tests/test_mcp_polling.py"])
     for label, lock in (("bridge", ROOT / "uv.lock"), ("tools", ROOT / "tools/security/uv.lock")):
         expected = locked_packages(lock)
         requirements = receipt / f"{label}-requirements.txt"
         requirements.write_text("".join(f"{name}=={version}\n" for name, version in sorted(expected)))
         name = f"dependencies-{label}"
-        code = run(name, [str(python), "-m", "pip_audit", "--no-deps", "--disable-pip", "--progress-spinner", "off",
-                          "-r", str(requirements), "-f", "json", "-o", str(receipt / f"{name}.json")])
-        summary["checks"][name]["pass"] = code == 0 and audit_ok(read_report(name), expected)
+        if args.advisory_receipts:
+            try:
+                if dirty:
+                    raise ValueError("transferred advisory receipts require a clean candidate")
+                report, provenance = load_advisory_receipt(
+                    args.advisory_receipts, label, commit=head,
+                    lock_sha256=summary["lock_sha256"], tool_version=versions["pip-audit"])
+                accepted = audit_ok(report, expected)
+                (receipt / f"{name}.json").write_text(json.dumps(report, indent=2) + "\n")
+                shutil.copyfile(args.advisory_receipts / "summary.json", receipt / "advisory-source-summary.json")
+                summary["checks"][name] = {"exit_code": 0 if accepted else 1, "pass": accepted, **provenance}
+                (receipt / f"{name}.log").write_text("Transferred advisory evidence; no local query executed.\n")
+            except (OSError, ValueError, KeyError, TypeError) as exc:
+                summary["checks"][name] = {"exit_code": 1, "pass": False, "mode": "transferred"}
+                (receipt / f"{name}.log").write_text(f"Transferred advisory evidence rejected: {exc}\n")
+        else:
+            code = run(name, [str(python), "-m", "pip_audit", "--no-deps", "--disable-pip", "--progress-spinner", "off",
+                              "-r", str(requirements), "-f", "json", "-o", str(receipt / f"{name}.json")])
+            summary["checks"][name]["pass"] = code == 0 and audit_ok(read_report(name), expected)
+            summary["checks"][name]["mode"] = "direct"
+            report_path = receipt / f"{name}.json"
+            if report_path.exists():
+                summary["checks"][name]["report_sha256"] = hashlib.sha256(report_path.read_bytes()).hexdigest()
         summary["checks"][name]["expected_packages"] = len(expected)
     unchanged = head == git_read("rev-parse", "HEAD") and (args.allow_dirty or not git_read("status", "--porcelain"))
     summary["pass"] = unchanged and all(check["pass"] for check in summary["checks"].values())

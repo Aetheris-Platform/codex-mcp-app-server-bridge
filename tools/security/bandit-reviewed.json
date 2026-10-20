@@ -54,7 +54,7 @@
     "reason": "Uses subprocess constants and list2cmdline for the native owned-process API, not shell execution."
   },
   {
-    "fingerprint": "d25b98609dd2a5868b305c85eaa4dfbc66299f5667eef4c8aef66a35ac93c8b0",
+    "fingerprint": "8b6bda2e43c9eba19053dd14db9b55ace2b5718b9f740f1ef249f418a56469c9",
     "file": "tools/security_check.py",
     "line": 11,
     "test_id": "B404",
@@ -63,49 +63,58 @@
     "reason": "Maintainer runner executes fixed argv lists for installed local security tools and read-only Git queries; no shell or runtime credentials."
   },
   {
-    "fingerprint": "62397f1fafe2f4a3601565337ce833eacf062552903536ec13212eaa4c5f9bbf",
+    "fingerprint": "d44df658c61415598428b9745fa8c347c2b805755ace4404e55c29e597e0f894",
     "file": "tools/security_check.py",
-    "line": 71,
+    "line": 75,
     "test_id": "B603",
     "severity": "LOW",
     "reviewed_on": "2026-10-20",
     "reason": "Explicit argv uses the operator Git resolved through PATH or pinned checkout-local tools. Base ref resolves with --end-of-options before use as a commit range. No shell; tool calls bounded at 600 seconds. Maintainers review candidate code before running it."
   },
   {
-    "fingerprint": "34e1fa18d28f94feb5a9e780e4ce9ad9d18202089f468cf10d64ed60644882cc",
+    "fingerprint": "e89b54a72d9d163040e7db09fd5bac0e601dbd4833d12448e9b692f83056a9d6",
     "file": "tools/security_check.py",
-    "line": 86,
+    "line": 90,
     "test_id": "B603",
     "severity": "LOW",
     "reviewed_on": "2026-10-20",
     "reason": "Explicit argv uses the operator Git resolved through PATH or pinned checkout-local tools. Base ref resolves with --end-of-options before use as a commit range. No shell; tool calls bounded at 600 seconds. Maintainers review candidate code before running it."
   },
   {
-    "fingerprint": "f342c4804a7ae03881e3e1b9b9995c03f971144fd16d94dfa14c3df96ec818de",
+    "fingerprint": "9c6de8cc2dccc5dd91e29166b80a72ff24495950221646b74b5bdaa09082e748",
     "file": "tools/security_check.py",
-    "line": 91,
+    "line": 95,
     "test_id": "B603",
     "severity": "LOW",
     "reviewed_on": "2026-10-20",
     "reason": "Explicit argv uses the operator Git resolved through PATH or pinned checkout-local tools. Base ref resolves with --end-of-options before use as a commit range. No shell; tool calls bounded at 600 seconds. Maintainers review candidate code before running it."
   },
   {
-    "fingerprint": "9028c04e5189cff09c5868082f832866d4e25de9423033102cecddb577042900",
+    "fingerprint": "aaa88d05e8f9de1660badbb88ef6c095e553b46fe441959d91038081a50549ba",
     "file": "tools/security_check.py",
-    "line": 104,
+    "line": 111,
     "test_id": "B603",
     "severity": "LOW",
     "reviewed_on": "2026-10-20",
     "reason": "Explicit argv uses the operator Git resolved through PATH or pinned checkout-local tools. Base ref resolves with --end-of-options before use as a commit range. No shell; tool calls bounded at 600 seconds. Maintainers review candidate code before running it."
   },
   {
-    "fingerprint": "aa7fa1698f095a68d83d5cb8bddcbae38b354bcd4a90cb9b724414cf6b4b6b6a",
+    "fingerprint": "3a4d3a58712584b0a05d9f7f9470a86ecc04e53c0cbd687ba568c75eb9856c04",
     "file": "tools/security_check.py",
-    "line": 126,
+    "line": 133,
     "test_id": "B603",
     "severity": "LOW",
     "reviewed_on": "2026-10-20",
     "reason": "Explicit argv uses the operator Git resolved through PATH or pinned checkout-local tools. Base ref resolves with --end-of-options before use as a commit range. No shell; tool calls bounded at 600 seconds. Maintainers review candidate code before running it."
+  },
+  {
+    "file": "tools/security_check.py",
+    "line": 177,
+    "test_id": "B105",
+    "severity": "LOW",
+    "reviewed_on": "2026-10-20",
+    "fingerprint": "e79cfaef91be8f0630d02e2a2544598fa418f8be9d240c34038f075b827803ca",
+    "reason": "The literal transferred labels a failed advisory-evidence check in a JSON status record. It is not a password, token or authentication input; no credential is embedded."
   },
   {
     "fingerprint": "f5addc6f9dbae08b720f4fac7ab40274814799ff6d71471679154d4d9fbe525d",
@@ -117,7 +126,7 @@
     "reason": "Explicit network setup only. URL is constructed from a committed official HTTPS release pin; downloaded bytes must match its committed SHA-256 before named regular members are read. No arbitrary extraction or launch-time download."
   },
   {
-    "fingerprint": "3f4821e7a460898af691a17f30c7208294236b1eb5f0ea42860ea546c07935ff",
+    "fingerprint": "753d39405fae12253ae1c297d239b87a4c8b4f74943d2744bf398447ab61fda8",
     "file": "tools/test_platform.py",
     "line": 11,
     "test_id": "B404",
@@ -126,7 +135,7 @@
     "reason": "Maintainer runner invokes its own interpreter with fixed local test/tool paths; no shell."
   },
   {
-    "fingerprint": "791e8da175f586147b41b2c3a3a63a39054952ddb5934f9a8c5b03f11fed3a2f",
+    "fingerprint": "94bc6df6e5033c1bce69f00e48850905c7d502218ebe7bdfb4e2e909e5413335",
     "file": "tools/test_platform.py",
     "line": 15,
     "test_id": "B405",
@@ -135,7 +144,7 @@
     "reason": "XML is an owned pytest receipt generated in this invocation, not an external upload; the tested candidate already executes with this account privileges."
   },
   {
-    "fingerprint": "25243a7eed95c1a6f5c7094048124c1f0a46ba27a601a146c0e90831ccf12caa",
+    "fingerprint": "0a179be67860b7e2ac410742492abafc12ff191ffd60db91a3f19b7862014818",
     "file": "tools/test_platform.py",
     "line": 37,
     "test_id": "B108",
@@ -144,18 +153,18 @@
     "reason": "Canonical temporary root only; a unique mkdtemp directory with private permissions is created below it before fixture data is written. Windows uses checked private directory creation."
   },
   {
-    "fingerprint": "db2cc2503c882dca2da76ddccb8108592e4e8294f9d9d5649e275271dac47a09",
+    "fingerprint": "c92ceb9d48e98b03e25c0549ffdce2ba89906192454ed675801d5de34ef34db9",
     "file": "tools/test_platform.py",
-    "line": 72,
+    "line": 74,
     "test_id": "B603",
     "severity": "LOW",
     "reviewed_on": "2026-10-20",
     "reason": "Fixed command lists invoke the selected local Python with repository fixtures and private receipt paths; no shell and each command has a 600-second bound."
   },
   {
-    "fingerprint": "c6fa8fd994a8f336f25977e26c6006dd95f24072a34aad5a4b7543cb7da0e005",
+    "fingerprint": "7c71ba96a4f44b5d679ac1ebb815d9966fc4fc609cda2e7e11fc960411decd84",
     "file": "tools/test_platform.py",
-    "line": 82,
+    "line": 84,
     "test_id": "B314",
     "severity": "MEDIUM",
     "reviewed_on": "2026-10-20",

@@ -20,10 +20,13 @@ On native Windows use `py -3 tools/integrate.py`. For automation pass `--platfor
 [Recorded platform validation](platform-validation.md) lists executed results and retained failures.
 
 The security follow-up updates PyJWT to 2.15.0 and adds maintainer security
-checks. macOS/Linux passed the updated candidate with 519 tests; fresh native
-Windows 11, WSL2 and forwarding acceptance is pending for that lock. The
-earlier platform passes below retain their original candidate identities.
-See [security validation](security-validation-2026-10-20.md).
+checks. At `29b9daf`, WSL2 and forwarding passed, as did Windows security;
+native Windows failed during expiry polling and WSL advisory queries were
+network-blocked. The follow-up corrects the test's poll-count assumption and
+adds explicit same-candidate advisory receipt transfer. Native Windows
+acceptance of that correction remains pending; the earlier passes below do
+not override the failed run. See [the follow-up](acceptance-followup-2026-10-20.md)
+and [security validation](security-validation-2026-10-20.md).
 
 | Target | Implementation | Recorded acceptance and limits |
 | --- | --- | --- |
@@ -162,7 +165,7 @@ separately check their actual MCP host.
 
 `tools/test_platform.py` runs tests from outside the checkout, creates a private disposable receipt root, and prints its location. It runs focused lint and the transfer check as well. It does not install dependencies, find or run real Codex, submit model work or delete prior receipts. `OFFLINE CHECKS PASSED` requires every command to exit zero; inspect counts/skips in `tests.xml` before claiming acceptance.
 
-Unix runs the existing full suite plus new shared tests and source MCP smoke. Four Windows-kernel tests are explicitly skipped there; the installed-runtime test is deselected. Native Windows runs `test_windows_platform.py`, `test_platform_transport.py`, `test_platform_setup.py`, `test_platform_store.py` and `test_platform_deadline.py`: **16 expected passes, 1 explicit Unix-only companion skip** at this candidate. It does not claim that every inherited Unix fixture ran on Windows. The Windows MCP test itself covers completion, replay/conflict, status, multi-page UTF-8/hash reconstruction, cancellation, expiry, same-root startup refusal, independent roots, restart reconciliation and normal/process-death cleanup. A separate Job Object test checks descendant termination after owner death. ACL and junction negatives and real lock contention are also included.
+Unix runs the existing full suite plus new shared tests and source MCP smoke. Four Windows-kernel tests are explicitly skipped there; the installed-runtime test is deselected. Native Windows runs `test_windows_platform.py`, `test_platform_transport.py`, `test_platform_setup.py`, `test_platform_store.py`, `test_platform_deadline.py` and `test_mcp_polling.py`: **19 expected passes, 1 explicit Unix-only companion skip** at this candidate. It does not claim that every inherited Unix fixture ran on Windows. The Windows MCP test itself covers completion, replay/conflict, status, multi-page UTF-8/hash reconstruction, cancellation, expiry, same-root startup refusal, independent roots, restart reconciliation and normal/process-death cleanup. A separate Job Object test checks descendant termination after owner death. ACL and junction negatives and real lock contention are also included. The separate security regression route is `pytest tests/test_security_tools.py tests/test_advisory_receipts.py`, with 25 expected passes.
 
 The native Windows tests compile a disposable fixture `.exe` with the inbox Windows PowerShell C# compiler. This is offline test setup, never runtime behavior or a shipped native Codex binary. If the compiler is unavailable or policy blocks it, record the check as blocked; do not substitute a real Codex executable or disable machine policy. Five fixture turns in the MCP case are not paid model turns. Failures and unexpected skips must be retained, diagnosed and rerun only after a concrete correction.
 

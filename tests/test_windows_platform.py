@@ -194,14 +194,12 @@ async def _mcp_case(root: Path, profile: Path, log: Path) -> None:
                 handle.Close()
 
     async def status(process, task, *, submitted=False):
-        value = {}
-        for _ in range(30):
-            before = time.monotonic()
-            value = await tool(process, "codex_status", {"task_id": task, "wait_seconds": 1, "cursor": value.get("cursor", 0)})
-            assert time.monotonic() - before < 5
-            if (submitted and value["turn_submitted"]) or value["state"] in {"completed", "cancelled", "failed", "unknown"}:
-                return value
-        pytest.fail("task did not reach expected state")
+        from mcp_polling import poll_status
+
+        async def fetch(cursor):
+            return await tool(process, "codex_status", {"task_id": task, "wait_seconds": 1, "cursor": cursor})
+
+        return await poll_status(fetch, submitted=submitted)
 
     def request(prompt, seconds=120):
         return {"request_id": str(uuid4()), "prompt": prompt, "cwd": str(root / "worktree"),
@@ -240,6 +238,7 @@ async def _mcp_case(root: Path, profile: Path, log: Path) -> None:
         expired_status = await status(process, expired["task_id"])
         assert expired_status["deadline_utc"] == deadline_request["deadline_utc"]
         assert expired_status["stop_intent"] == "expiry", expired_status
+        assert (expired_status["state"], expired_status["reason"]) == ("failed", "deadline_exceeded"), expired_status
         # A competing profile on this root must lose before invoking its runtime.
         before_log = (await asyncio.to_thread(log.read_bytes))
         loser = await asyncio.create_subprocess_exec(sys.executable, "-m", "codex_app_server_adapter",
