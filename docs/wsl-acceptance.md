@@ -48,7 +48,7 @@ report the precise blocker. See the [official standalone installation options](h
 .venv/bin/python tools/test_platform.py --platform wsl
 ```
 
-The current target is **507 passes, four Windows-only skips and one
+The current target is **519 passes, four Windows-only skips and one
 installed-runtime deselection**, plus passing focused lint, all 25 transfer
 checks and actual source MCP smoke. The runner must exit 0 and print
 `OFFLINE CHECKS PASSED`. Retain its entire printed receipt directory. A Docker

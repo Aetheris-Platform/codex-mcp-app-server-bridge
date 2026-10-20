@@ -2,6 +2,16 @@
 
 The owner expanded the extraction scope to macOS, Linux, native Windows 11 and Windows 11 with WSL2, with platform selection before integration. This candidate keeps the common MCP/task code and the established Unix backend, adds native Windows filesystem/process/stdio primitives, and ships separate platform test routes. The repository remains private. Native Windows bounded offline acceptance passed at `5fdff37`; earlier failures remain recorded below. WSL2 and Windows-to-WSL forwarding passed bounded offline acceptance at `ade75b4`; merge remains the owner’s decision. See [the Windows report and corrections](windows-acceptance-2026-10-19.md).
 
+## Security follow-up candidate — 2026-10-20
+
+The local security audit required a PyJWT dependency update to 2.15.0. The new
+candidate passed macOS and isolated Linux Docker with **519 passes, four
+Windows-only skips and one installed-runtime deselection**, including 12 new
+security-tool regressions. Fresh Windows 11/WSL2/forwarding acceptance remains
+pending for that updated lock; the earlier passes below remain historical.
+See [security validation](security-validation-2026-10-20.md) for the exact
+candidate, corrected advisories, reviewed findings and remaining release gates.
+
 ## WSL2 and Windows-to-WSL offline pass — 2026-10-20
 
 Owner acceptance of `ade75b43ef4a6a6183cfbe9bca035ca6c51caaad` passed both

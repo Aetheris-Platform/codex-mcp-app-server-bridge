@@ -19,6 +19,12 @@ On native Windows use `py -3 tools/integrate.py`. For automation pass `--platfor
 
 [Recorded platform validation](platform-validation.md) lists executed results and retained failures.
 
+The security follow-up updates PyJWT to 2.15.0 and adds maintainer security
+checks. macOS/Linux passed the updated candidate with 519 tests; fresh native
+Windows 11, WSL2 and forwarding acceptance is pending for that lock. The
+earlier platform passes below retain their original candidate identities.
+See [security validation](security-validation-2026-10-20.md).
+
 | Target | Implementation | Recorded acceptance and limits |
 | --- | --- | --- |
 | macOS | Unix socket, flock and guardian backend | Offline PASS: 507 tests plus MCP smoke, arm64 / Python 3.14.6; earlier live evidence applies only to its recorded candidate/runtime/model |

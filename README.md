@@ -230,7 +230,9 @@ Maintainers also run [local security checks](docs/security-testing.md): pinned
 secret scanning, dependency auditing, code analysis and Ruff. Tool installations
 and raw receipts stay under ignored `.local/`; reusable scripts, versions and
 reviewed exceptions are committed. These checks use no paid GitHub product or
-Actions minutes. See [SECURITY.md](SECURITY.md) for private vulnerability reporting.
+Actions minutes. See [SECURITY.md](SECURITY.md) for private vulnerability reporting
+and [security validation](docs/security-validation-2026-10-20.md) for results and
+the updated dependency candidate’s pending Windows/WSL2 acceptance.
 
 ## Offline tests
 
