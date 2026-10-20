@@ -1,6 +1,13 @@
 # Platform setup and acceptance
 
-One source checkout supplies the same four MCP tools and task contract on each target. Select your platform before integration; the selector records only a local preference and never installs dependencies, starts Codex, authenticates or changes an MCP registration.
+One Python package (`codex-mcp-app-server-bridge`), one source checkout layout
+and one dependency lock supply the same four MCP tools and task contract on
+each target. Developers select their platform during setup; they do not choose
+separate platform packages. Each environment gets its own virtual environment
+and private profile. The interpreter's operating system selects the backend;
+the platform selector selects and validates the setup/test route. It records
+only a local preference and never installs dependencies, starts Codex,
+authenticates or changes an MCP registration.
 
 ```sh
 python3 tools/integrate.py
@@ -12,16 +19,17 @@ On native Windows use `py -3 tools/integrate.py`. For automation pass `--platfor
 
 [Recorded platform validation](platform-validation.md) lists executed results and retained failures.
 
-| Target | Implementation | Evidence required |
+| Target | Implementation | Recorded acceptance and limits |
 | --- | --- | --- |
-| macOS | Existing Unix socket, flock and guardian backend | Offline suite/MCP smoke; prior live validation applies only to its recorded runtime/model/commit |
-| Linux | Same Unix backend; Linux anonymous-pipe admission uses procfs | Offline Docker qualification; distribution/native runtime/model acceptance remains configuration-specific |
+| macOS | Unix socket, flock and guardian backend | Offline PASS: 507 tests plus MCP smoke, arm64 / Python 3.14.6; earlier live evidence applies only to its recorded candidate/runtime/model |
+| Linux | Same Unix backend; anonymous-pipe admission uses procfs | Offline Docker PASS: 507 tests plus MCP smoke, aarch64 / Python 3.14.6; additional WSL2 evidence below |
 | Windows 11 native | Anonymous stdio pipes, Windows ACLs, byte-range locks and Job Objects | **Owner-run offline PASS at `5fdff37`** (Windows 11 build 26300 / Python 3.12.14); live runtime/model acceptance remains separate |
-| Windows 11 + WSL2 | Linux backend inside the distribution; optional Windows host launches `wsl.exe` | **Candidate pending WSL2 tests and Windows-host forwarding acceptance**; Docker is not WSL evidence |
+| WSL2 | Linux backend inside the distribution | **Owner-run offline PASS at `ade75b4`**: 507 passes, 4 Windows-only skips, 1 installed-runtime deselection; Debian 13.5 x86_64 / Python 3.13.5, ordinary Linux user |
+| Windows-to-WSL2 | Windows MCP client launches the same Linux package through `wsl.exe` | **Separate owner-run offline PASS at `ade75b4`**: all 7 harness check groups; Windows 11 build 26300 / Python 3.12.14 initiating client |
 
 Git is required for checkout and the line-ending regression test. Repository attributes keep source/provenance text at LF even with `core.autocrlf=true`; the transfer verifier still checks raw bytes.
 
-Python 3.12+ is declared. The local platform work tests 3.14.6; other Python versions require their own receipt. The lock resolves macOS, Linux and Windows packages. This is not a promise that arbitrary filesystem types, kernels, models or MCP clients work. Use local POSIX filesystems on Unix and a local NTFS volume on native Windows; network stores and WSL `/mnt/c` stores are outside this procedure. Follow [actual-host acceptance](integration-testing.md#2-test-your-actual-mcp-host) separately from the fixture tests.
+Python 3.12+ is declared. Recorded offline acceptance used 3.14.6 on macOS/Linux Docker, 3.12.14 on Windows and 3.13.5 inside WSL2. See the [WSL2/forwarding report](wsl-offline-pass-2026-10-20.md) for exact identities and preserved setup failures. Other combinations require their own receipt. The lock resolves macOS, Linux and Windows packages. This is not a promise that arbitrary filesystem types, kernels, models or MCP clients work. Use local POSIX filesystems on Unix and a local NTFS volume on native Windows; network stores and WSL `/mnt/c` stores are outside this procedure. Follow [actual-host acceptance](integration-testing.md#2-test-your-actual-mcp-host) separately from the fixture tests.
 
 ## macos
 
@@ -100,6 +108,12 @@ Example local stdio registration for any MCP host accepting this configuration s
 Adapt the host's registration syntax while preserving command/argument boundaries. Keep its stdin open across tool calls. The Windows backend uses one owned app-server per native connection because native stdio is a single-client transport. Logical disconnect drains its output without killing work; jobs remain session-owned until bridge shutdown. This can use more processes than the shared Unix socket backend. Close idle bridge sessions normally. Job membership is assigned atomically before the child executes; descendants inherit the job, breakaway is not enabled, and the adapter alone owns the kill-on-close handle. No PID scanning or attachment to an existing runtime is used. The bounded owner-run Windows acceptance at `5fdff37` exercised these kernel-level tests successfully; see the [recorded result](windows-offline-pass-2026-10-19.md).
 
 ## wsl
+
+Choose `wsl` inside Linux even when a Windows application initiates MCP calls.
+Choose `windows` when the bridge itself will run under native Windows Python.
+These are deployment choices for the same package; do not share a virtual
+environment between Windows and Linux. Forwarding is needed only when the MCP
+client runs on Windows and the bridge/workspace runs inside WSL2.
 
 Confirm an existing WSL2 distribution with `wsl.exe --list --verbose`. Installing/enabling WSL or changing a distribution is a separate machine setup action. Clone the repository **inside its Linux filesystem**, for example `/home/USER/src/...`, and follow the Linux instructions using `--platform wsl`. Use Linux Python, Linux Codex, Linux authentication, Linux workspace paths and a Linux private store. Do not mix a Windows `.venv`, `codex.exe`, drive path or profile with this route.
 

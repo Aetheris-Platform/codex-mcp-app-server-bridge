@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-20",
+  "scope": "offline fixture acceptance; no live provider or universal-client qualification",
+  "candidate_commit": "ade75b43ef4a6a6183cfbe9bca035ca6c51caaad",
+  "candidate_tree": "58aee55d355e4bd4e7015b946f4d5d8b1fa6f3e8",
+  "tracked_files_verified": 132,
+  "delivered_files_verified": 195,
+  "delivered_bytes": 80773981,
+  "wsl": {
+    "verdict": "PASS",
+    "environment": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "uid": 1000,
+    "counts": {
+      "tests": 511,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 4,
+      "passed": 507
+    },
+    "deselected_installed_runtime": 1,
+    "checks": {
+      "pytest": {
+        "exit_code": 0,
+        "log": "pytest.log"
+      },
+      "lint": {
+        "exit_code": 0,
+        "log": "lint.log"
+      },
+      "transfer": {
+        "exit_code": 0,
+        "log": "transfer.log"
+      },
+      "mcp-smoke": {
+        "exit_code": 0,
+        "log": "mcp-smoke.log"
+      },
+      "test-counts": {
+        "exit_code": 0
+      }
+    }
+  },
+  "forwarding": {
+    "verdict": "PASS",
+    "route": "Windows-to-WSL2",
+    "windows_build": 26300,
+    "initiating_python": "3.12.14",
+    "check_groups_passed": 7,
+    "fixture_turns": 6,
+    "interrupts": 3,
+    "owned_processes_remaining": 0,
+    "owned_sockets_remaining": 0,
+    "result": {
+      "bytes": 2097244,
+      "pages": 513,
+      "sha256": "0a2cae42794877b88171d82fac18e41595839141c64471b9c558cc7f41c2ee68"
+    }
+  },
+  "native_windows_rerun": false,
+  "native_windows_previous_pass_commit": "5fdff37e353ec11ec8bb7e237bd2d7658522673d",
+  "receipt_collection": "acceptance-wsl-ade75b4-2026-10-20-continuation",
+  "receipts_sha256": {
+    "receipt-sha256.json": "dd74a06b62fee18ce8dd5fb301e77d7242e0d3d6dce930091d850d275d76dac0",
+    "acceptance-report.md": "777bdacaf6ae671b288a7c070c3b95a46a33e23d4feecffa210c64ee5cb05a47",
+    "stage-a/tests.xml": "07874c145e4b2dad6b556de1a625039792339e0c3393b26c1f7f164e7e9734fd",
+    "stage-a/summary.json": "3991da6e1c2f292cd09b7a20d33d8ffb4e036a7601cc0d46ff7d0b4374ea7681",
+    "forwarding/summary.json": "f21b4bca35a6701b7913a02f2960a564fe34629c2ec987c161d6b6531ef0e5d5",
+    "stage-b.command.json": "0123426e575ee8a7ac6bbbadebfb5a36bcda6b2074213e257e25ea75bd8461b9",
+    "stage-a-rerun.tar": "bd2c3a7fecfe95fdd8b8b5105ff30a1ce74785fa06cedce84ac7274ff58816ad",
+    "stage-b-fixture-b-final.tar": "f0c5d0dc62290f07a2114a227c6f85897e80c1be9c0de7b6e4b3e83359161ce5"
+  },
+  "retained_limitations": [
+    "Linux archive and dependency download failures retained; owner-authorized Windows transfer used exact pinned hashes",
+    "First Stage A console success lacks original temporary receipts and remains incomplete evidence; owner-authorized unchanged rerun supplies PASS",
+    "One Stage A socket node retained as metadata inventory, not tar payload",
+    "Pinned uv archive has no bundled license/NOTICE text; public licensing clearance remains separate"
+  ]
+}

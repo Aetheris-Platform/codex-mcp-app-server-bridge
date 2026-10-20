@@ -1,5 +1,9 @@
 # WSL2 and Windows-to-WSL offline acceptance
 
+Owner-machine acceptance passed both stages at `ade75b4` on 2026-10-20;
+see the [recorded result and limits](wsl-offline-pass-2026-10-20.md). The steps
+below are reusable acceptance instructions for a chosen candidate.
+
 These are two separate tests. First run the Linux bridge suite inside WSL2;
 then run a Windows Python MCP client that launches the bridge through `wsl.exe`.
 Neither test uses installed Codex, authentication or a provider. No registration
@@ -12,6 +16,10 @@ distribution, change its default user, install system packages or use
 profiles and stores on the Linux filesystem, not `/mnt/c`. The Windows driver
 uses a separate checkout of exactly the same commit on local NTFS. Existing
 clones, receipts and other sessions remain untouched.
+
+Both routes use the same Python package. The additional Windows checkout here
+is for the independent acceptance driver and byte comparison; forwarding in a
+developer workflow uses the bridge installed inside WSL2.
 
 ## Local dependency setup without ensurepip
 
@@ -96,6 +104,24 @@ The helper uses pidfds plus recorded process start identity and exact profile
 arguments to kill only its own adapters. It does not kill by name, terminate a
 WSL distribution or stop another session. Assertions, existing timeout semantics,
 private permissions and process ownership must not be relaxed to get a pass.
+
+## Receipt retention on WSL2
+
+Check the filesystem backing `/tmp` before starting. On the accepted WSL host
+it was tmpfs: a successful initial run's receipts disappeared when WSL stopped.
+Archive the runner's entire printed receipt root to a private directory on
+persistent Linux storage before the invoking WSL command exits. For forwarding,
+keep an explicitly owned WSL session open until the named fixture root is
+archived, then close only that session normally. Never terminate the distro to
+clean up. Record any collection failure separately; a console PASS without the
+required retained evidence is incomplete. Socket nodes need explicit path/mode
+inventory metadata because tar cannot preserve them as ordinary file payloads.
+
+If Linux downloads fail, stop and retain the error. An explicitly authorized
+setup alternative can transfer the pinned uv archive and exact locked Linux
+wheels through Windows, verify their lock hashes and sizes again inside Linux,
+and confirm locked offline sync. This does not permit version substitutions,
+credential copying, network-policy changes or dependency fetching at launch.
 
 ## Receipts, limits and failure handling
 

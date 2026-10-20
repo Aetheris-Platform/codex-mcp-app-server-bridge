@@ -26,6 +26,13 @@ Use the native app-server directly when you are building a full Codex client and
 
 ## Integrate into your workflow
 
+**One package, with platform selection during setup.** Every platform uses the
+`codex-mcp-app-server-bridge` Python package, the `codex_app_server_adapter`
+module and the same four MCP tools. There are no separate Mac, Windows or Linux
+bridge packages to choose. Select your platform to follow its dependency,
+profile, launch and test instructions; the running operating system determines
+the backend. Windows-to-WSL uses the same package installed in a Linux environment.
+
 1. **Get a local copy and select a platform:** clone this repository, select a reviewed commit, and run `python3 tools/integrate.py` (`py -3 tools/integrate.py` on Windows). Choose macOS, Linux, native Windows 11 or WSL2; follow the matching [platform guide](docs/platforms.md).
 2. **Prepare it locally:** install the locked dependencies in the checkout's environment and create a private profile for your Codex executable, model, workspaces and task store.
 3. **Connect your client:** configure your MCP-compatible developer tool to launch that checkout's Python module over stdio. The client starts the bridge, which owns its local Codex app-server child.
@@ -39,12 +46,12 @@ This is an independent project, not an official OpenAI product. Compatibility de
 
 ## Supported environment
 
-- Select **macOS, Linux, native Windows 11, or Windows 11 with WSL2**. Unix uses private sockets, process groups and `flock`; native Windows uses private stdio pipes, ACLs, file locks and Job Objects. See the [platform status matrix](docs/platforms.md#status-and-boundaries): native Windows passed bounded offline acceptance at `5fdff37`; WSL2 and forwarding still require owner-machine acceptance.
-- Python 3.12+ is the declared requirement; local qualification uses 3.14.6. The dependency lock now includes macOS, Linux and Windows; other Python versions still need their own qualification.
-- `uv` 0.12.18 was used for locked setup. Dependencies are `mcp==2.2.0`, `websockets==17.1`, and the exact transitive artifacts in `uv.lock`.
+- Select **macOS, Linux, native Windows 11, or Windows 11 with WSL2**. Unix uses private sockets, process groups and `flock`; native Windows uses private stdio pipes, ACLs, file locks and Job Objects. See the [platform status matrix](docs/platforms.md#status-and-boundaries): native Windows passed bounded offline acceptance at `5fdff37`; WSL2 and Windows-to-WSL forwarding passed separately at `ade75b4`. See the [acceptance results](docs/wsl-offline-pass-2026-10-20.md) for the exact environments and scope.
+- Python 3.12+ is the declared requirement. Recorded offline tests used 3.14.6 on macOS/Linux Docker, 3.12.14 on native Windows and the Windows forwarding client, and 3.13.5 inside WSL2. Other combinations need their own qualification.
+- `uv` 0.12.18 was used for locked setup. Dependencies are `mcp==2.2.0`, `websockets==17.1`, Windows-only `pywin32==312`, and the exact transitive artifacts in the shared `uv.lock`. Locked setup selects the dependencies applicable to its environment.
 - An operator-selected Codex executable with the selected platform's local [app-server support](https://learn.chatgpt.com/docs/app-server), independently configured authentication, and an explicitly selected accessible model. The executable must have a stable absolute path without symlink components; a moving launcher is unsuitable.
 
-Historical source records cover direct sockets in CLI 0.154.0, deterministic aliases in 0.156.0, and one macOS arm64 0.159.2 / `gpt-6.1-sol` completed turn under the former client identity. Following the offline extraction, a bounded live test of the standalone identity passed with CLI **0.159.2**, **`gpt-6.1-sol` / low**, and one programmatic stdio MCP client: task completion, duplicate prevention, paginated results, confirmed provider-turn cancellation, persistence and cleanup. This does not qualify every client/model or live deadline expiry. See the [live results and precise limits](docs/live-validation.md) and [extraction provenance](docs/extraction.md). Those live receipts predate the platform changes; see [current platform validation](docs/platform-validation.md) for the Windows offline result and pending WSL2/forwarding gates.
+Historical source records cover direct sockets in CLI 0.154.0, deterministic aliases in 0.156.0, and one macOS arm64 0.159.2 / `gpt-6.1-sol` completed turn under the former client identity. Following the offline extraction, a bounded live test of the standalone identity passed with CLI **0.159.2**, **`gpt-6.1-sol` / low**, and one programmatic stdio MCP client: task completion, duplicate prevention, paginated results, confirmed provider-turn cancellation, persistence and cleanup. This does not qualify every client/model or live deadline expiry. See the [live results and precise limits](docs/live-validation.md) and [extraction provenance](docs/extraction.md). Those live receipts predate the platform changes; see [current platform validation](docs/platform-validation.md) for the native Windows, WSL2 and forwarding offline passes. These passes do not extend the earlier live-provider qualification.
 
 ## Get and prepare your local checkout
 
