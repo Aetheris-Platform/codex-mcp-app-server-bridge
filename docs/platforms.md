@@ -146,6 +146,14 @@ Follow the two-stage [WSL2 and Windows forwarding acceptance procedure](wsl-acce
 
 ## Included test routes
 
+Maintainers execute these routes locally: macOS on their Mac, Linux in an
+isolated local Docker container, and native Windows 11 plus WSL2/forwarding on
+their Windows test machine. No GitHub Actions workflow or hosted-runner quota
+is required. See [local maintainer acceptance](integration-testing.md#local-maintainer-acceptance)
+for candidate identity, evidence retention and manual merge review.
+Developers integrating the bridge run the route for their own environment and
+separately check their actual MCP host.
+
 `tools/test_platform.py` runs tests from outside the checkout, creates a private disposable receipt root, and prints its location. It runs focused lint and the transfer check as well. It does not install dependencies, find or run real Codex, submit model work or delete prior receipts. `OFFLINE CHECKS PASSED` requires every command to exit zero; inspect counts/skips in `tests.xml` before claiming acceptance.
 
 Unix runs the existing full suite plus new shared tests and source MCP smoke. Four Windows-kernel tests are explicitly skipped there; the installed-runtime test is deselected. Native Windows runs `test_windows_platform.py`, `test_platform_transport.py`, `test_platform_setup.py`, `test_platform_store.py` and `test_platform_deadline.py`: **16 expected passes, 1 explicit Unix-only companion skip** at this candidate. It does not claim that every inherited Unix fixture ran on Windows. The Windows MCP test itself covers completion, replay/conflict, status, multi-page UTF-8/hash reconstruction, cancellation, expiry, same-root startup refusal, independent roots, restart reconciliation and normal/process-death cleanup. A separate Job Object test checks descendant termination after owner death. ACL and junction negatives and real lock contention are also included.

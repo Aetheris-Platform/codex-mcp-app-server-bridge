@@ -57,3 +57,19 @@ workflow-token access is read-only, but workflows may approve PR reviews.
 Dependabot security updates are enabled; code security, secret scanning and
 push protection are disabled. The repository is private. This recheck changed
 no GitHub control, enabled no paid feature and launched no workflow.
+
+## Owner-selected local acceptance — 2026-10-20
+
+The owner selected [local maintainer acceptance](integration-testing.md#local-maintainer-acceptance)
+instead of GitHub Actions CI. Tests run on maintainer-controlled macOS,
+Linux Docker, Windows 11 and WSL2 environments, with separate Windows-to-WSL2
+forwarding evidence. The PR records candidate-specific local results for the
+owner's manual merge decision. Integrators run their own relevant platform and
+MCP-host checks.
+
+No workflow, Actions runner registration, required Actions status check or
+GitHub configuration change accompanies this decision. Existing main-branch
+protections remain in place. The repository-level Actions capability being
+enabled is not a dependency of setup, runtime, maintainer testing or acceptance;
+this process consumes no GitHub Actions minutes. Security-control decisions
+remain separate from where tests execute.

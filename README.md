@@ -211,6 +211,21 @@ Tests ship in this repository and apply to any developer tool that can launch a 
 
 The first two stages use deterministic fixtures and need no provider authentication or model usage. The host procedure defines a separate, opt-in two-task live check in a disposable workspace, plus non-model control checks. Passing the standalone smoke does **not** qualify your host's registration, tool decoding, timeouts or lifecycle. A host that supports only remote HTTP MCP cannot launch this local stdio bridge without an additional integration layer, which this repository does not provide.
 
+## Maintainer acceptance runs locally
+
+Maintainers run the included tests on their own macOS and Windows 11 machines,
+with Linux tested in an isolated local Docker environment and WSL2/forwarding
+tested on the Windows machine. **Maintainer testing does not depend on GitHub
+Actions, hosted runners or an Actions usage allowance.** Test code lives in this
+repository; the test processes run on maintainer-controlled machines.
+
+Before merging, the owner reviews results tied to the candidate commit,
+including failures, skips and platform limits. Existing main-branch protections
+remain in place; they do not automatically execute or enforce these local tests.
+See the [local maintainer acceptance procedure](docs/integration-testing.md#local-maintainer-acceptance)
+for commands, evidence and documentation-only changes. Integrators separately
+test their own MCP host using the guide above; they do not need to configure CI.
+
 ## Offline tests
 
 After selecting a platform and installing dev dependencies, run `.venv/bin/python tools/test_platform.py` (native Windows: `.venv\Scripts\python.exe tools/test_platform.py`). It uses the saved selection and retains logs/JUnit. For WSL2 and a Windows MCP host launching through `wsl.exe`, use the separate [two-stage acceptance procedure](docs/wsl-acceptance.md) and included Windows-side forwarding harness. The lower-level commands below are Unix-only.

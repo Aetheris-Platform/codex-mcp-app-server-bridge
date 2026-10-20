@@ -4,6 +4,63 @@ Use this guide after cloning the bridge and again when integrating it into a new
 
 There are two different conclusions: **the checkout passes its tests**, and **your actual host passes integration acceptance**. Record them separately. A generic test client cannot prove that your host retains its server process, decodes tools correctly or follows tasks to completion.
 
+## Local maintainer acceptance
+
+The maintainer acceptance process runs on owner-controlled machines, using the
+tests shipped in this repository. It does not use or require GitHub Actions,
+hosted runners, a self-hosted Actions agent, or Actions usage minutes. GitHub
+stores the source and PR discussion; the owner reviews local evidence and merges
+manually. The existing branch rules remain unchanged and do not automatically
+enforce local test completion.
+
+After the selected environment's [locked development setup](platforms.md), run
+the following from its checkout root:
+
+| Route | Execution location | Command or procedure |
+| --- | --- | --- |
+| macOS | Maintainer's Mac | `.venv/bin/python tools/test_platform.py --platform macos` |
+| Linux | Isolated local Docker container | `.venv/bin/python tools/test_platform.py --platform linux` inside the container |
+| Native Windows 11 | Maintainer's Windows test machine | `.\.venv\Scripts\python.exe tools/test_platform.py --platform windows` |
+| WSL2 | Linux distribution on that Windows machine | `.venv/bin/python tools/test_platform.py --platform wsl` |
+| Windows-to-WSL2 forwarding | Windows-side client launching through actual `wsl.exe` | Follow both stages of the [forwarding acceptance procedure](wsl-acceptance.md) |
+
+The Linux container needs its own Linux virtual environment, Git and locked
+development dependencies; do not reuse a macOS environment. Use an owned
+disposable container, a non-root test user, a source snapshot of the candidate,
+and private writable fixture/receipt paths. Prepare dependencies separately,
+then disable container networking during fixture execution. Preserve receipts
+before removing the container. A Linux-container pass does not replace native
+Windows or actual WSL2/forwarding acceptance.
+
+For runtime, dependency, fixture or test-runner changes, run the applicable
+platform matrix before merge and document any omitted route as NOT TESTED.
+Review all supported routes before a release. For documentation-only changes,
+check links, examples and transfer manifests, verify runtime/test/lock bytes
+against the previously tested candidate, and cite that candidate's results
+explicitly; do not describe carried-forward results as a new test run.
+
+Each acceptance record must include:
+
+- Candidate commit and whether the tested checkout was clean, plus any source
+  snapshot/hash comparison used to carry earlier evidence forward.
+- OS, architecture, Python version and dependency setup; for Linux, container
+  image identity and test-user privilege; for WSL2, distribution and kernel.
+- Commands, exit codes, test counts, expected and unexpected skips, and retained
+  `summary.json`, JUnit and command logs. Keep failed attempts and their explanations.
+- Separate forwarding results, cleanup observations and all untested limits.
+
+Use the [platform success targets](platforms.md#included-test-routes). A zero
+exit status without the expected tests is insufficient. Retain sanitized results
+with the PR, and keep full private receipts in durable local storage. Archive
+WSL temporary receipts before session exit as described in its procedure.
+Remove only the test resources owned by that run after preserving evidence.
+
+These checks use offline fixtures: no real Codex executable, authentication or
+paid model turn is required. The developer's actual-host acceptance below is
+separate and may include explicitly authorized live-provider usage. Integrators
+are not required to adopt the maintainer's multi-platform process or configure
+CI; they test the platform and host they actually use.
+
 ## 1. Run the included checkout checks
 
 First run the [platform selector and test route](platforms.md). The low-level commands in this section are Unix commands. Native Windows uses `.venv\Scripts\python.exe tools/test_platform.py --platform windows`; WSL2 runs the Linux tests inside its distribution with `--platform wsl`.
