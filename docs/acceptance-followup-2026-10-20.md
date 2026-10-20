@@ -1,5 +1,9 @@
 # Native expiry polling and disconnected advisory acceptance
 
+**Closed by the reviewed `cd5d3f6` owner-machine rerun.**
+See [release acceptance](release-acceptance-2026-10-20.md). The analysis and
+requirements below retain the context before that successful rerun.
+
 ## Reviewed owner-machine result
 
 Candidate `29b9dafd2f64097ddcf55ce8e5350b776cfd249f` was tested on native
@@ -50,12 +54,12 @@ scans still run on WSL. Reports label this as transferred evidence, never a
 local query. No network policy, TLS setting, credentials or shared runtime
 changes are needed.
 
-## Remaining acceptance
+## Rerun requirements and subsequent disposition
 
 Current targets are 535 Unix passes with four skips/one deselection; native
 Windows 19 passes/one skip; separate Windows security regressions 25 passes.
-The private PR records executed local results and the pinned Windows rerun.
-The rerun must complete the previously unreached lifecycle assertions and
-exercise direct Windows plus transferred WSL security evidence.
-Do not merge or publish until the owner accepts those receipts. Existing
-history, earlier failures, licensing decision and release control are preserved.
+The reviewed rerun met these targets, completed the previously unreached
+lifecycle assertions and passed three additional native lifecycle runs.
+Windows direct and WSL transferred security evidence also passed. Existing
+history, earlier failures, licensing decision and owner release control are
+preserved.

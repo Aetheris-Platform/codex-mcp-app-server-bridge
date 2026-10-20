@@ -2,15 +2,17 @@
 
 The owner expanded the extraction scope to macOS, Linux, native Windows 11 and Windows 11 with WSL2, with platform selection before integration. This candidate keeps the common MCP/task code and the established Unix backend, adds native Windows filesystem/process/stdio primitives, and ships separate platform test routes. The repository remains private. Native Windows bounded offline acceptance passed at `5fdff37`; earlier failures remain recorded below. WSL2 and Windows-to-WSL forwarding passed bounded offline acceptance at `ade75b4`; merge remains the owner’s decision. See [the Windows report and corrections](windows-acceptance-2026-10-19.md).
 
-## Security follow-up candidate — 2026-10-20
+## Current release acceptance — 2026-10-20
 
-The local security audit required a PyJWT dependency update to 2.15.0. The new
-candidate passed macOS and isolated Linux Docker with **519 passes, four
-Windows-only skips and one installed-runtime deselection**, including 12 new
-security-tool regressions. Fresh Windows 11/WSL2/forwarding acceptance remains
-pending for that updated lock; the earlier passes below remain historical.
-See [security validation](security-validation-2026-10-20.md) for the exact
-candidate, corrected advisories, reviewed findings and remaining release gates.
+Candidate `cd5d3f69e662752b8aeb6d5e681ec6e8f40051a7` passed native Windows
+(19 passes/one skip and three additional lifecycle passes), WSL2
+(535 passes/four skips/one deselection), actual forwarding, Windows direct
+security and WSL transferred-advisory acceptance. macOS and Linux Docker
+also passed 535 tests each. The updated PyJWT 2.15.0 lock is covered.
+Review verified all 508 delivered receipt hashes and both checkouts' 152
+tracked files. See [release acceptance](release-acceptance-2026-10-20.md).
+The prior native failure and blocked WSL network queries remain historical;
+the owner controls merge and public visibility.
 
 ## WSL2 and Windows-to-WSL offline pass — 2026-10-20
 
@@ -120,6 +122,10 @@ The [machine record](provenance/platform-validation-2026-10-19.json) retains cou
 
 ## Remaining gates
 
-Native Windows offline acceptance is complete for the recorded `5fdff37` configuration; WSL2 and Windows-to-WSL forwarding acceptance are complete for the recorded `ade75b4` configuration. Native Windows was not rerun for the later harness/documentation changes. Historical failures and dependency notices remain retained. Actual developer-host adoption, live-provider tests, merge and publication remain separate owner decisions.
+Native Windows, WSL2 and Windows-to-WSL forwarding acceptance are complete for
+the recorded `cd5d3f6` configuration, including the updated lock and security
+tools. Historical failures and dependency notices remain retained. Actual
+developer-host adoption, live-provider tests, merge and publication remain
+separate owner decisions.
 
 The prior macOS live report applies to its recorded earlier code/runtime/model combination. No live Linux, Windows or WSL2 result is claimed. Other Python versions, native x86 Linux outside the tested WSL2 environment, other distributions/filesystems and actual developer-host configurations need their own bounded evidence. The established peer-authentication and non-atomic unlink limitations remain for Unix. Native Windows uses local inherited pipes and jobs with a distinct implementation whose bounded kernel tests passed on the recorded Windows host. The owner confirmed Apache-2.0 on 2026-10-20; exact artifact notices and publication remain separate release considerations.

@@ -20,13 +20,12 @@ On native Windows use `py -3 tools/integrate.py`. For automation pass `--platfor
 [Recorded platform validation](platform-validation.md) lists executed results and retained failures.
 
 The security follow-up updates PyJWT to 2.15.0 and adds maintainer security
-checks. At `29b9daf`, WSL2 and forwarding passed, as did Windows security;
-native Windows failed during expiry polling and WSL advisory queries were
-network-blocked. The follow-up corrects the test's poll-count assumption and
-adds explicit same-candidate advisory receipt transfer. Native Windows
-acceptance of that correction remains pending; the earlier passes below do
-not override the failed run. See [the follow-up](acceptance-followup-2026-10-20.md)
-and [security validation](security-validation-2026-10-20.md).
+checks. Corrected candidate `cd5d3f6` passed native Windows (19 passes/one skip
+plus three lifecycle repeats), WSL2 (535 passes/four skips/one deselection),
+actual forwarding and Windows direct/WSL transferred security acceptance.
+The earlier native failure and WSL network-blocked queries remain recorded.
+See [release acceptance](release-acceptance-2026-10-20.md) for current results;
+the table below retains the earlier platform baselines.
 
 | Target | Implementation | Recorded acceptance and limits |
 | --- | --- | --- |

@@ -66,13 +66,15 @@ The imported AUTHORS.rst has a seven-equals RST heading on line 2; Git's
 notice content, not an unresolved merge conflict, and its bytes were preserved.
 All other changed files pass diff hygiene.
 
-## Remaining owner-machine and release gates
+## Subsequent owner-machine acceptance
 
-Fresh native Windows 11, WSL2 and actual Windows-to-WSL forwarding acceptance
-is required for the updated lock and new security tools. Their earlier passing
-results remain historical and do not qualify this dependency update. The Windows
-Gitleaks archive hash and ZIP reader were checked on macOS, but no Windows
-security-tool execution is claimed. Use the pinned handoff supplied to the owner.
+The initial `29b9daf` run failed native expiry polling and had network-blocked
+WSL advisory queries. The corrected `cd5d3f6` rerun subsequently passed native
+Windows, WSL2, actual forwarding, Windows direct security and explicit
+transferred-advisory acceptance on WSL. See
+[reviewed release acceptance](release-acceptance-2026-10-20.md) for identities,
+counts and raw-versus-reviewed security outcomes. Earlier failures and blocked
+queries are preserved; no result is retroactively relabeled.
 
 The reporting contact is in [SECURITY.md](../SECURITY.md). The owner retains
 responsibility for merging and making the repository public. Keep existing
