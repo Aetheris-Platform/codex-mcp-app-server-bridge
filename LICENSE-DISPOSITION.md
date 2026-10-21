@@ -5,8 +5,7 @@
 The owner confirmed Apache-2.0 for this standalone bridge, including the
 extracted implementation, resolving the earlier internal-transfer licensing
 question. The existing root [LICENSE](LICENSE) is retained unchanged. This
-records the license decision; the repository remains private until the owner
-separately authorizes publication.
+records the license decision.
 
 The earlier internal-transfer record did not establish a public license.
 Its exact source commit and original file digest remain in the
