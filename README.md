@@ -1,12 +1,12 @@
 # Codex MCP app-server bridge
 
-OpenAI removed `codex mcp-server` on September 5, 2026 (CLI 0.154.0); see the [removal announcement](https://learn.chatgpt.com/docs/changelog).
+OpenAI removed `codex mcp-server` on September 5, 2026 (CLI 0.154.0); see the [removal announcement](https://learn.chatgpt.com/docs/mcp-server).
 The Codex app-server uses its own JSON-RPC protocol and [is not an MCP server](https://learn.chatgpt.com/docs/mcp-server).
 This bridge is for hosts that only speak MCP, translating their tool calls into Codex app-server requests.
 
 The package and MCP server identify this checkout as **1.0.0**. This version
 update preserves the accepted tool interfaces and task behavior; it does not
-publish a package or GitHub release. Platform evidence remains tied to its
+publish a package. Platform evidence remains tied to its
 recorded candidate, with [version-update checks](docs/version-1.0.0.md) recorded
 separately.
 
@@ -65,7 +65,7 @@ Historical source records cover direct sockets in CLI 0.154.0, deterministic ali
 
 ## Get and prepare your local checkout
 
-Clone this repository with access to its private remote, choose a reviewed commit and platform, and create a separate environment. The commands below are for Unix; use the [native Windows PowerShell route](docs/platforms.md#windows) on Windows. No wheel release is needed.
+Clone this repository, choose a reviewed commit and platform, and create a separate environment. The commands below are for Unix; use the [native Windows PowerShell route](docs/platforms.md#windows) on Windows. No wheel release is needed.
 
 ```sh
 git clone https://github.com/Aetheris-Platform/codex-mcp-app-server-bridge.git
@@ -273,4 +273,4 @@ See [integration testing](docs/integration-testing.md) for fresh-checkout comman
 
 The bridge is a standalone extraction of an existing implementation. [Transfer manifests](docs/provenance/transfer-manifest.json) retain exact source commits and per-file hashes under neutral source identifiers. Runtime imports do not require a source checkout or external workflow system.
 
-The owner has confirmed **Apache-2.0** for this bridge, including the extracted implementation. The existing [LICENSE](LICENSE) is unchanged. Dependencies retain their own licenses and notices; see [LICENSE-DISPOSITION.md](LICENSE-DISPOSITION.md) and [dependency notices](docs/third-party/README.md). This licensing decision does not publish the repository or authorize a release.
+The owner has confirmed **Apache-2.0** for this bridge, including the extracted implementation. The existing [LICENSE](LICENSE) is unchanged. Dependencies retain their own licenses and notices; see [LICENSE-DISPOSITION.md](LICENSE-DISPOSITION.md) and [dependency notices](docs/third-party/README.md).
