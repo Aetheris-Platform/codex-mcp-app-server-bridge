@@ -17,7 +17,7 @@ Actual license/NOTICE files copied from the 35 distributions installed from the 
 - jsonschema-specifications 2025.9.1: 1 retained notice text(s).
 - mcp 2.2.0: 1 retained notice text(s).
 - mcp-types 2.2.0: 1 retained notice text(s).
-- opentelemetry-api 1.44.0: 1 retained notice text(s).
+- opentelemetry-api 1.45.1: 1 retained notice text(s).
 - packaging 26.3: 3 retained notice text(s).
 - pluggy 1.6.0: 1 retained notice text(s).
 - pycparser 3.0: 1 retained notice text(s).
@@ -47,3 +47,5 @@ passed at its recorded candidate. Notice retention is separate from test
 acceptance and does not replace review of the exact artifacts being distributed.
 
 Security follow-up (2026-10-20): PyJWT was updated from 2.14.0 to 2.15.0. Its installed LICENSE and AUTHORS.rst are retained in the current inventory; the other recorded dependency notices are unchanged. Optional maintainer security tools are installed separately and are not bundled with the bridge.
+
+Dependency follow-up (2026-10-30, PR #6): opentelemetry-api was updated to 1.45.1 for GHSA-xcq7-p3pf-p88h. The installed Apache-2.0 LICENSE bytes match the retained notice; the current inventory records the new distribution version and path. Historical platform evidence remains tied to its original candidate.

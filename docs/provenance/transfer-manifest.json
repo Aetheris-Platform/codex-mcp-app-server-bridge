@@ -6,10 +6,11 @@
       "source_path": "developer-tools/codex-bridge/LICENSE-DISPOSITION.md",
       "source_sha256": "fe59510858abc670ab0b10412a87f7e81d43e9ac324fc186717459c51e504826",
       "destination_path": "LICENSE-DISPOSITION.md",
-      "destination_sha256": "8b70e9d6fbba106269062beaa46be692b4a4bdc2267fd56ecd74deab59b9f0c0",
-      "transfer": "adapted; owner Apache-2.0 decision and neutral source naming; see docs/extraction.md",
+      "destination_sha256": "a27f5e21a0af3a4ca19a09c9365617385a6db2c13f79c86b54333a8ad2795ac4",
+      "transfer": "adapted; owner Apache-2.0 decision and neutral source naming; see docs/extraction.md; PR #6 follow-up: reconcile current destination bytes, preserving prior identities",
       "extraction_destination_sha256": "9f00d78002a4021207aad45ff52052e2af7a3cabac0a8008e582b97d9f30c8a4",
-      "previous_destination_sha256": "120b5c03b401febf60a233e842de1072fcb9cb1c80d7e0cb48423f4d7dfde6b3"
+      "previous_destination_sha256": "120b5c03b401febf60a233e842de1072fcb9cb1c80d7e0cb48423f4d7dfde6b3",
+      "pre_pr6_destination_sha256": "8b70e9d6fbba106269062beaa46be692b4a4bdc2267fd56ecd74deab59b9f0c0"
     },
     {
       "source_path": "developer-tools/codex-bridge/README.md",
@@ -214,11 +215,12 @@
       "source_path": "developer-tools/codex-bridge/uv.lock",
       "source_sha256": "790d9cd24d23aa3cce35998e3f3329b68ca58087d829a907b0037c5ead187802",
       "destination_path": "uv.lock",
-      "destination_sha256": "968aa1c465175072be17ea1165c5b911b57450ff4be7055082028492d0afd672",
-      "transfer": "adapted; PyJWT 2.15.0 security update; see docs/security-testing.md; version 1.0.0 follow-up; see docs/version-1.0.0.md",
+      "destination_sha256": "846e526c50c0771a1897c236542bc76b8cfbaa0af2ba8a982ebfa67ec0921f5a",
+      "transfer": "adapted; PyJWT 2.15.0 security update; see docs/security-testing.md; version 1.0.0 follow-up; see docs/version-1.0.0.md; PR #6 follow-up: reconcile current destination bytes, preserving prior identities",
       "extraction_destination_sha256": "be400f28768c422b670b9af27df2319192c2bb2d453482d14305f87517c2cb41",
       "pre_security_update_destination_sha256": "b09c882a8616c21e8930dcb5ffb9500ef5c52e8ff9c0079e3b45e919b841213a",
-      "pre_1_0_0_destination_sha256": "038e81fb59cd9ceb079e17be3c7f10105f6307e088b71263b34cf8579589ec88"
+      "pre_1_0_0_destination_sha256": "038e81fb59cd9ceb079e17be3c7f10105f6307e088b71263b34cf8579589ec88",
+      "pre_pr6_destination_sha256": "968aa1c465175072be17ea1165c5b911b57450ff4be7055082028492d0afd672"
     }
   ],
   "destination_initial_commit": "64056785b21b51e269098a47583111723845542d",
